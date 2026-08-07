@@ -1,0 +1,272 @@
+/* --- PALETA DE COLORES OFICIAL NEXA (Basada en el Logotipo) --- */
+:root {
+    --nexa-bg: #f4f8fa;          /* Fondo general claro y limpio */
+    --nexa-card: #ffffff;        /* Blanco puro para las tarjetas */
+    --nexa-navy: #0d233a;        /* Azul marino profundo (para cabecera, footer y títulos) */
+    --nexa-cyan: #00b4d8;        /* Azul cian / turquesa brillante (para acentos y botones) */
+    --nexa-cyan-hover: #0096b4;  /* Cian más oscuro para efectos hover */
+    --nexa-text-dark: #1b263b;   /* Texto principal oscuro */
+    --nexa-text-gray: #576574;   /* Texto secundario gris */
+    --nexa-border: #e1e8ed;      /* Bordes sutiles */
+}
+
+body.nexa-portafolio {
+    background-color: var(--nexa-bg) !important;
+    background-image: none !important;
+    color: var(--nexa-text-dark) !important;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cabecera superior institucional en Azul Marino */
+.nexa-header {
+    background-color: var(--nexa-navy) !important;
+    border-radius: 0 0 25px 25px !important;
+    box-shadow: 0 4px 20px rgba(13, 35, 58, 0.2) !important;
+    border-bottom: 2px solid var(--nexa-cyan) !important;
+    padding: 15px 40px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nexa-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nexa-nav a {
+    color: #ffffff !important;
+    background-color: rgba(0, 180, 216, 0.15) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.nexa-nav a:hover {
+    background-color: var(--nexa-cyan) !important;
+    color: var(--nexa-navy) !important;
+}
+
+/* --- ESTILOS PARA LA PORTADA CON IMAGEN DESENFOCADA --- */
+.container.hero-portada {
+    position: relative;
+    overflow: hidden; /* Oculta lo que sobresalga de los bordes redondeados */
+    background-color: var(--nexa-navy) !important; /* Color de respaldo si tarda en cargar */
+    padding: 60px 40px !important;
+}
+
+/* Contenedor absoluto para que cubra toda el área de la tarjeta */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Propiedad para desenfocar la imagen y ajustarla al contenedor */
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px); /* Graduación del desenfoque (puedes subir a 8px o bajar a 3px según prefieras) */
+    transform: scale(1.05); /* Evita bordes blancos molestos al aplicar el filtro blur */
+}
+
+/* Capa oscura semitransparente para oscurecer la imagen y mejorar la lectura */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 35, 58, 0.65); /* Tono azul marino oscuro encima de la foto */
+}
+
+/* Asegura que el texto y el botón queden por encima de la imagen de fondo */
+.hero-contenido {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+/* Ajustes de color para los textos de la portada para que resalten sobre el fondo */
+.hero-contenido h2,
+.hero-contenido p {
+    color: #000000 !important;
+}
+
+/* Contenedores generales (Secciones) */
+.container {
+    background-color: var(--nexa-card) !important;
+    border-radius: 25px !important;
+    box-shadow: 0 15px 40px rgba(13, 35, 58, 0.05) !important;
+    border: 1px solid var(--nexa-border);
+    padding: 40px !important;
+    margin: 30px auto !important;
+    max-width: 1100px;
+}
+
+.container h2 {
+    color: var(--nexa-navy) !important;
+    font-weight: 800;
+    font-family: sans-serif;
+    border-bottom: 3px solid var(--nexa-cyan);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.container p {
+    color: var(--nexa-text-gray);
+    line-height: 1.6;
+}
+
+/* Tarjetas internas (Misión, Visión, Valores, Equipo y Clientes) */
+.card {
+    background-color: var(--nexa-bg) !important;
+    border-radius: 18px !important;
+    border-left: 6px solid var(--nexa-cyan) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    padding: 25px !important;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--nexa-border);
+    border-right: 1px solid var(--nexa-border);
+    border-bottom: 1px solid var(--nexa-border);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(13, 35, 58, 0.08);
+}
+
+.card h3 {
+    color: var(--nexa-navy) !important;
+    margin-top: 0;
+}
+
+.card p, .card li {
+    color: var(--nexa-text-dark) !important;
+}
+
+/* Botones de acción principales (CTA) en tono Cian Brillante */
+.btn-cta {
+    display: inline-block;
+    background-color: var(--nexa-cyan) !important;
+    color: var(--nexa-navy) !important;
+    border-radius: 25px !important;
+    padding: 10px 25px;
+    box-shadow: 0 4px 10px rgba(0, 180, 216, 0.25) !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: var(--nexa-cyan-hover) !important;
+    color: #ffffff !important;
+}
+
+/* Pie de página corporativo en Azul Marino */
+.nexa-footer {
+    background-color: var(--nexa-navy) !important;
+    border-radius: 25px 25px 0 0 !important;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-top: 2px solid var(--nexa-cyan);
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.nexa-footer p {
+    color: #ffffff !important;
+    margin: 5px 0;
+}
+
+/* --- DISEÑO RESPONSIVO PARA TELÉFONOS (Móviles) --- */
+@media screen and (max-width: 768px) {
+    
+    /* Ajustar márgenes generales de la página */
+    body.nexa-portafolio {
+        padding: 10px;
+    }
+
+    /* Cabecera compacta para celular */
+    .nexa-header {
+        flex-direction: column;
+        padding: 15px !important;
+        gap: 12px;
+        text-align: center;
+        border-radius: 0 0 20px 20px !important;
+    }
+
+    /* Menú de navegación adaptado en pantallas pequeñas */
+    .nexa-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .nexa-nav a {
+        padding: 6px 12px !important;
+        font-size: 0.8rem;
+    }
+
+    /* Contenedores principales (Secciones) más estrechos y cómodos */
+    .container {
+        padding: 20px 15px !important;
+        margin: 15px 10px !important;
+        border-radius: 16px !important;
+    }
+
+    .container h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    /* Forzar que las cuadrículas (Grids) de misión/visión, equipo y clientes sean de una sola columna */
+    .filosofia-grid, 
+    .equipo-grid, 
+    .container div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    /* Tarjetas individuales con mejor proporción en móvil */
+    .card {
+        padding: 18px !important;
+        margin-bottom: 15px;
+    }
+
+    /* Botones adaptados al ancho táctil */
+    .btn-cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 12px;
+    }
+
+    /* Pie de página en móvil */
+    .nexa-footer {
+        border-radius: 20px 20px 0 0 !important;
+        padding: 20px 15px;
+        margin-top: 30px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,67 @@
+/* --- ESTILOS ESPECÍFICOS PARA CONTACTO.CSS --- */
+
+.contacto-container {
+    max-width: 900px !important;
+}
+
+/* Cuadrícula para separar la información de contacto y el formulario */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+/* Estilos de los campos del formulario */
+.form-nexa {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--nexa-navy);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--nexa-border);
+    background-color: #ffffff;
+    color: var(--nexa-text-dark);
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--nexa-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* --- DISEÑO RESPONSIVO (Móviles / Teléfonos) --- */
+@media screen and (max-width: 768px) {
+    .contacto-grid {
+        grid-template-columns: 1fr !important; /* Pasa a una sola columna vertical en celular */
+        gap: 20px;
+    }
+}
