@@ -1,0 +1,64 @@
+/* --- ESTILOS PROFESIONALES PARA DRAFT --- */
+:root {
+    --draft-olive: #6a765a; /* Verde olivo suave */
+    --draft-brown: #8a7b6f; /* Marrón tierra desaturado */
+    --draft-beige: #f5f0e6; /* Beige papel antiguo */
+    --draft-dark: #2d2d2d;  /* Negro grafito */
+    --nexa-navy: #0d233a;  /* El azul oscuro de tu marca principal */
+    --nexa-border: #6a765a;      /* Bordes sutiles */
+}
+
+/* Fondo general suave */
+body.nexa-portafolio {
+    background-color: var(--draft-beige) !important;
+}
+
+/* Tarjetas: Estilo boceto elegante */
+.card {
+    background-color: #ffffff !important;
+    border: 1px solid #dcdcdc !important;
+    border-radius: 4px !important; /* Un toque de suavidad */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+    padding: 25px !important;
+    margin-bottom: 20px;
+}
+
+/* Títulos con el tono marrón tierra */
+h2, h3 {
+    color: var(--draft-brown) !important;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Botón: Negro grafito para contraste */
+.btn-cta {
+    background-color: #6a765aa6 !important;
+    color: #ffffff !important;
+}
+
+/* Caja técnica: Verde olivo mezclado */
+.tech-box {
+    background-color: #6a765aa6 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* --- CLASE AUTOMÁTICA PARA EL COLOR DE NEXA --- */
+.marca-nexa {
+    color: var(--nexa-navy) !important;
+    font-weight: bold;
+}
+/* Esto hace que las imágenes de DRAFT se sientan parte del diseño */
+.card img {
+    filter: sepia(10%) contrast(1.1); /* Les da un tono ligeramente más cálido para combinar con el beige */
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.02); /* Un efecto sutil al pasar el mouse */
+}
+
+.marca-nexa {
+    color: #0d233a;
+}
