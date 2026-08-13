@@ -8,6 +8,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
+
+                    /* =========================================================
+   CORRECCIONES RESPONSIVAS PARA MÓVILES (ANDROID & APPLE)
+   ========================================================= */
+
+/* Adaptación fluida de textos para Tablets */
+@media screen and (max-width: 992px) {
+    h1 { font-size: 2.2rem !important; }
+    h2, .section-title { font-size: 1.8rem !important; }
+    p, li { font-size: 1rem !important; }
+}
+
+/* Adaptación estricta para Teléfonos (Infinix, iPhone, etc.) */
+@media screen and (max-width: 768px) {
+    
+    /* 1. TEXTOS: Reducción de tamaño obligatoria para móviles */
+    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    h2, .section-title { font-size: 1.4rem !important; line-height: 1.3 !important; }
+    h3 { font-size: 1.15rem !important; }
+    p, li, span, a { font-size: 0.95rem !important; line-height: 1.5 !important; }
+
+    /* 2. CENTRADO PERFECTO: Fuerza a que "Nuestro Equipo" y los portafolios se centren */
+    .portfolio-grid, .info-grid, .gallery-grid, .team-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Apila todo hacia abajo */
+        align-items: center !important; /* Centra todo en el medio de la pantalla */
+        justify-content: center !important;
+        gap: 25px !important; /* 3. SEPARACIÓN: Soluciona las tarjetas pegadas */
+    }
+
+    /* Evita que las tarjetas se estiren feo hacia los lados y las centra */
+    .client-card, .info-box, .image-card, .team-card, .audio-card {
+        width: 100% !important;
+        max-width: 360px !important; /* Ancho máximo para que se vea elegante en el cel */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important; /* Separación extra por si acaso */
+        text-align: center !important; /* Centra textos e imágenes internas */
+    }
+
+    /* Solución específica para Willy Wonka (Audiocorp) */
+    .audio-section {
+        margin-bottom: 3rem !important; /* Separa el reproductor de las cajas de info */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .audio-card {
+        padding: 20px 15px !important; /* Ajusta el padding para que el reproductor no se salga */
+    }
+}
+
+/* Para teléfonos extremadamente pequeños */
+@media screen and (max-width: 400px) {
+    h1 { font-size: 1.5rem !important; }
+    h2, .section-title { font-size: 1.25rem !important; }
+}
+
         :root {
             --verde-limon: #CCFF00;
             --negro-absoluto: #0A0A0A;
@@ -323,10 +381,7 @@ img, video, iframe {
         
         <!-- Contenedor del Video en formato horizontal 16:9 -->
         <div class="video-container">
-            <iframe src="Speed Max enciende tu Pasion.mp4" 
-                    title="Spot Publicitario Speed Max Mundial 2026" 
-                    allowfullscreen>
-            </iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/V1BvKTjXwVM?si=8bbOjYZb1JcFNbl9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <!-- Ficha Técnica y Detalles del Video -->

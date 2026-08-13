@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Agencia Nexa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+
+            /* =========================================================
+   CORRECCIONES RESPONSIVAS PARA MÓVILES (ANDROID & APPLE)
+   ========================================================= */
+
+/* Adaptación fluida de textos para Tablets */
+@media screen and (max-width: 992px) {
+    h1 { font-size: 2.2rem !important; }
+    h2, .section-title { font-size: 1.8rem !important; }
+    p, li { font-size: 1rem !important; }
+}
+
+/* Adaptación estricta para Teléfonos (Infinix, iPhone, etc.) */
+@media screen and (max-width: 768px) {
+    
+    /* 1. TEXTOS: Reducción de tamaño obligatoria para móviles */
+    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
+    h2, .section-title { font-size: 1.4rem !important; line-height: 1.3 !important; }
+    h3 { font-size: 1.15rem !important; }
+    p, li, span, a { font-size: 0.95rem !important; line-height: 1.5 !important; }
+
+    /* 2. CENTRADO PERFECTO: Fuerza a que "Nuestro Equipo" y los portafolios se centren */
+    .portfolio-grid, .info-grid, .gallery-grid, .team-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Apila todo hacia abajo */
+        align-items: center !important; /* Centra todo en el medio de la pantalla */
+        justify-content: center !important;
+        gap: 25px !important; /* 3. SEPARACIÓN: Soluciona las tarjetas pegadas */
+    }
+
+    /* Evita que las tarjetas se estiren feo hacia los lados y las centra */
+    .client-card, .info-box, .image-card, .team-card, .audio-card {
+        width: 100% !important;
+        max-width: 360px !important; /* Ancho máximo para que se vea elegante en el cel */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important; /* Separación extra por si acaso */
+        text-align: center !important; /* Centra textos e imágenes internas */
+    }
+
+    /* Solución específica para Willy Wonka (Audiocorp) */
+    .audio-section {
+        margin-bottom: 3rem !important; /* Separa el reproductor de las cajas de info */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .audio-card {
+        padding: 20px 15px !important; /* Ajusta el padding para que el reproductor no se salga */
+    }
+}
+
+/* Para teléfonos extremadamente pequeños */
+@media screen and (max-width: 400px) {
+    h1 { font-size: 1.5rem !important; }
+    h2, .section-title { font-size: 1.25rem !important; }
+}
+
+        :root {
+            --nexa-navy: #0b1329;
+            --nexa-cyan: #00e5ff;
+            --nexa-white: #ffffff;
+            --nexa-gray: #162038;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--nexa-navy);
+            color: var(--nexa-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 500; /* Hace que toda la letra base sea más gruesa */
+        }
+
+        /* Animaciones para dinamismo */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Header */
+        .nexa-header {
+            background-color: var(--nexa-gray);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--nexa-cyan);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800; /* Letra bien gruesa para el logo */
+            color: var(--nexa-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--nexa-white);
+            text-decoration: none;
+            font-weight: 600; /* Botón más grueso */
+            transition: all 0.3s ease;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid transparent;
+        }
+
+        .btn-volver:hover {
+            color: var(--nexa-navy);
+            background: var(--nexa-cyan);
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section (Ajuste de espacios) */
+        .hero {
+            text-align: center;
+            /* Se redujo el padding inferior de 5rem a 2rem para acercarlo al contenido */
+            padding: 4rem 2rem 2rem 2rem; 
+            background: linear-gradient(180deg, var(--nexa-gray) 0%, var(--nexa-navy) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--nexa-white);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--nexa-cyan);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #b0c4de;
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Contenedores generales */
+        .container {
+            max-width: 1200px;
+            /* Se redujo el margen superior de 3rem a 1rem para pegar más las secciones */
+            margin: 1rem auto 3rem auto; 
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--nexa-cyan);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        /* Grid Dinámico para Secciones */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 4rem;
+        }
+
+        /* Grid específico para el Norte Estratégico (4 columnas si hay espacio) */
+        .strategy-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .info-card {
+            background: var(--nexa-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid var(--nexa-cyan); /* Borde superior para más dinamismo */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.2);
+            border-top-color: var(--nexa-white);
+        }
+
+        .info-card h3 {
+            color: var(--nexa-cyan);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-card p, .info-card ul {
+            color: #d1d5db; /* Gris más claro para mejorar contraste */
+            font-size: 1.05rem;
+            font-weight: 600; /* Letras más gruesas en los textos */
+            line-height: 1.7;
+        }
+
+        .info-card ul {
+            padding-left: 15px;
+            list-style-type: square;
+        }
+
+        .info-card ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Acróstico Especial */
+        .acrostic-list {
+            list-style: none !important;
+            padding: 0 !important;
+        }
+
+        .acrostic-list li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .acrostic-list strong {
+            color: var(--nexa-cyan);
+            font-size: 1.3rem;
+            display: inline-block;
+            width: 30px;
+            font-weight: 800;
+        }
+
+        /* Paleta de Colores */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .color-box {
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+
+        .bg-navy { 
+            background-color: var(--nexa-navy); 
+            border: 2px solid var(--nexa-cyan); 
+            color: white; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .bg-cyan { 
+            background-color: var(--nexa-cyan); 
+            color: var(--nexa-navy); 
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--nexa-gray);
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--nexa-cyan);
+            margin-top: 4rem;
+            color: #a0aec0;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 3rem 1rem 1rem 1rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="nexa-header">
+        <div class="logo-text">Nexa</div>
+        <a href="index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Inicio
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero animate-up">
+        <h1>Estrategia Pura, <span>Resultados Claros</span></h1>
+        <p>"¿Por qué la publicidad no puede conmover tanto como una película? Somos un equipo de creativos cineastas que creemos que cada marca tiene una historia épica por contar".</p>
+    </section>
+
+    <div class="container">
+        
+        <!-- Identidad y Concepto -->
+        <h2 class="section-title animate-up delay-1">El Concepto NEXA</h2>
+        <div class="info-grid animate-up delay-1">
+            <div class="info-card">
+                <h3><i class="fas fa-brain"></i> Nuestra Esencia</h3>
+                <p>Nexa es el puente entre el rigor del análisis estratégico y la espectacularidad del lenguaje cinematográfico. Abandonamos los anuncios planos por producciones con alma de cine.</p>
+                <p style="margin-top: 15px;"><strong style="color: var(--nexa-white);">Especialidad:</strong> Narrativa inmersiva y comerciales de alto impacto visual con estética de cine.</p>
+            </div>
+            
+            <div class="info-card">
+                <h3><i class="fas fa-font"></i> El Acróstico</h3>
+                <ul class="acrostic-list">
+                    <li><strong>N</strong> Narrativa: Historias que conectan.</li>
+                    <li><strong>E</strong> Ejecución: Precisión en cada plano.</li>
+                    <li><strong>X</strong> Xilema: El tejido vital de la marca.</li>
+                    <li><strong>A</strong> Audiovisual: Publicidad con alma de cine.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Declaraciones Estratégicas (Separadas en 4 tarjetas) -->
+        <h2 class="section-title animate-up delay-2">Norte Estratégico</h2>
+        <div class="info-grid strategy-grid animate-up delay-2">
+            
+            <!-- Propósito separado -->
+            <div class="info-card">
+                <h3><i class="fas fa-bullseye"></i> Propósito</h3>
+                <p>Elevar las marcas a la categoría de cine, dotando cada proyecto de un significado visual épico.</p>
+            </div>
+
+            <!-- Misión separada -->
+            <div class="info-card">
+                <h3><i class="fas fa-rocket"></i> Misión</h3>
+                <p>Fusionar análisis de datos con dirección de arte cinematográfica para crear campañas precisas.</p>
+            </div>
+
+            <!-- Visión separada -->
+            <div class="info-card">
+                <h3><i class="fas fa-eye"></i> Visión</h3>
+                <p>Revolucionar la publicidad convirtiéndonos en el estándar internacional de calidad visual.</p>
+            </div>
+
+            <!-- Valores separados -->
+            <div class="info-card">
+                <h3><i class="fas fa-gem"></i> Valores</h3>
+                <ul>
+                    <li><strong style="color: var(--nexa-cyan);">Cinematografía:</strong> Estética impecable.</li>
+                    <li><strong style="color: var(--nexa-cyan);">Estrategia Quirúrgica:</strong> Datos antes que intuición.</li>
+                    <li><strong style="color: var(--nexa-cyan);">Audacia:</strong> Romper esquemas.</li>
+                    <li><strong style="color: var(--nexa-cyan);">Resultados Claros:</strong> Honestidad.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Identidad Visual -->
+        <h2 class="section-title animate-up delay-3">Identidad Visual</h2>
+        <div class="color-grid animate-up delay-3">
+            <div class="color-box bg-navy">
+                Azul Oscuro (Navy)<br>
+                <span style="font-weight: 500; font-size: 0.95rem; display: block; margin-top: 10px;">Autoridad, profundidad y rigor estratégico.</span>
+            </div>
+            <div class="color-box bg-cyan">
+                Azul Cian<br>
+                <span style="font-weight: 600; font-size: 0.95rem; display: block; margin-top: 10px;">Energía, tecnología e innovación visual.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Nexa - Publicidad con alma de cine.</p>
+    </footer>
+
+</body>
+</html>

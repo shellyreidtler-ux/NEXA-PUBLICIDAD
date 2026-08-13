@@ -17,7 +17,7 @@
         <nav class="nexa-nav">
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li> <!-- AQUÍ ESTÁ EL NUEVO BOTÓN -->
                 <li><a href="#equipo">Equipo</a></li>
                 <li><a href="#clientes">Clientes</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
@@ -52,39 +52,40 @@
     </section>
 
     <!-- Sección: El Equipo de la Agencia -->
-    <section class="container" id="equipo" style="margin-top: 30px;">
-        <h2>Nuestro Equipo</h2>
-        <p style="text-align: center; margin-bottom: 30px;">Conoce a los profesionales detrás de cada estrategia en <strong><span style="color: #0d233a; font-weight: bold;">NEXA</span>.
-</p></strong></p>
-        
-        <div class="equipo-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px;">
-            
+    <div class="container" id="equipo" style="margin-top: 30px;">
+        <h2 style="text-align: center; margin-bottom: 10px;">Nuestro Equipo</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Conoce a los profesionales detrás de cada estrategia en <strong><span style="color: #0d233a; font-weight: bold;">NEXA</span></strong>.</p>
+
+        <!-- EL CAMBIO PRINCIPAL ESTÁ AQUÍ: Uso de flexbox para forzar el centrado absoluto -->
+        <div class="equipo-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;">
+
             <!-- Integrante 1 -->
-            <div class="card" style="text-align: center;">
-                <img src="ashley.png" alt="Director General" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #c5a059;">
+            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
+                <!-- SE AGREGÓ: display: block; margin: 0 auto; a la imagen para que no se pegue a la izquierda -->
+                <img src="ashley.png" alt="Director General" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
                 <h3>Ashley Machado</h3>
                 <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Directora General & Planner</p>
                 <p style="font-size: 0.9rem;">Encargado de la dirección estratégica y supervisión global de cuentas y proyectos de la agencia.</p>
             </div>
 
             <!-- Integrante 2 -->
-            <div class="card" style="text-align: center;">
-                <img src="vero.jpg" alt="Directora Creativa" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #c5a059;">
+            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
+                <img src="vero.jpg" alt="Directora Creativa" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
                 <h3>Veronica Reyes</h3>
                 <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Directora Creativa</p>
                 <p style="font-size: 0.9rem;">Líder en el desarrollo de conceptos visuales, dirección de arte e identidad de marca.</p>
             </div>
 
             <!-- Integrante 3 -->
-            <div class="card" style="text-align: center;">
-                <img src="dilmar.png" alt="Especialista en Medios" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #c5a059;">
+            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
+                <img src="dilmar.png" alt="Especialista en Medios" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
                 <h3>Dilmar Barbera</h3>
                 <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Especialista en Medios Audiovisuales</p>
                 <p style="font-size: 0.9rem;">Gestor de producción sonora, cuñas radiales y optimización de pautas en plataformas digitales.</p>
             </div>
 
         </div>
-    </section>
+    </div>
 
     <!-- Sección: Nuestros Clientes -->
     <section class="container" id="clientes" style="margin-top: 30px; text-align: center;">
