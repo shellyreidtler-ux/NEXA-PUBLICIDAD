@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VÉRTICE - Portafolio de Lanzamiento</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --vertice-azul: #0056b3;
+            --vertice-cian: #00bcd4;
+            --vertice-naranja: #ff6600;
+            --vertice-negro: #0b0f19;
+            --vertice-gris: #151b2b;
+            --vertice-blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--vertice-negro);
+            color: var(--vertice-blanco);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--vertice-gris);
+            border-bottom: 2px solid var(--vertice-cian);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--vertice-cian);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--vertice-naranja);
+        }
+
+        /* Botón de Regreso */
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(0, 188, 212, 0.1);
+            color: var(--vertice-cian);
+            border: 1px solid var(--vertice-cian);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--vertice-cian);
+            color: var(--vertice-negro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .btn-volver:hover i {
+            transform: translateX(-4px);
+        }
+
+        .btn-volver i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--vertice-gris) 0%, var(--vertice-negro) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--vertice-blanco);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--vertice-cian);
+        }
+
+        .slogan {
+            font-size: 1.3rem;
+            color: var(--vertice-naranja);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b0bec5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sección de Galería / 5 Imágenes Publicitarias */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--vertice-cian);
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .image-card {
+            background: var(--vertice-gris);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 188, 212, 0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--vertice-cian);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 220px;
+            background: #0f1523;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #55637d;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        /* O si decides poner imágenes reales, usa estilos de etiqueta img dentro de .image-placeholder */
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-content {
+            padding: 1.5rem;
+        }
+
+        .image-content h3 {
+            color: var(--vertice-naranja);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 188, 212, 0.15);
+            color: var(--vertice-cian);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .detail-row {
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .detail-row strong {
+            color: #e2e8f0;
+            display: inline-block;
+            width: 130px;
+        }
+
+        .detail-row span {
+            color: #94a3b8;
+        }
+
+        /* Footer / Manifiesto */
+        footer {
+            background: var(--vertice-gris);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 2px solid var(--vertice-naranja);
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            color: var(--vertice-cian);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #cbd5e1;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">VÉRTICE <span>✦</span></div>
+        <a href="index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Marca <span>VÉRTICE</span></h1>
+        <div class="slogan">"Eleva tu perspectiva"</div>
+        <p>Bebida energética artesanal diseñada para el esfuerzo de escritorio, la claridad mental y los desafíos de la vida moderna.</p>
+    </section>
+
+    <!-- Sección de las 5 Imágenes Publicitarias -->
+    <section class="gallery-section">
+        <h2 class="section-title">Portafolio de 5 Imágenes Publicitarias</h2>
+        
+        <div class="gallery-grid">
+            
+            <!-- Imagen 1 -->
+            <div class="image-card">
+                <div class="image-placeholder">
+                    <!-- Cambia por <img src="a color 1.png" alt="Bodegón"> si tienes la imagen local -->
+                    <img src="vertice3.png">
+                </div>
+                <div class="image-content">
+                    <h3>Bodegón / Trío de Sabores</h3>
+                    <span class="badge">A Color</span>
+                    <div class="detail-row"><strong>Ángulo:</strong> <span>Normal a ligeramente contrapicado</span></div>
+                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz suave de estudio con suelo reflectante y contra (rim light)</span></div>
+                </div>
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="image-card">
+                <div class="image-placeholder">
+                    <img src="vertice2.png">
+                </div>
+                <div class="image-content">
+                    <h3>Deportivo / Gimnasio</h3>
+                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
+                    <div class="detail-row"><strong>Ángulo:</strong> <span>Picado (Perspectiva del sujeto)</span></div>
+                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz lateral dura y de alto contraste para texturas de caucho y sudor</span></div>
+                </div>
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="image-card">
+                <div class="image-placeholder">
+                    <img src="vertice4.png">
+                </div>
+                <div class="image-content">
+                    <h3>Sensorial / Hielo y Frescura</h3>
+                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
+                    <div class="detail-row"><strong>Ángulo:</strong> <span>Cenital en diagonal</span></div>
+                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz directa con brillos especulares intensos sobre bloques de hielo</span></div>
+                </div>
+            </div>
+
+            <!-- Imagen 4 -->
+            <div class="image-card">
+                <div class="image-placeholder">
+                    <img src="vertice5.png">
+                </div>
+                <div class="image-content">
+                    <h3>Agotamiento Estudiantil</h3>
+                    <span class="badge">A Color</span>
+                    <div class="detail-row"><strong>Ángulo:</strong> <span>A nivel de los ojos (Eye-level)</span></div>
+                    <div class="detail-row"><strong>Esquema:</strong> <span>Clave Baja (Low-Key). Luz principal diégetica emanada de la lata flotante</span></div>
+                </div>
+            </div>
+
+            <!-- Imagen 5 -->
+            <div class="image-card">
+                <div class="image-placeholder">
+                    <img src="vertice1.png">
+                </div>
+                <div class="image-content">
+                    <h3>Resistencia Urbana</h3>
+                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
+                    <div class="detail-row"><strong>Ángulo:</strong> <span>Contrapicado pronunciado</span></div>
+                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz solar natural dura de mediodía con sombras geométricas</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / Manifiesto -->
+    <footer>
+        <h3>Manifiesto de Campaña</h3>
+        <p>"VÉRTICE no nació para alterarte el pulso, nació para cambiar tu ángulo de visión. No queremos darte alas para que escapes de tu realidad; queremos darte el impulso necesario para que te quedes, te levantes, y mires tu propio mundo desde el punto más alto. Aléjate de lo ordinario."</p>
+    </footer>
+
+</body>
+</html>

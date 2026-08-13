@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Max - Mundial 2026</title>
+    <!-- FontAwesome para el ícono de la flecha -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --verde-limon: #CCFF00;
+            --negro-absoluto: #0A0A0A;
+            --verde-campo: #1B4D3E;
+            --blanco-puro: #FFFFFF;
+            --gris-oscuro: #161616;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--negro-absoluto);
+            color: var(--blanco-puro);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--gris-oscuro);
+            border-bottom: 2px solid var(--verde-limon);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--verde-limon);
+            letter-spacing: 1px;
+        }
+
+        /* Botón de Regreso Estilizado */
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(204, 255, 0, 0.1);
+            color: var(--verde-limon);
+            border: 1px solid var(--verde-limon);
+            padding: 10px 20px;
+            border-radius: 50px; /* Estilo píldora moderno */
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(204, 255, 0, 0.1);
+        }
+
+        .btn-volver i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--verde-limon);
+            color: var(--negro-absoluto);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 255, 0, 0.3);
+        }
+
+        /* Efecto de desplazamiento en la flecha al pasar el mouse */
+        .btn-volver:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(180deg, var(--gris-oscuro) 0%, var(--negro-absoluto) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--verde-limon);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sección del Video Publicitario */
+        .video-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 obligatoria */
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(204, 255, 0, 0.2);
+            border: 1px solid var(--verde-limon);
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            margin-top: 1.5rem;
+            background: var(--gris-oscuro);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--verde-limon);
+        }
+
+        .video-info h3 {
+            color: var(--verde-limon);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .video-info p {
+            font-size: 1.1rem;
+            color: #FFFFFF;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .spec-card {
+            background: var(--negro-absoluto);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .spec-card h4 {
+            color: var(--verde-limon);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        .spec-card p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Footer / Cierre */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--gris-oscuro);
+            border-top: 1px solid #333;
+            margin-top: 4rem;
+        }
+
+        footer h2 {
+            color: var(--verde-limon);
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header con el botón de regreso estilizado -->
+    <header>
+        <div class="logo">SPEED MAX ⚡ MUNDIAL 2026</div>
+        <a href="index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Campaña Oficial Copa Mundial 2026</h1>
+        <p>El combustible indispensable para atletas urbanos y fanáticos del fútbol.</p>
+    </section>
+
+    <!-- Sección del Video Publicitario -->
+    <section class="video-section">
+        <h2 style="margin-bottom: 2rem; font-size: 1.8rem; text-align: center;">Spot Publicitario</h2>
+        
+        <!-- Contenedor del Video en formato horizontal 16:9 -->
+        <div class="video-container">
+            <iframe src="Speed Max enciende tu Pasion.mp4" 
+                    title="Spot Publicitario Speed Max Mundial 2026" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Ficha Técnica y Detalles del Video -->
+        <div class="video-info">
+            <h3>Ficha Técnica del Spot</h3>
+            <p>Pieza audiovisual diseñada para conectar la fatiga urbana con la reactivación de energía a través de dinámicas de fútbol freestyle.</p>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Duración Total</h4>
+                    <p>01:06 minutos (66 segundos).</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Edición y Estética</h4>
+                    <p>Procesado en CapCut (Cortes rápidos, transiciones y texto interactivo).</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Formato</h4>
+                    <p>Horizontal (16:9) cinematográfico optimizado para YouTube, Twitch y pantallas.</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Banda Sonora</h4>
+                    <p>Estilo percusivo e intenso (Street/Sport Beats) libre de derechos de Pixabay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cierre de Marca -->
+    <footer>
+        <h2>"Speed Max enciende tu Pasión por el futbol"</h2>
+    </footer>
+
+</body>
+</html>
