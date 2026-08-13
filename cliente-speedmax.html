@@ -186,6 +186,119 @@
             font-size: 1.5rem;
             font-style: italic;
         }
+
+        /* --- CONFIGURACIÓN UNIVERSAL RESPONSIVA --- */
+
+:root {
+    --max-ancho-contenedor: 1200px;
+}
+
+/* Reset global para evitar desbordamientos en móviles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Evita el scroll horizontal molesto en teléfonos */
+}
+
+/* Imágenes y videos adaptables fluidos (Nunca se salen de la pantalla) */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Contenedores generales fluidos */
+.container, .gallery-section, .video-section, .audio-section, .info-section {
+    width: 100%;
+    max-width: var(--max-ancho-contenedor);
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* --- ADAPTABILIDAD AUTOMÁTICA EN GRID Y FLEXBOX --- */
+
+/* Las cuadrículas (tarjetas, botones, portafolios) se acomodan solas según el espacio */
+.contacto-grid-grande, 
+.gallery-grid, 
+.specs-grid, 
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- MEDIA QUERIES (PUNTOS DE QUIEBRE PARA DISPOSITIVOS) --- */
+
+/* Para Tablets y Laptops medianas (Pantallas menores a 992px) */
+@media screen and (max-width: 992px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* Para Teléfonos Celulares (Pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    /* Los encabezados pasan de estar en línea a apilarse verticalmente */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nexa-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Reducción de títulos grandes para que no rompan el diseño en iPhone o Android */
+    .hero h1 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Las tarjetas ocupan el 100% del ancho del celular */
+    .contacto-grid-grande, 
+    .gallery-grid, 
+    .specs-grid, 
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Márgenes internos más compactos para aprovechar la pantalla del móvil */
+    .action-card, .image-content, .info-box, .audio-card {
+        padding: 20px !important;
+    }
+}
+
+/* Para Celulares muy pequeños (iPhone SE, dispositivos antiguos de menos de 480px) */
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .btn-volver, .btn-action {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>

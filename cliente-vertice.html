@@ -51,7 +51,7 @@
             color: var(--vertice-naranja);
         }
 
-        /* Botón de Regreso */
+        /* Botón de Regreso Estilizado */
         .btn-volver {
             display: inline-flex;
             align-items: center;
@@ -115,7 +115,7 @@
             margin: 0 auto;
         }
 
-        /* Sección de Galería / 5 Imágenes Publicitarias */
+        /* Sección de Galería / Tarjetas de Imágenes */
         .gallery-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -139,72 +139,116 @@
 
         .image-card {
             background: var(--vertice-gris);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(0, 188, 212, 0.2);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid rgba(0, 188, 212, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .image-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             border-color: var(--vertice-cian);
         }
 
-        .image-placeholder {
+        /* Contenedor de la imagen optimizado para mostrarse completa */
+        .image-container {
             width: 100%;
-            height: 220px;
-            background: #0f1523;
+            height: 250px;
+            background: #070a10;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #55637d;
-            font-size: 0.95rem;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: relative;
         }
 
-        /* O si decides poner imágenes reales, usa estilos de etiqueta img dentro de .image-placeholder */
-        .image-placeholder img {
+        .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Asegura que cubra el espacio estéticamente sin deformarse */
+            transition: transform 0.5s ease;
         }
 
+        .image-card:hover .image-container img {
+            transform: scale(1.03); /* Sutil zoom de calidad al pasar el mouse */
+        }
+
+        /* Texto por defecto si no hay foto cargada aún */
+        .placeholder-text {
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Contenido de la tarjeta rediseñado para orden visual limpio */
         .image-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
         }
 
         .image-content h3 {
-            color: var(--vertice-naranja);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            color: var(--vertice-blanco);
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
         .badge {
             display: inline-block;
             background: rgba(0, 188, 212, 0.15);
             color: var(--vertice-cian);
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .badge.bn {
+            background: rgba(255, 102, 0, 0.15);
+            color: var(--vertice-naranja);
+        }
+
+        .details-box {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px 14px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
         }
 
         .detail-row {
-            margin-bottom: 0.8rem;
             font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .detail-row strong {
-            color: #e2e8f0;
-            display: inline-block;
-            width: 130px;
+            color: var(--vertice-cian);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .detail-row span {
-            color: #94a3b8;
+            color: #cbd5e1;
         }
 
         /* Footer / Manifiesto */
@@ -229,6 +273,119 @@
             font-style: italic;
             font-size: 1.05rem;
         }
+
+        /* --- CONFIGURACIÓN UNIVERSAL RESPONSIVA --- */
+
+:root {
+    --max-ancho-contenedor: 1200px;
+}
+
+/* Reset global para evitar desbordamientos en móviles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Evita el scroll horizontal molesto en teléfonos */
+}
+
+/* Imágenes y videos adaptables fluidos (Nunca se salen de la pantalla) */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Contenedores generales fluidos */
+.container, .gallery-section, .video-section, .audio-section, .info-section {
+    width: 100%;
+    max-width: var(--max-ancho-contenedor);
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* --- ADAPTABILIDAD AUTOMÁTICA EN GRID Y FLEXBOX --- */
+
+/* Las cuadrículas (tarjetas, botones, portafolios) se acomodan solas según el espacio */
+.contacto-grid-grande, 
+.gallery-grid, 
+.specs-grid, 
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- MEDIA QUERIES (PUNTOS DE QUIEBRE PARA DISPOSITIVOS) --- */
+
+/* Para Tablets y Laptops medianas (Pantallas menores a 992px) */
+@media screen and (max-width: 992px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* Para Teléfonos Celulares (Pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    /* Los encabezados pasan de estar en línea a apilarse verticalmente */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nexa-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Reducción de títulos grandes para que no rompan el diseño en iPhone o Android */
+    .hero h1 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Las tarjetas ocupan el 100% del ancho del celular */
+    .contacto-grid-grande, 
+    .gallery-grid, 
+    .specs-grid, 
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Márgenes internos más compactos para aprovechar la pantalla del móvil */
+    .action-card, .image-content, .info-box, .audio-card {
+        padding: 20px !important;
+    }
+}
+
+/* Para Celulares muy pequeños (iPhone SE, dispositivos antiguos de menos de 480px) */
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .btn-volver, .btn-action {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -254,69 +411,119 @@
         
         <div class="gallery-grid">
             
-            <!-- Imagen 1 -->
+            <!-- Tarjeta 1 -->
             <div class="image-card">
-                <div class="image-placeholder">
-                    <!-- Cambia por <img src="a color 1.png" alt="Bodegón"> si tienes la imagen local -->
+                <div class="image-container">
+                    <!-- Cuando coloques tu imagen real, cambia esto por: <img src="a color 1.png" alt="Bodegón"> -->
                     <img src="vertice3.png">
                 </div>
                 <div class="image-content">
-                    <h3>Bodegón / Trío de Sabores</h3>
-                    <span class="badge">A Color</span>
-                    <div class="detail-row"><strong>Ángulo:</strong> <span>Normal a ligeramente contrapicado</span></div>
-                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz suave de estudio con suelo reflectante y contra (rim light)</span></div>
+                    <div class="card-header-flex">
+                        <h3>Bodegón / Trío de Sabores</h3>
+                        <span class="badge">Color</span>
+                    </div>
+                    <div class="details-box">
+                        <div class="detail-row">
+                            <strong>Ángulo de Cámara</strong>
+                            <span>Normal a ligeramente contrapicado</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Esquema Lumínico</strong>
+                            <span>Luz suave de estudio con suelo reflectante y luz de contra</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Imagen 2 -->
+            <!-- Tarjeta 2 -->
             <div class="image-card">
-                <div class="image-placeholder">
+                <div class="image-container">
                     <img src="vertice2.png">
                 </div>
                 <div class="image-content">
-                    <h3>Deportivo / Gimnasio</h3>
-                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
-                    <div class="detail-row"><strong>Ángulo:</strong> <span>Picado (Perspectiva del sujeto)</span></div>
-                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz lateral dura y de alto contraste para texturas de caucho y sudor</span></div>
+                    <div class="card-header-flex">
+                        <h3>Deportivo / Gimnasio</h3>
+                        <span class="badge bn">B&N</span>
+                    </div>
+                    <div class="details-box">
+                        <div class="detail-row">
+                            <strong>Ángulo de Cámara</strong>
+                            <span>Picado (Perspectiva del sujeto)</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Esquema Lumínico</strong>
+                            <span>Luz lateral dura y de alto contraste para realzar texturas</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Imagen 3 -->
+            <!-- Tarjeta 3 -->
             <div class="image-card">
-                <div class="image-placeholder">
-                    <img src="vertice4.png">
+                <div class="image-container">
+                     <img src="vertice4.png" alt="">
                 </div>
                 <div class="image-content">
-                    <h3>Sensorial / Hielo y Frescura</h3>
-                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
-                    <div class="detail-row"><strong>Ángulo:</strong> <span>Cenital en diagonal</span></div>
-                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz directa con brillos especulares intensos sobre bloques de hielo</span></div>
+                    <div class="card-header-flex">
+                        <h3>Sensorial / Hielo y Frescura</h3>
+                        <span class="badge bn">B&N</span>
+                    </div>
+                    <div class="details-box">
+                        <div class="detail-row">
+                            <strong>Ángulo de Cámara</strong>
+                            <span>Cenital en diagonal</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Esquema Lumínico</strong>
+                            <span>Luz directa con brillos especulares intensos sobre hielo</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Imagen 4 -->
+            <!-- Tarjeta 4 -->
             <div class="image-card">
-                <div class="image-placeholder">
-                    <img src="vertice5.png">
+                <div class="image-container">
+                    <img src="vertice5.png" alt="">
                 </div>
                 <div class="image-content">
-                    <h3>Agotamiento Estudiantil</h3>
-                    <span class="badge">A Color</span>
-                    <div class="detail-row"><strong>Ángulo:</strong> <span>A nivel de los ojos (Eye-level)</span></div>
-                    <div class="detail-row"><strong>Esquema:</strong> <span>Clave Baja (Low-Key). Luz principal diégetica emanada de la lata flotante</span></div>
+                    <div class="card-header-flex">
+                        <h3>Agotamiento Estudiantil</h3>
+                        <span class="badge">Color</span>
+                    </div>
+                    <div class="details-box">
+                        <div class="detail-row">
+                            <strong>Ángulo de Cámara</strong>
+                            <span>A nivel de los ojos (Eye-level)</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Esquema Lumínico</strong>
+                            <span>Clave Baja (Low-Key) con luz diégetica emanada de la lata</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Imagen 5 -->
+            <!-- Tarjeta 5 -->
             <div class="image-card">
-                <div class="image-placeholder">
-                    <img src="vertice1.png">
+                <div class="image-container">
+                    <img src="vertice1.png" alt="">
                 </div>
                 <div class="image-content">
-                    <h3>Resistencia Urbana</h3>
-                    <span class="badge" style="background: rgba(255, 102, 0, 0.15); color: var(--vertice-naranja);">Blanco y Negro</span>
-                    <div class="detail-row"><strong>Ángulo:</strong> <span>Contrapicado pronunciado</span></div>
-                    <div class="detail-row"><strong>Esquema:</strong> <span>Luz solar natural dura de mediodía con sombras geométricas</span></div>
+                    <div class="card-header-flex">
+                        <h3>Resistencia Urbana</h3>
+                        <span class="badge bn">B&N</span>
+                    </div>
+                    <div class="details-box">
+                        <div class="detail-row">
+                            <strong>Ángulo de Cámara</strong>
+                            <span>Contrapicado pronunciado</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Esquema Lumínico</strong>
+                            <span>Luz solar natural dura de mediodía con sombras geométricas</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -326,7 +533,7 @@
     <!-- Footer / Manifiesto -->
     <footer>
         <h3>Manifiesto de Campaña</h3>
-        <p>"VÉRTICE no nació para alterarte el pulso, nació para cambiar tu ángulo de visión. No queremos darte alas para que escapes de tu realidad; queremos darte el impulso necesario para que te quedes, te levantes, y mires tu propio mundo desde el punto más alto. Aléjate de lo ordinario."</p>
+        <p>"VÉRTICE no nació para alterarte el pulso, nació para cambiar tu ángulo de visión. No queremos darte alas para que escapes de tu realidad; queremos darte el impulso necesario para que te quedes, te levantes, y mires tu propio mundo desde el punto más alto. Aléjate de lo ordinario"</p>
     </footer>
 
 </body>

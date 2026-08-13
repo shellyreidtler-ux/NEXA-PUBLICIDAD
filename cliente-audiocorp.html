@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willy Wonka - Comercial Radiofónico</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --wonka-morado: #4a154b;
+            --wonka-dorado: #d4af37;
+            --wonka-crema: #fff9e6;
+            --wonka-oscuro: #120513;
+            --wonka-gris: #1f1121;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--wonka-oscuro);
+            color: var(--wonka-crema);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--wonka-gris);
+            border-bottom: 2px solid var(--wonka-dorado);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--wonka-dorado);
+            letter-spacing: 1px;
+        }
+
+        /* Botón de Regreso */
+        .btn-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--wonka-dorado);
+            border: 1px solid var(--wonka-dorado);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--wonka-dorado);
+            color: var(--wonka-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-volver:hover i {
+            transform: translateX(-4px);
+        }
+
+        .btn-volver i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--wonka-gris) 0%, var(--wonka-oscuro) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--wonka-dorado);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #d1c4e9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sección del Reproductor de Audio */
+        .audio-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .audio-card {
+            background: var(--wonka-gris);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .audio-card h2 {
+            color: var(--wonka-dorado);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .audio-card p {
+            color: #b39ddb;
+            margin-bottom: 2rem;
+        }
+
+        /* Estilo personalizado para el reproductor nativo */
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+            background: #2d1630;
+        }
+
+        /* Contenedor de Información Técnica y Detalles */
+        .info-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: var(--wonka-gris);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--wonka-dorado);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .info-box h3 {
+            color: var(--wonka-dorado);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p, .info-box li {
+            font-size: 0.95rem;
+            color: #e1bee7;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box ul {
+            padding-left: 20px;
+        }
+
+        /* Footer / Cierre */
+        footer {
+            background: var(--wonka-gris);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            border-top: 2px solid var(--wonka-dorado);
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            color: var(--wonka-dorado);
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        /* --- CONFIGURACIÓN UNIVERSAL RESPONSIVA --- */
+
+:root {
+    --max-ancho-contenedor: 1200px;
+}
+
+/* Reset global para evitar desbordamientos en móviles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Evita el scroll horizontal molesto en teléfonos */
+}
+
+/* Imágenes y videos adaptables fluidos (Nunca se salen de la pantalla) */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Contenedores generales fluidos */
+.container, .gallery-section, .video-section, .audio-section, .info-section {
+    width: 100%;
+    max-width: var(--max-ancho-contenedor);
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* --- ADAPTABILIDAD AUTOMÁTICA EN GRID Y FLEXBOX --- */
+
+/* Las cuadrículas (tarjetas, botones, portafolios) se acomodan solas según el espacio */
+.contacto-grid-grande, 
+.gallery-grid, 
+.specs-grid, 
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- MEDIA QUERIES (PUNTOS DE QUIEBRE PARA DISPOSITIVOS) --- */
+
+/* Para Tablets y Laptops medianas (Pantallas menores a 992px) */
+@media screen and (max-width: 992px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* Para Teléfonos Celulares (Pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    /* Los encabezados pasan de estar en línea a apilarse verticalmente */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nexa-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Reducción de títulos grandes para que no rompan el diseño en iPhone o Android */
+    .hero h1 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Las tarjetas ocupan el 100% del ancho del celular */
+    .contacto-grid-grande, 
+    .gallery-grid, 
+    .specs-grid, 
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Márgenes internos más compactos para aprovechar la pantalla del móvil */
+    .action-card, .image-content, .info-box, .audio-card {
+        padding: 20px !important;
+    }
+}
+
+/* Para Celulares muy pequeños (iPhone SE, dispositivos antiguos de menos de 480px) */
+@media screen and (max-width: 480px) {
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .btn-volver, .btn-action {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header con botón de regreso -->
+    <header>
+        <div class="logo">WILLY WONKA 🍫 Sambil Valencia</div>
+        <a href="index.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Comercial Radiofónico</h1>
+        <p>Un viaje sonoro al universo fantástico de los dulces y la diversión familiar.</p>
+    </section>
+
+    <!-- Sección del Reproductor de Audio -->
+    <section class="audio-section">
+        <div class="audio-card">
+            <h2>Escucha la Cuña Radial</h2>
+            <p>Reproduce la mezcla multipista realizada para la tienda de dulces.</p>
+            
+            <!-- Reproductor de audio HTML5 -->
+            <audio controls>
+                <!-- Reemplaza 'tu-audio.mp3' con la ruta de tu archivo de audio real -->
+                <source src="Comercial Willy Wonka.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+    </section>
+
+    <!-- Sección de Detalles del Informe de Producción -->
+    <section class="info-section">
+        <div class="info-grid">
+            
+            <!-- Producción y Software -->
+            <div class="info-box">
+                <h3><i class="fas fa-sliders-h"></i> Producción y Edición</h3>
+                <p><strong>Software:</strong> Adobe Audition</p>
+                <p><strong>Técnica:</strong> Edición multipista, limpieza de voz en seco (voz en off) y balance de volúmenes.</p>
+                <p><strong>Ubicación física:</strong> Centro Comercial Sambil Valencia.</p>
+            </div>
+
+            <!-- Música de Fondo -->
+            <div class="info-box">
+                <h3><i class="fas fa-music"></i> Música (Cortina)</h3>
+                <p><strong>Tema:</strong> "Willy Wonka Welcome Song" (Versión en español).</p>
+                <p><strong>Justificación:</strong> Anclaje emocional ideal para conectar con la audiencia mediante una melodía de bienvenida fantástica, regulando los niveles para no opacar la voz en off.</p>
+            </div>
+
+            <!-- Efectos de Sonido (SFX) -->
+            <div class="info-box">
+                <h3><i class="fas fa-wand-magic-sparkles"></i> Efectos Sonoros (SFX)</h3>
+                <ul>
+                    <li><strong>Brillo y magia:</strong> Destacan las menciones de la marca "Willy Wonka".</li>
+                    <li><strong>Campanitas de feria:</strong> Acompañan la fuente de chocolate.</li>
+                    <li><strong>Caja registradora / Monedas:</strong> Sincronizadas con los sorteos de $100 de mercancía los sábados.</li>
+                </ul>
+            </div>
+
+            <!-- Intención Comunicativa -->
+            <div class="info-box">
+                <h3><i class="fas fa-bullhorn"></i> Intención Comunicativa</h3>
+                <p><strong>Alegría Familiar:</strong> Refleja entusiasmo bajo el lema "la alegría de los niños es lo primero".</p>
+                <p><strong>Variedad y Antojo:</strong> Promociona dulces criollos, importados y la fuente de chocolate.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Cierre -->
+    <footer>
+        <h3>"La alegría de los niños es lo primero"</h3>
+    </footer>
+
+</body>
+</html>
