@@ -3,93 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRAFT: Work in Progress</title>
-    <!-- Tus estilos base -->
-    <link rel="stylesheet" href="css.css">
-    <!-- Tus estilos específicos de Draft -->
-    <link rel="stylesheet" href="cliente-draft.css">
-</head>
-<body class="nexa-portafolio">
+    <title>Draft | Work in Progress - Nexa</title>
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==========================================
+           ESTILOS GLOBALES Y VARIABLES DRAFT
+           ========================================== */
+        :root {
+            --draft-black: #111111;
+            --draft-white: #f5f5f5;
+            --draft-grey: #888888;
+            --draft-accent: #00e5ff; /* Toque Nexa o puedes cambiarlo al de Draft */
+        }
 
-    <!-- Cabecera de Navegación -->
-    <header class="nexa-header">
-        <div class="logo-container">
-            <a href="index.html" class="btn-cta" style="padding: 6px 14px; font-size: 0.85rem; text-decoration: none;">← Volver al Inicio</a>
-        </div>
-        <nav class="nexa-nav">
-            <ul>
-                <li><a href="index.html#clientes">Clientes</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--draft-black);
+            color: var(--draft-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* --- Hero Section (Inicio de Draft) --- */
+        .draft-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #1a1a1a 0%, var(--draft-black) 100%);
+            border-bottom: 1px dashed var(--draft-grey); /* Estética de boceto */
+        }
+
+        /* --- Estilos actualizados para el Título y el Personaje --- */
+        .draft-hero h1 {
+            font-family: 'Permanent Marker', cursive; /* La nueva tipografía urbana */
+            font-size: 5.5rem; /* Más grande para que sea el centro de atención */
+            text-transform: uppercase;
+            color: var(--draft-accent); /* Color llamativo */
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            text-shadow: 3px 3px 0px rgba(255,255,255,0.1); /* Efecto de sombra de calle */
+        }
+
+        .draft-mascota-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 120px; /* Tamaño para que no estorbe */
+            height: auto;
+            z-index: 999; /* Asegura que siempre esté por encima de todo */
+            filter: drop-shadow(0px 10px 15px rgba(0, 229, 255, 0.3));
+            animation: flotar 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .draft-mascota-flotante:hover {
+            transform: scale(1.1) rotate(5deg); /* Reacciona si le pasan el mouse */
+        }
+
+        /* En teléfonos lo hacemos un poquito más pequeño */
+        @media screen and (max-width: 768px) {
+            .draft-mascota-flotante {
+                width: 80px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        .draft-hero h2 {
+            font-size: 1.5rem;
+            color: var(--draft-grey);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .draft-hero .slogan {
+            display: inline-block;
+            background-color: var(--draft-white);
+            color: var(--draft-black);
+            padding: 10px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transform: rotate(-2deg); /* Toque de boceto/informal */
+        }
+
+        /* --- Sección de Información Conceptual --- */
+        .draft-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
+            background: #151515;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid var(--draft-accent);
+        }
+
+        .draft-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--draft-accent);
+        }
+
+        .draft-info p, .draft-info li {
+            font-size: 1.05rem;
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+
+        /* --- Contenedores Multimedia (Placeholders) --- */
+        .media-section {
+            margin-top: 80px;
+        }
+
+        .media-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--draft-accent);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Tarjeta Multimedia General */
+        .media-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--draft-accent);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1);
+        }
+
+        .media-card i {
+            font-size: 3rem;
+            color: var(--draft-accent);
+            margin-bottom: 20px;
+        }
+
+        .media-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Espacios para inyectar código el viernes */
+        .placeholder-box {
+            background-color: #0a0a0a;
+            border: 2px dashed #444;
+            border-radius: 8px;
+            padding: 30px 10px;
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-top: 15px;
+        }
+
+        .flyer-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .flyer-box {
+            flex: 1;
+            background-color: #0a0a0a;
+            border: 2px dashed #444;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border-radius: 8px;
+        }
+
+        /* --- Responsividad --- */
+        @media screen and (max-width: 768px) {
+            .draft-info { grid-template-columns: 1fr; }
+            .draft-hero h1 { font-size: 2.5rem; }
+            .flyer-container { flex-direction: column; }
+        }
+
+        /* ==========================================
+        ESTILOS DEL PERSONAJE FLOTANTE
+        ========================================== */
+        .draft-mascota-flotante {
+            position: fixed; /* Lo fija en la pantalla sin importar si el usuario baja */
+            bottom: 30px; /* Separación desde abajo */
+            right: 30px; /* Separación desde la derecha */
+            width: 130px; /* Tamaño ideal para PC */
+            height: auto;
+            z-index: 9999; /* Obliga al personaje a estar siempre por encima de todo */
+            filter: drop-shadow(0px 10px 15px rgba(0, 229, 255, 0.3)); /* Resplandor cian */
+            animation: flotarMascota 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            border-radius: 10px;
+        }
+
+        /* Interacción: Cuando pasas el mouse por encima */
+        .draft-mascota-flotante:hover {
+            transform: scale(1.15) rotate(-5deg); /* Se agranda un poco y gira */
+            filter: drop-shadow(0px 15px 25px rgba(0, 229, 255, 0.6)); /* El resplandor se hace más fuerte */
+        }
+
+        /* Animación de levitación */
+        @keyframes flotarMascota {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Adaptación para Teléfonos Móviles */
+        @media screen and (max-width: 768px) {
+            .draft-mascota-flotante {
+                width: 85px; /* Más pequeño para que no tape los textos en el celular */
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* ==========================================
+        BOTÓN DE VOLVER AL INICIO
+        ========================================== */
+        .btn-back {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 22px;
+            border: 2px solid var(--draft-accent, #00e5ff); /* Borde cian */
+            color: var(--draft-accent, #00e5ff); /* Texto cian */
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente oscuro */
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        /* Efecto al pasar el mouse por encima */
+        .btn-back:hover {
+            background-color: var(--draft-accent, #00e5ff); /* Se rellena de cian */
+            color: var(--draft-black, #111111); /* El texto se vuelve oscuro */
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); /* Resplandor */
+            transform: translateX(-5px); /* Se mueve un poquito hacia la izquierda simulando el regreso */
+        }
+
+        /* Adaptación para Teléfonos Móviles */
+        @media screen and (max-width: 768px) {
+            .btn-back {
+                top: 20px;
+                left: 20px;
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .draft-hero {
+                padding-top: 100px; /* Empuja el título hacia abajo para que el botón no lo tape en celulares */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <!-- Personaje Flotante Draft -->
+    <img src="draft.png" alt="Mascota Draft" class="draft-mascota-flotante">
+    <!-- HERO SECTION -->
+    <!-- HERO SECTION -->
+    <header class="draft-hero">
+        
+        <!-- BOTÓN DE VOLVER AL INICIO -->
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+        
+        <h1>DRAFT</h1>
+        <h2>Colección "Work in Progress"</h2>
+        <div class="slogan">Marca la diferencia, no la tendencia</div>
     </header>
 
-    <!-- Contenido Principal del Caso DRAFT -->
-    <main class="container" style="margin-top: 30px;">
+    <main class="container">
         
-        <!-- Encabezado con Mascota e Identidad -->
-        <div class="card" style="text-align: center; border-left: 6px solid var(--nexa-cyan); padding: 30px; margin-bottom: 25px;">
-            <div style="max-width: 300px; margin: 0 auto 20px auto;">
-                <!-- Imagen de la mascota de Draft -->
-                <img src="draft.jpeg" alt="Mascota DRAFT" style="width: 100%; height: auto; border-radius: 12px;">
+        <!-- INFORMACIÓN ACTUALIZADA DE LA MARCA -->
+        <section class="draft-info">
+            <div class="info-block">
+                <h3>El Concepto del Boceto</h3>
+                <p>DRAFT es una marca de indumentaria oversize fundamentada en la estética del "boceto" y la filosofía del Work in Progress (Trabajo en proceso).</p>
+                <p>Nos definimos como un sistema de indumentaria técnica diseñado específicamente para los protagonistas de la economía naranja en Carabobo: publicistas, diseñadores, músicos y artistas.</p>
+                <p>Para DRAFT, la perfección es un mito estancado; celebramos el proceso, la iteración y el valor de las fallas como parte fundamental de la construcción creativa.</p>
             </div>
-            <h2 style="color: var(--nexa-navy); margin-top: 0;">DRAFT: Work in Progress</h2>
-            <p style="color: var(--nexa-text-dark); font-style: italic; max-width: 650px; margin: 0 auto;">
-                "Marca la diferencia, no la tendencia."
-            </p>
-        </div>
+            <div class="info-block">
+                <h3>Composición Técnica</h3>
+                <p>Nuestra pieza central está desarrollada para el clima de Valencia y las exigencias del creador:</p>
+                <ul>
+                    <li><strong>45% Rayón:</strong> Aporta transpirabilidad y una caída fluida.</li>
+                    <li><strong>48% Poliéster:</strong> Asegura durabilidad, manteniendo el volumen y resistiendo el uso diario intensivo en el estudio.</li>
+                    <li><strong>7% Elastano:</strong> Proporciona la elasticidad necesaria para la libertad de movimiento total.</li>
+                </ul>
+                <p><strong>El Sello del Crew:</strong> Conformado por Ashley Machado, Ángel Herrera, Dilmar Barbera, Verónica Reyes y Samuel Páez.</p>
+            </div>
+        </section>
 
-        <!-- Información Académica e Institucional -->
-        <div class="card" style="margin-bottom: 20px;">
-            <h3 style="color: var(--nexa-navy);">Ficha del Proyecto Académico</h3>
-            <p><strong>Institución:</strong> Instituto Universitario de Tecnología de Administración Industrial (IUTA) - Extensión Valencia, Ampliación San Joaquín.</p>
-            <p><strong>Carrera / Sección:</strong> Publicidad y Mercadeo, Sección Val003 (Profesora: Yasmira Castro).</p>
-            <p><strong>Equipo de Alumnos:</strong> Ashley Machado, Ángel Herrera, Dilmar Barbera, Verónica Reyes y Samuel Páez.</p>
-        </div>
+        <!-- SECCIÓN MULTIMEDIA (LISTA PARA EL VIERNES) -->
+        <section class="media-section">
+            <div style="text-align: center;">
+                <h2 class="media-section-title">Campaña Publicitaria</h2>
+            </div>
 
-        <!-- Propósito y Filosofía -->
-        <div class="card" style="margin-bottom: 20px;">
-            <h3 style="color: var(--nexa-navy);">Propósito, Misión y Visión</h3>
-            <p><strong>Propósito:</strong> Liberar el potencial creativo de las personas a través de la comodidad de ser uno mismo, dando voz a quienes entienden que el arte real no se logra en el primer intento.</p>
-            <p><strong>Misión:</strong> Diseñar y producir prendas funcionales y sobrias que actúen como un uniforme para el día a día del creador contemporáneo, permitiendo que el protagonismo recaiga en el talento y no en el logotipo.</p>
-            <p><strong>Visión:</strong> Convertirse en el código visual común de la industria creativa a nivel global como una señal de reconocimiento mutuo entre creadores.</p>
-        </div>
+            <div class="media-grid">
+                
+                <!-- 1. CUÑA RADIAL -->
+                <div class="media-card">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <h4>Cuña Radial</h4>
+                    <p>Campaña de audio: "Basta de lo básico. Es hora de darle vida real a tus ideas."</p>
+                    <!-- EL VIERNES: Borra el div de abajo y pega tu etiqueta <audio> o iframe de Soundcloud aquí -->
+                    <div class="placeholder-box">
+                        [ ESPACIO PARA EL REPRODUCTOR DE AUDIO ]
+                    </div>
+                </div>
 
-               <!-- Donde dice Identificación del Producto -->
-        <div class="card tech-box">
-            <h3 style="color: #ffffff !important;">Composición Técnica</h3>
-            <p>La nueva composición garantiza durabilidad extrema y confort para el creativo contemporáneo.</p>
-        </div>
+                <!-- 2. VIDEO PUBLICITARIO -->
+                <div class="media-card">
+                    <i class="fas fa-video"></i>
+                    <h4>Video Comercial (60")</h4>
+                    <p>El Despertar Creativo y la sinergia del DRAFT Crew en acción.</p>
+                    <!-- EL VIERNES: Borra el div de abajo y pega tu iframe de YouTube/Vimeo aquí -->
+                    <div class="placeholder-box" style="padding-bottom: 56.25%; position: relative; height: 0;">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">[ ESPACIO PARA EL IFRAME DEL VIDEO ]</span>
+                    </div>
+                </div>
 
-       
-        <!-- Identificación del Producto -->
-        <div class="card" style="margin-bottom: 20px;">
-            <h3 style="color: var(--nexa-navy);">El Producto: Colección "Work in Progress"</h3>
-            <p><strong>Composición Técnica:</strong> Franela de alto gramaje compuesta por <strong>65% poliéster</strong> (actúa como el esqueleto para mantener los hombros caídos y evitar arrugas) y <strong>35% algodón</strong> (aporta suavidad, transpirabilidad y frescura para el clima de Valencia).</p>
-            <p><strong>Clasificación:</strong> Bien de Especialidad dentro del streetwear conceptual, estructurado mediante un sistema de tallas por volumen (Fit 1, 2 y 3) con enfoque genderless.</p>
-        </div>
+                <!-- 3. PODCAST -->
+                <div class="media-card">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h4>Podcast DRAFT</h4>
+                    <p>Conversación profunda sobre la economía naranja, el Work in Progress y nuestra visión.</p>
+                    <!-- EL VIERNES: Borra el div de abajo y pega tu iframe de Spotify/YouTube aquí -->
+                    <div class="placeholder-box">
+                        [ ESPACIO PARA EL IFRAME DEL PODCAST ]
+                    </div>
+                </div>
 
+                <!-- 4. FLYERS (2 IMÁGENES) -->
+                <div class="media-card" style="grid-column: 1 / -1;">
+                    <i class="fas fa-images"></i>
+                    <h4>Arte Promocional (Flyers)</h4>
+                    <p>Piezas gráficas para distribución digital e impresa.</p>
+                    <!-- EL VIERNES: Reemplaza las rutas del 'src' con los nombres de tus imágenes -->
+                    <div class="flyer-container">
+                        <div class="flyer-box">
+                            <!-- <img src="tu-flyer-1.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"> -->
+                            [ ESPACIO PARA FLYER 1 ]
+                        </div>
+                        <div class="flyer-box">
+                            <!-- <img src="tu-flyer-2.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"> -->
+                            [ ESPACIO PARA FLYER 2 ]
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Estrategia Publicitaria -->
-        <div class="card" style="margin-bottom: 20px;">
-            <h3 style="color: var(--nexa-navy);">Estrategia y Campaña Publicitaria</h3>
-            <p><strong>Estrategia de Venta (D2C):</strong> Venta directa a través de canales digitales optimizados (Instagram Shopping y WhatsApp Business) y distribución itinerante en bazares de diseño y puntos de recogida en la Zona Norte de Valencia (El Viñedo).</p>
-            <p><strong>El Manifiesto del Borrador (Video Publicitario):</strong> Una narrativa visual que muestra a Ángel, Ashley y Dilmar superando sus bloqueos creativos cotidianos al recibir la indumentaria DRAFT, transformando la frustración en inspiración pura antes de unirse como el <em>Draft Crew</em> al atardecer.</p>
-        </div>
-
-        <!-- Llamado a la acción final -->
-        <div class="card" style="text-align: center; background: linear-gradient(135deg, var(--nexa-bg), #ffffff);">
-            <h3 style="color: var(--nexa-navy);">¿Quieres impulsar tu marca como lo hicimos con DRAFT?</h3>
-            <p style="font-size: 1.05rem; color: var(--nexa-text-dark); margin-bottom: 15px;">En <span class="marca-nexa">NEXA </span>diseñamos estrategias de alto impacto comercial, nos adaptamos a la realidad de tu negocio.</p>
-            <a href="contacto.html" class="btn-cta">Contáctanos</a>
-        </div>
+            </div>
+        </section>
 
     </main>
-
-    <!-- Pie de Página -->
-    <footer class="nexa-footer">
-        <p>&copy; 2026 NEXA - Agencia de Publicidad. Todos los derechos reservados.</p>
-    </footer>
 
 </body>
 </html>

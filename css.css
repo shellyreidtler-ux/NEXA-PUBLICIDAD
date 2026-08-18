@@ -359,18 +359,27 @@ img, video, iframe {
 }
 
 /* Para Teléfonos Celulares (Pantallas menores a 768px) */
+/* =========================================================
+   MENÚ HORIZONTAL EN MÓVILES
+   ========================================================= */
 @media screen and (max-width: 768px) {
-    /* Los encabezados pasan de estar en línea a apilarse verticalmente */
-    header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+    .nexa-header {
+        flex-direction: column; /* Deja el logo arriba y el menú centrado abajo */
+        gap: 12px;
+        padding: 15px !important;
+    }
+    
+    .nexa-nav ul {
+        flex-direction: row !important; /* Obliga a los enlaces a ir lado a lado */
+        flex-wrap: wrap !important; /* Si no caben en la pantalla, bajan ordenados */
+        justify-content: center !important;
+        gap: 12px !important; /* Espacio entre botones */
+    }
+    
+    .nexa-nav a {
+        font-size: 0.9rem !important; /* Letra ajustada para que quepan los 5 enlaces */
     }
 
-    .nexa-nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
 
     /* Reducción de títulos grandes para que no rompan el diseño en iPhone o Android */
     .hero h1 {
@@ -463,4 +472,140 @@ img, video, iframe {
 @media screen and (max-width: 400px) {
     h1 { font-size: 1.5rem !important; }
     h2, .section-title { font-size: 1.25rem !important; }
+}
+
+/* ==========================================
+   ESTILOS ANUNCIO DRAFT (ESTÉTICA NEXA CIAN/NAVY)
+   ========================================== */
+
+/* --- Cinta Promocional (Marquee) --- */
+.draft-marquee {
+    background-color: var(--nexa-cyan, #00e5ff); /* Fondo Cian */
+    color: var(--nexa-navy, #0b1329); /* Texto oscuro para contraste */
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: moverCinta 20s linear infinite;
+}
+
+.marquee-content span {
+    padding-right: 50px;
+}
+
+@keyframes moverCinta {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- Banner Interactivo Elegante --- */
+.draft-ad-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 4rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #162038 0%, #0b1329 100%); /* Fondo oscuro elegante */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    border: 1px solid rgba(0, 229, 255, 0.2); /* Borde sutil cian */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    cursor: pointer;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto de fondo al interactuar */
+.draft-ad-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* background-image: url('tu-foto-draft.jpg'); */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 1;
+}
+
+.draft-ad-container:hover .draft-ad-bg {
+    transform: scale(1.05);
+    opacity: 0.3;
+}
+
+.draft-ad-container:hover {
+    border-color: var(--nexa-cyan, #00e5ff); /* El borde se ilumina al pasar el cursor */
+    box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15);
+}
+
+/* --- Contenido del Banner --- */
+.draft-ad-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.ad-badge {
+    background-color: transparent;
+    color: var(--nexa-cyan, #00e5ff);
+    border: 1px solid var(--nexa-cyan, #00e5ff);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.draft-ad-content h2 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.draft-ad-content p {
+    color: #a0aec0;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+/* --- Botón del anuncio --- */
+.btn-draft-ad {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background-color: var(--nexa-cyan, #00e5ff); /* Botón Cian */
+    color: var(--nexa-navy, #0b1329); /* Letra oscura */
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-draft-ad:hover {
+    background-color: #ffffff; /* Se vuelve blanco al interactuar */
+    color: var(--nexa-navy, #0b1329);
+    transform: translateY(-3px);
+}
+
+/* Ajustes Móviles */
+@media screen and (max-width: 768px) {
+    .draft-ad-content h2 { font-size: 2rem !important; }
+    .draft-ad-container { padding: 3rem 1.5rem; margin: 2rem 15px; }
 }
