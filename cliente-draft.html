@@ -221,10 +221,10 @@
             position: fixed; /* Lo fija en la pantalla sin importar si el usuario baja */
             bottom: 30px; /* Separación desde abajo */
             right: 30px; /* Separación desde la derecha */
-            width: 130px; /* Tamaño ideal para PC */
+            width: 90px; /* Tamaño ideal para PC */
             height: auto;
             z-index: 9999; /* Obliga al personaje a estar siempre por encima de todo */
-            filter: drop-shadow(0px 10px 15px rgba(0, 229, 255, 0.3)); /* Resplandor cian */
+            filter: drop-shadow(0px 150px 15px rgba(0, 229, 255, 0.3)); /* Resplandor cian */
             animation: flotarMascota 3s ease-in-out infinite;
             cursor: pointer;
             transition: transform 0.3s ease, filter 0.3s ease;
@@ -296,6 +296,203 @@
             
             .draft-hero {
                 padding-top: 100px; /* Empuja el título hacia abajo para que el botón no lo tape en celulares */
+            }
+        }
+
+        /* ==========================================
+        SECCIÓN DE FLYERS (ESTILO CENTRADO & TARJETAS)
+        ========================================== */
+        .draft-flyers-section {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 60px auto !important;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* ENCABEZADO CENTRADO */
+        .draft-flyers-header {
+            text-align: center !important;
+            width: 350% !important;
+            margin-bottom: 45px;
+        }
+
+        .draft-flyers-subtitle {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #888;
+            display: block;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .draft-flyers-title {
+            font-family: 'Permanent Marker', cursive, sans-serif;
+            font-size: 2.8rem;
+            color: var(--draft-accent, #00e5ff);
+            margin: 0 auto;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* ==========================================
+        GRILLA Y TAMAÑOS
+        ========================================== */
+        /* Computadoras (1024px o más) */
+        @media screen and (min-width: 1024px) {
+            .draft-flyers-grid {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                gap: 100px !important;
+                width:350% !important;
+            }
+
+            .flyer-card {
+                width: 450px !important;
+                min-width: 400px !important;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Tablets (entre 769px y 1023px) */
+        @media screen and (min-width: 769px) and (max-width: 1023px) {
+            .draft-flyers-grid {
+                display: flex !important;
+                justify-content: center !important;
+                gap: 40px !important;
+            }
+
+            .flyer-card {
+                width: 350px !important;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Teléfonos (768px o menos) */
+        @media screen and (max-width: 768px) {
+            .draft-flyers-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 30px !important;
+                width: 100% !important;
+            }
+
+            .flyer-card {
+                width: 100% !important;
+                max-width: 380px !important;
+            }
+
+            .draft-flyers-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ESTILO DE LA TARJETA Y SUS BORDES */
+        .flyer-card {
+            background: #0d0d0d;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .flyer-card img {
+            width: 100% !important;
+            height: auto !important;
+            display: block;
+            object-fit: contain;
+        }
+
+        .flyer-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--draft-accent, #00e5ff);
+            box-shadow: 0 20px 45px rgba(0, 229, 255, 0.35);
+        }
+
+        /* ==========================================
+        ESTILO DE LA BARRA INFERIOR (AFICHE #01 Y CATEGORÍA)
+        ========================================== */
+        .flyer-info {
+            padding: 16px 22px;
+            background: #111111;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex !important;
+            justify-content: space-between !important; /* Pega uno a la izquierda y otro a la derecha */
+            align-items: center !important;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* "AFICHE #01" en Azul Cian Brillante a la izquierda */
+        .afiche-tag {
+            color: #00e5ff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        /* "Indumentaria Masculina" a la derecha */
+        .afiche-categoria {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+        SECCIÓN DE REDES SOCIALES (ESTILO NEÓN)
+        ========================================== */
+        .draft-socials {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .socials-title {
+            font-family: 'Permanent Marker', cursive, sans-serif;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Espacio entre los iconos */
+        }
+
+        .social-icon {
+            font-size: 2.5rem; /* Tamaño grande de los iconos */
+            color: #444; /* Color apagado cuando no está seleccionado */
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        /* Efecto de encendido neón al pasar el mouse */
+        .social-icon:hover {
+            color: var(--draft-accent, #00e5ff); /* Se vuelve color neón */
+            transform: translateY(-10px) scale(1.1); /* Salta un poquito */
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6)); /* Resplandor */
+        }
+
+        /* Adaptación para móviles */
+        @media screen and (max-width: 768px) {
+            .social-icon {
+                font-size: 2rem;
+            }
+            .social-links {
+                gap: 30px;
             }
         }
 
@@ -379,32 +576,59 @@
                     <p>Conversación profunda sobre la economía naranja, el Work in Progress y nuestra visión.</p>
                     <!-- EL VIERNES: Borra el div de abajo y pega tu iframe de Spotify/YouTube aquí -->
                     <div class="placeholder-box">
-                        [ ESPACIO PARA EL IFRAME DEL PODCAST ]
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FvugtJaEzgc?si=YB7jXn1vCf4G6QoN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <!-- 4. FLYERS (2 IMÁGENES) -->
-                <div class="media-card" style="grid-column: 1 / -1;">
-                    <i class="fas fa-images"></i>
-                    <h4>Arte Promocional (Flyers)</h4>
-                    <p>Piezas gráficas para distribución digital e impresa.</p>
-                    <!-- EL VIERNES: Reemplaza las rutas del 'src' con los nombres de tus imágenes -->
-                    <div class="flyer-container">
-                        <div class="flyer-box">
-                            <!-- <img src="tu-flyer-1.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"> -->
-                            [ ESPACIO PARA FLYER 1 ]
+            <!-- SECCIÓN DE FLYERS Y MATERIAL GRÁFICO -->
+            <section class="draft-flyers-section">
+                <!-- Encabezado Centrado -->
+                <div class="draft-flyers-header">
+                    <span class="draft-flyers-subtitle">Línea Editorial</span>
+                    <h2 class="draft-flyers-title">AFICHES & FLYERS DE MARCA</h2>
+                </div>
+                
+                <div class="draft-flyers-grid">
+                    <!-- Flyer 1: Masculino -->
+                    <div class="flyer-card">
+                        <img src="FLYER.png" alt="Flyer Draft - Indumentaria Masculina">
+                        <div class="flyer-info">
+                            <span class="afiche-tag">AFICHE #01</span>
+                            <span class="afiche-categoria">Indumentaria Masculina</span>
                         </div>
-                        <div class="flyer-box">
-                            <!-- <img src="tu-flyer-2.jpg" style="width:100%; height:100%; object-fit:cover; border-radius:8px;"> -->
-                            [ ESPACIO PARA FLYER 2 ]
+                    </div>
+
+                    <!-- Flyer 2: Femenino -->
+                    <div class="flyer-card">
+                        <img src="FLYER-2.png" alt="Flyer Draft - Indumentaria Femenina">
+                        <div class="flyer-info">
+                            <span class="afiche-tag">AFICHE #02</span>
+                            <span class="afiche-categoria">Indumentaria Femenina</span>
                         </div>
                     </div>
                 </div>
+            </section>
 
             </div>
         </section>
 
     </main>
+
+    <!-- SECCIÓN DE REDES SOCIALES -->
+<section class="draft-socials">
+    <h3 class="socials-title">Conecta con DRAFT</h3>
+    <div class="social-links">
+        <a href="https://www.instagram.com/draft.were/" target="_blank" class="social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@TU_USUARIO" target="_blank" class="social-icon" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.youtube.com/feed/you" target="_blank" class="social-icon" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+</section>
 
 </body>
 </html>
