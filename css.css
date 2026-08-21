@@ -609,3 +609,96 @@ img, video, iframe {
     .draft-ad-content h2 { font-size: 2rem !important; }
     .draft-ad-container { padding: 3rem 1.5rem; margin: 2rem 15px; }
 }
+
+/* ==========================================
+   PUBLICIDAD ENORME CON ETIQUETA DE MARCA
+   ========================================== */
+.hero-promocional {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.cinta-promocional {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    padding: 20px 0;
+}
+
+.cinta-track {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Separación entre posters */
+    animation: movimientoInfinito 22s linear infinite;
+}
+
+.cinta-track:hover {
+    animation-play-state: paused; /* Se detiene si el usuario pone el cursor encima */
+}
+
+/* --- TARJETA POSTER GRANDE --- */
+.ad-card {
+    position: relative;
+    display: inline-block;
+    width: 360px; /* Ancho mayor para que destaque */
+    height: 220px; /* Altura mucho mayor */
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ad-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garantiza que la imagen no se deforme */
+    display: block;
+}
+
+/* --- ETIQUETA QUE IDENTIFICA A VÉRTICES --- */
+.brand-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #00e5ff; /* Color Neón/Destacado */
+    border: 1px solid #00e5ff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+/* Efecto al pasar el cursor o tocar */
+.ad-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.25);
+    border-color: #00e5ff;
+}
+
+@keyframes movimientoInfinito {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- ADAPTACIÓN PARA MÓVILES (Mantiene buen tamaño en teléfonos) --- */
+@media screen and (max-width: 768px) {
+    .ad-card {
+        width: 260px; /* Tamaño ideal en pantalla de celular */
+        height: 160px;
+    }
+    .cinta-track {
+        gap: 20px;
+    }
+    .brand-tag {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+}
