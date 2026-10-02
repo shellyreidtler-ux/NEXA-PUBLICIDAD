@@ -3,218 +3,879 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXA | Agencia de Publicidad</title>
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="contacto.css"> <!-- O tu archivo de estilos principal -->
+    <title>Nexa Publicidad | Agencia Creativa & Dirección de Arte</title>
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           VARIABLES Y RESET GENERAL
+           ========================================== */
+        :root {
+            --bg-dark: #08080a;
+            --card-bg: #111116;
+            --accent-cyan: #00e5ff;
+            --accent-glow: rgba(0, 229, 255, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #8a8a9e;
+            --font-heading: 'Permanent Marker', cursive, sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ==========================================
+           ESTILO REUTILIZABLE PARA EMBEDS DE YOUTUBE
+           ========================================== */
+        .youtube-embed {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0;
+            border-radius: 12px 12px 0 0;
+            display: block;
+        }
+
+        /* ==========================================
+           BARRA DE NAVEGACIÓN FIJA (HEADER)
+           ========================================== */
+        .nexa-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(8, 8, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nexa-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
+
+        .nexa-logo span { color: var(--accent-cyan); }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================
+           HERO SECTION (INICIO)
+           ========================================== */
+        .hero-section {
+            min-height: 90vh;
+            padding-top: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            background: radial-gradient(circle at center, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+        }
+
+        .hero-badge {
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+
+        .hero-title span {
+            color: var(--accent-cyan);
+            font-family: var(--font-heading);
+            font-weight: normal;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent-cyan);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 229, 255, 0.6);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* ==========================================
+           SECCIÓN GENERAL
+           ========================================== */
+        .section-padding { padding: 100px 5%; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* ==========================================
+           SECCIÓN NUESTRO EQUIPO
+           ========================================== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .team-img-box {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 18px var(--accent-glow);
+            margin-bottom: 20px;
+            background: #1a1a24;
+        }
+
+        .team-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-img-box img {
+            transform: scale(1.08);
+        }
+
+        .team-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           CLIENTE DESTACADO DRAFT (PODCAST YOUTUBE)
+           ========================================== */
+        .featured-client-box {
+            background: linear-gradient(145deg, #0d0d12, #14141e);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 24px;
+            padding: 50px 30px;
+            margin-top: 30px;
+        }
+
+        .podcast-video-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #0d0d0d;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .podcast-video-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 45px var(--accent-glow);
+        }
+
+        .podcast-video-card .youtube-embed {
+            border-radius: 0;
+        }
+
+        .podcast-info {
+            padding: 18px 25px;
+            background: #111111;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .afiche-tag {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .afiche-categoria {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================
+           PORTAFOLIO CON FILTROS (3 COLUMNAS)
+           ========================================== */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .portfolio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover { 
+            transform: translateY(-6px);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .portfolio-item.video {
+            border-color: rgba(0, 229, 255, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .portfolio-item.video:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 35px var(--accent-glow);
+        }
+
+        .portfolio-thumb {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-thumb img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .portfolio-item:hover img { transform: scale(1.04); }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            padding: 20px;
+        }
+
+        .video-info-box {
+            padding: 15px 20px;
+            background: #0f0f14;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .item-category {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .item-title { font-size: 1.05rem; margin-top: 3px; font-weight: 700; }
+
+        .portfolio-btn-container {
+            padding: 12px 15px;
+            background: #0a0a0e;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .portfolio-btn-link {
+            display: block;
+            padding: 10px 15px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-btn-link:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* ==========================================
+           PAQUETES Y SERVICIOS
+           ========================================== */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 28px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+        }
+
+        .package-card.featured {
+            border-color: var(--accent-cyan);
+            background: #121820;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transform: scale(1.03);
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+        }
+
+        .package-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .badge-neon {
+            background: rgba(0, 229, 255, 0.2);
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .package-name { font-size: 1.6rem; margin-bottom: 10px; }
+        .package-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 25px; }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .package-features i { color: var(--accent-cyan); }
+
+        /* ==========================================
+           FOOTER Y REDES SOCIALES
+           ========================================== */
+        .nexa-footer {
+            text-align: center;
+            padding: 80px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #050507;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 30px 0;
+        }
+
+        .social-icon {
+            font-size: 2.2rem;
+            color: var(--text-muted);
+            transition: all 0.4s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-6px) scale(1.1);
+            filter: drop-shadow(0 0 15px var(--accent-cyan));
+        }
+
+        /* ==========================================
+           RESPONSIVO (TELÉFONOS Y TABLETS)
+           ========================================== */
+        @media screen and (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .package-card.featured { transform: none; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: left 0.4s ease;
+            }
+
+            .nav-menu.active { left: 0; }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-outline { width: 100%; }
+
+            .podcast-info {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<body class="nexa-portafolio">
+<body>
 
-    <!-- Cabecera de Navegación -->
-    <header class="nexa-header">
-        <div class="logo-container">
-            <h1 style="font-size: 1.5rem; color: #fff; margin: 0; font-family: serif;">NEXA</h1>
-        </div>
-        <nav class="nexa-nav">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li> <!-- AQUÍ ESTÁ EL NUEVO BOTÓN -->
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#clientes">Clientes</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- BARRA DE NAVEGACIÓN FIJA -->
+    <nav class="nexa-navbar">
+        <a href="#inicio" class="nexa-logo">NEXA <span>PUBLICIDAD</span></a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
 
-<div class="hero-promocional">
-    <div class="cinta-promocional">
-        <div class="cinta-track">
-            
-            <!-- TARJETA 1: VÉRTICES -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice1.png" alt="Campaña Vértices">
-            </a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+            <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+            <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#equipo" class="nav-link">Equipo</a></li>
+            <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+            <li><a href="#clientes" class="nav-link">Clientes</a></li>
+            <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
 
-            <!-- TARJETA 2: VÉRTICES (Segunda Imagen/Arte) -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice2.png" alt="Proyecto Vértices">
-            </a>
-
-            <!-- TARJETA 3: OTRO CLIENTE -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VERTICE</span>
-                <img src="vertice3.png" alt="Otro Cliente">
-            </a>
-
-            <!-- REPETICIÓN EXACTA PARA EL LOOP INFINITO SIN CORTE -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice4.png" alt="Campaña Vértices">
-            </a>
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice5.png" alt="Proyecto Vértices">
-            </a>
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VERTICE</span>
-                <img src="vertice5.png" alt="Otro Cliente">
-            </a>
-
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice1.png" alt="Campaña Vértices">
-            </a>
-
-            <!-- TARJETA 2: VÉRTICES (Segunda Imagen/Arte) -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice2.png" alt="Proyecto Vértices">
-            </a>
-
-                        <!-- TARJETA 3: OTRO CLIENTE -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VERTICE</span>
-                <img src="vertice3.png" alt="Otro Cliente">
-            </a>
-
-            <!-- REPETICIÓN EXACTA PARA EL LOOP INFINITO SIN CORTE -->
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice4.png" alt="Campaña Vértices">
-            </a>
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VÉRTICE</span>
-                <img src="vertice5.png" alt="Proyecto Vértices">
-            </a>
-            <a href="cliente-vertice.html" class="ad-card">
-                <span class="brand-tag">VERTICE</span>
-                <img src="vertice5.png" alt="Otro Cliente">
-            </a>
-
-        </div>
-    </div>
-</div>
-
-    <!-- ==========================================
-     ANUNCIOS INTERACTIVOS: CLIENTE DRAFT
-     ========================================== -->
-
-    <!-- 1. Cinta Promocional en Movimiento (Marquee) -->
-    <div class="draft-marquee">
-        <div class="marquee-content">
-            <span>| CASO DE ÉXITO: DRAFT | ESTRATEGIA PURA | DESCUBRE LA CAMPAÑA | RESULTADOS CLAROS |</span>
-            <span>| CASO DE ÉXITO: DRAFT | ESTRATEGIA PURA | DESCUBRE LA CAMPAÑA | RESULTADOS CLAROS |</span>
-            <span>| CASO DE ÉXITO: DRAFT | ESTRATEGIA PURA | DESCUBRE LA CAMPAÑA | RESULTADOS CLAROS |</span>
-            <span>| CASO DE ÉXITO: DRAFT | ESTRATEGIA PURA | DESCUBRE LA CAMPAÑA | RESULTADOS CLAROS |</span>
-            <span>| CASO DE ÉXITO: DRAFT | ESTRATEGIA PURA | DESCUBRE LA CAMPAÑA | RESULTADOS CLAROS |</span>
-        </div>
-    </div>
-
-    <!-- 2. Banner Interactivo de Draft -->
-    <section class="draft-ad-container">
-        <div class="draft-ad-bg"></div> <!-- Aquí puedes poner una foto de fondo luego -->
-        <div class="draft-ad-content">
-            <span class="ad-badge">Cliente Destacado</span>
-            <h2>Proyecto Draft</h2>
-            <p>Descubre cómo revolucionamos la imagen de esta marca con una campaña audiovisual inmersiva y sin precedentes.</p>
-            <a href="cliente-draft.html" class="btn-draft-ad">
-                Ver el Comercial <i class="fas fa-play-circle"></i>
-            </a>
+    <!-- 1. HERO / INICIO -->
+    <section class="hero-section" id="inicio">
+        <span class="hero-badge">Estudio Creativo & Publicidad</span>
+        <h1 class="hero-title">CREAMOS MARCAS QUE <span>MARCAN LA DIFERENCIA</span></h1>
+        <p class="hero-desc">Especialistas en dirección de arte, línea editorial, diseño gráfico estratégico y posicionamiento visual para marcas disruptivas.</p>
+        <div class="hero-btns">
+            <a href="#portafolio" class="btn-primary">Explorar Portafolio</a>
+            <a href="#servicios" class="btn-outline">Ver Paquetes</a>
         </div>
     </section>
 
-    <!-- Sección: Misión, Visión y Valores (Nosotros) -->
-    <section class="container" id="nosotros" style="margin-top: 30px;">
-        <h2>Nuestra Identidad</h2>
-        <div class="filosofia-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px;">
-            <div class="card">
-                <h3>Misión</h3>
-                <p>Desarrollar soluciones publicitarias innovadoras y efectivas que potencien el posicionamiento de nuestros clientes en el mercado actual, optimizando cada recurso comunicacional.</p>
+        <!-- 3. NUESTRO EQUIPO -->
+    <section class="section-padding" id="equipo">
+        <div class="section-header">
+            <span class="section-subtitle">Conoce a las Mentes Creativas</span>
+            <h2 class="section-title">NUESTROS PROFESIONALES</h2>
+        </div>
+
+        <div class="team-grid">
+            <!-- Miembro 1: Machado -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="ashley.png" alt="Machado">
+                </div>
+                <h3 class="team-name">Ashley Machado</h3>
+                <span class="team-role">Director & Estratega de Marca</span>
             </div>
-            <div class="card">
-                <h3>Visión</h3>
-                <p>Consolidarnos como una agencia referente en creatividad estratégica y planificación de medios, destacando por nuestro compromiso con el rendimiento y el éxito de cada marca.</p>
+
+            <!-- Miembro 2: Verónica -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="draft.png" alt="Verónica">
+                </div>
+                <h3 class="team-name">Verónica Reyes</h3>
+                <span class="team-role">Directora Creativa</span>
             </div>
-            <div class="card">
-                <h3>Valores</h3>
-                <p><strong>Compromiso:</strong> Dedicación absoluta a los objetivos del cliente.<br><strong>Innovación:</strong> Búsqueda constante de enfoques disruptivos.<br><strong>Transparencia:</strong> Claridad en cada estrategia y proceso.</p>
+
+            <!-- Miembro 3: Dilmar -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="dilmar.png" alt="Dilmar">
+                </div>
+                <h3 class="team-name">Dilmar Barbera</h3>
+                <span class="team-role">Especialista Audiovisual</span>
             </div>
         </div>
     </section>
-
     
-
-    <!-- Sección: El Equipo de la Agencia -->
-    <div class="container" id="equipo" style="margin-top: 30px;">
-        <h2 style="text-align: center; margin-bottom: 10px;">Nuestro Equipo</h2>
-        <p style="text-align: center; margin-bottom: 30px;">Conoce a los profesionales detrás de cada estrategia en <strong><span style="color: #0d233a; font-weight: bold;">NEXA</span></strong>.</p>
-
-        <!-- EL CAMBIO PRINCIPAL ESTÁ AQUÍ: Uso de flexbox para forzar el centrado absoluto -->
-        <div class="equipo-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;">
-
-            <!-- Integrante 1 -->
-            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
-                <!-- SE AGREGÓ: display: block; margin: 0 auto; a la imagen para que no se pegue a la izquierda -->
-                <img src="ashley.png" alt="Director General" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
-                <h3>Ashley Machado</h3>
-                <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Directora General & Planner</p>
-                <p style="font-size: 0.9rem;">Encargado de la dirección estratégica y supervisión global de cuentas y proyectos de la agencia.</p>
-            </div>
-
-            <!-- Integrante 2 -->
-            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
-                <img src="vero.jpeg" alt="Directora Creativa" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
-                <h3>Veronica Reyes</h3>
-                <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Directora Creativa</p>
-                <p style="font-size: 0.9rem;">Líder en el desarrollo de conceptos visuales, dirección de arte e identidad de marca.</p>
-            </div>
-
-            <!-- Integrante 3 -->
-            <div class="card" style="text-align: center; width: 100%; max-width: 500px;">
-                <img src="dilmar.png" alt="Especialista en Medios" style="display: block; margin: 0 auto 15px auto; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c5a059;">
-                <h3>Dilmar Barbera</h3>
-                <p style="font-weight: bold; color: #5c1d24; margin-bottom: 10px;">Especialista en Medios Audiovisuales</p>
-                <p style="font-size: 0.9rem;">Gestor de producción sonora, cuñas radiales y optimización de pautas en plataformas digitales.</p>
-            </div>
-
+    <!-- 2. SERVICIOS Y PAQUETES -->
+    <section class="section-padding" id="servicios">
+        <div class="section-header">
+            <span class="section-subtitle">Soluciones a Medida</span>
+            <h2 class="section-title">NUESTROS PAQUETES</h2>
         </div>
+
+        <div class="packages-grid">
+            <div class="package-card">
+                <span class="package-badge">Esencial</span>
+                <h3 class="package-name">Branding Base</h3>
+                <p class="package-desc">Ideal para emprendimientos que inician y requieren una imagen sólida.</p>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Logotipo Principal + Versiones secundarias</li>
+                    <li><i class="fas fa-check"></i> Paleta de Colores & Sistema Tipográfico</li>
+                    <li><i class="fas fa-check"></i> Entrega de archivos editables</li>
+                </ul>
+                <a href="contacto.html" class="btn-outline" style="text-align: center;">Cotizar</a>
+            </div>
+
+            <div class="package-card featured">
+                <span class="package-badge badge-neon">Más Solicitado</span>
+                <h3 class="package-name">Línea Editorial & Flyers</h3>
+                <p class="package-desc">Dirección gráfica y material publicitario para campañas o marcas de indumentaria.</p>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Diseño de Afiches & Flyers Publicitarios</li>
+                    <li><i class="fas fa-check"></i> Estética editorial y tipográfica avanzada</li>
+                    <li><i class="fas fa-check"></i> Formatos listos para impresión y redes</li>
+                </ul>
+                <a href="contacto.html" class="btn-primary" style="text-align: center;">Cotizar Ahora</a>
+            </div>
+
+            <div class="package-card">
+                <span class="package-badge">Full</span>
+                <h3 class="package-name">Publicidad 360°</h3>
+                <p class="package-desc">Gestión integral de concepto, publicidad continua e identidad gráfica.</p>
+                <ul class="package-features">
+                    <li><i class="fas fa-check"></i> Branding Completo + Guía de Marca</li>
+                    <li><i class="fas fa-check"></i> Campañas continuas de Flyers y Promociones</li>
+                    <li><i class="fas fa-check"></i> Asesoría de Dirección de Arte constante</li>
+                </ul>
+                <a href="contacto.html" class="btn-outline" style="text-align: center;">Cotizar</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 4. PORTAFOLIO: FLYER 1 - VIDEO SPEEDMAX (MEDIO) - FLYER 2 -->
+    <section class="section-padding" id="portafolio">
+        <div class="section-header">
+            <span class="section-subtitle">Trabajos Recientes</span>
+            <h2 class="section-title">PORTAFOLIO DE TRABAJOS</h2>
+        </div>
+
+        <div class="portfolio-filters">
+            <button class="filter-btn active" onclick="filterPortfolio('all')">Todos</button>
+            <button class="filter-btn" onclick="filterPortfolio('editorial')">Línea Editorial</button>
+            <button class="filter-btn" onclick="filterPortfolio('video')">Video Publicitario</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- 1. ESQUINA IZQUIERDA: Flyer #01 -->
+            <div class="portfolio-item editorial">
+                <div class="portfolio-thumb">
+                    <img src="FLYER.png" alt="Flyer Masculino">
+                    <div class="portfolio-overlay">
+                        <span class="item-category">Línea Editorial</span>
+                        <h3 class="item-title">Flyer #01 - Indumentaria Masculina</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. EN EL MEDIO: Video Speedmax -->
+            <div class="portfolio-item video">
+                <div class="portfolio-thumb">
+                    <iframe width="850" height="400" src="https://www.youtube.com/embed/5Bb_pyplr_I?si=FnS7YXA9XUyaxkAE" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
+                </div>
+                <div class="portfolio-btn-container">
+                    <a href="speedmax.html" class="portfolio-btn-link">
+                        Ver Más sobre Speedmax <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. ESQUINA DERECHA: Flyer #02 -->
+            <div class="portfolio-item editorial">
+                <div class="portfolio-thumb">
+                    <img src="FLYER-2.png" alt="Flyer Femenino">
+                    <div class="portfolio-overlay">
+                        <span class="item-category">Línea Editorial</span>
+                        <h3 class="item-title">Flyer #02 - Indumentaria Femenina</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- CLIENTE DESTACADO / SECCIÓN CLIENTES -->
+<section class="section-padding" id="clientes">
+    <div class="section-header">
+        <span class="section-subtitle">Casos de Éxito</span>
+        <h2 class="section-title">CLIENTES DESTACADOS</h2>
+        <h2 style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px;"> - DRAFT - </h2>
     </div>
 
-    <!-- Sección: Nuestros Clientes -->
-    <section class="container" id="clientes" style="margin-top: 30px; text-align: center;">
-    <!-- Sección: Nuestros Clientes Interactiva -->
-        <section class="container" id="clientes" style="margin-top: 30px; text-align: center;">
-            <h2>Nuestros Clientes</h2>
-            <p style="max-width: 600px; margin: 10px auto 30px auto;">Hemos tenido el privilegio de colaborar con marcas consolidadas y proyectos emergentes, impulsando su crecimiento comercial y su presencia en el mercado. Haz clic en cualquiera para ver el proyecto.</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; align-items: center; margin-top: 20px;">
-                
-                <!-- Cliente 1 -->
-                <a href="cliente-speedmax.html" class="card" style="padding: 20px; text-align: center; text-decoration: none; display: block;">
-                    <p style="font-weight: bold; margin: 0; color: var(--nexa-navy);">Speed Max</p>
-                </a>
+    <div class="featured-client-box">
+        <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px;">
+            Producción audiovisual, estrategia de marca y campañas gráficas para las marcas más disruptivas del mercado.
+        </p>
 
-                <!-- Cliente 2 -->
-                <a href="cliente-vertice.html" class="card" style="padding: 20px; text-align: center; text-decoration: none; display: block;">
-                    <p style="font-weight: bold; margin: 0; color: var(--nexa-navy);">Marca Vértice</p>
-                </a>
-
-                <!-- Cliente 3 -->
-                <a href="cliente-audiocorp.html" class="card" style="padding: 20px; text-align: center; text-decoration: none; display: block;">
-                    <p style="font-weight: bold; margin: 0; color: var(--nexa-navy);">Global Audio Corp</p>
-                </a>
-
-
-
+        <div class="podcast-video-card">
+                <iframe width="850" height="400" src="https://www.youtube.com/embed/FvugtJaEzgc?si=9ehYKWO8ve6hVezb" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
+            <div class="podcast-info">
+                <span class="afiche-tag">PODCAST EXCLUSIVO</span>
+                <span class="afiche-categoria">Producción Audiovisual - DRAFT</span>
             </div>
-        </section>
+        </div>
 
-<!-- Pie de Página Actualizado con Redes Sociales -->
-<footer class="nexa-footer">
-    <p>&copy; 2026 NEXA - Agencia de Publicidad. Todos los derechos reservados.</p>
-    <p style="font-size: 0.85rem; margin: 5px 0 10px 0;">Proyecto Académico para la materia AIP.</p>
-</footer>
+        <!-- Botón que lleva a la nueva página de todos los clientes -->
+        <div style="text-align: center; margin-top: 35px;">
+            <a href="clientes.html" class="btn-primary">
+                <i class="fas id-card" style="margin-right: 8px;"></i> Ver Todos los Clientes y Proyectos <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
+    <!-- 6. FOOTER CON REDES SOCIALES -->
+    <footer class="nexa-footer">
+        <span class="section-subtitle">¿Listo para impulsar tu marca?</span>
+        <h2 class="section-title">CONECTA CON NEXA PUBLICIDAD</h2>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/contacto.nexa.publicidad/" target="_blank" class="social-icon" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://tiktok.com/@TUNUMERO_NEXA" target="_blank" class="social-icon" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.youtube.com/@Nexa-publicidad" target="_blank" class="social-icon" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://mail.google.com/mail/u/2/#inbox" class="social-icon" title="Gmail">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 20px;">
+            &copy; 2026 Nexa Publicidad. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.portfolio-item');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

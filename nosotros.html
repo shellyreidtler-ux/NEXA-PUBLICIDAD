@@ -3,419 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - Agencia Nexa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Nosotros & Identidad | Nexa Publicidad</title>
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
-            /* =========================================================
-   CORRECCIONES RESPONSIVAS PARA MÓVILES (ANDROID & APPLE)
-   ========================================================= */
-
-/* Adaptación fluida de textos para Tablets */
-@media screen and (max-width: 992px) {
-    h1 { font-size: 2.2rem !important; }
-    h2, .section-title { font-size: 1.8rem !important; }
-    p, li { font-size: 1rem !important; }
-}
-
-/* Adaptación estricta para Teléfonos (Infinix, iPhone, etc.) */
-@media screen and (max-width: 768px) {
-    
-    /* 1. TEXTOS: Reducción de tamaño obligatoria para móviles */
-    h1 { font-size: 1.8rem !important; line-height: 1.2 !important; }
-    h2, .section-title { font-size: 1.4rem !important; line-height: 1.3 !important; }
-    h3 { font-size: 1.15rem !important; }
-    p, li, span, a { font-size: 0.95rem !important; line-height: 1.5 !important; }
-
-    /* 2. CENTRADO PERFECTO: Fuerza a que "Nuestro Equipo" y los portafolios se centren */
-    .portfolio-grid, .info-grid, .gallery-grid, .team-grid {
-        display: flex !important;
-        flex-direction: column !important; /* Apila todo hacia abajo */
-        align-items: center !important; /* Centra todo en el medio de la pantalla */
-        justify-content: center !important;
-        gap: 25px !important; /* 3. SEPARACIÓN: Soluciona las tarjetas pegadas */
-    }
-
-    /* Evita que las tarjetas se estiren feo hacia los lados y las centra */
-    .client-card, .info-box, .image-card, .team-card, .audio-card {
-        width: 100% !important;
-        max-width: 360px !important; /* Ancho máximo para que se vea elegante en el cel */
-        margin-left: auto !important;
-        margin-right: auto !important;
-        margin-bottom: 20px !important; /* Separación extra por si acaso */
-        text-align: center !important; /* Centra textos e imágenes internas */
-    }
-
-    /* Solución específica para Willy Wonka (Audiocorp) */
-    .audio-section {
-        margin-bottom: 3rem !important; /* Separa el reproductor de las cajas de info */
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-
-    .audio-card {
-        padding: 20px 15px !important; /* Ajusta el padding para que el reproductor no se salga */
-    }
-}
-
-/* Para teléfonos extremadamente pequeños */
-@media screen and (max-width: 400px) {
-    h1 { font-size: 1.5rem !important; }
-    h2, .section-title { font-size: 1.25rem !important; }
-}
-
+        /* ==========================================
+           VARIABLES Y RESET GENERAL
+           ========================================== */
         :root {
-            --nexa-navy: #0b1329;
-            --nexa-cyan: #00e5ff;
-            --nexa-white: #ffffff;
-            --nexa-gray: #162038;
+            --bg-dark: #08080a;
+            --card-bg: #111116;
+            --accent-cyan: #00e5ff;
+            --accent-glow: rgba(0, 229, 255, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #8a8a9e;
+            --font-heading: 'Permanent Marker', cursive, sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--nexa-navy);
-            color: var(--nexa-white);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
             overflow-x: hidden;
-            font-weight: 500; /* Hace que toda la letra base sea más gruesa */
+            line-height: 1.6;
         }
 
-        /* Animaciones para dinamismo */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        a { text-decoration: none; color: inherit; }
 
-        .animate-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-
-        /* Header */
-        .nexa-header {
-            background-color: var(--nexa-gray);
-            padding: 20px 5%;
+        /* ==========================================
+           BARRA DE NAVEGACIÓN FIJA
+           ========================================== */
+        .nexa-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(8, 8, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1000;
+            padding: 18px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--nexa-cyan);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: 800; /* Letra bien gruesa para el logo */
-            color: var(--nexa-cyan);
-            text-transform: uppercase;
+        .nexa-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-main);
             letter-spacing: 2px;
         }
 
-        .btn-volver {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--nexa-white);
-            text-decoration: none;
-            font-weight: 600; /* Botón más grueso */
-            transition: all 0.3s ease;
-            background: rgba(0, 229, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 50px;
-            border: 1px solid transparent;
+        .nexa-logo span { color: var(--accent-cyan); }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
         }
 
-        .btn-volver:hover {
-            color: var(--nexa-navy);
-            background: var(--nexa-cyan);
-            transform: translateX(-5px);
-        }
-
-        /* Hero Section (Ajuste de espacios) */
-        .hero {
-            text-align: center;
-            /* Se redujo el padding inferior de 5rem a 2rem para acercarlo al contenido */
-            padding: 4rem 2rem 2rem 2rem; 
-            background: linear-gradient(180deg, var(--nexa-gray) 0%, var(--nexa-navy) 100%);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--nexa-white);
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span {
-            color: var(--nexa-cyan);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #b0c4de;
-            max-width: 800px;
-            margin: 0 auto;
-            font-style: italic;
-        }
-
-        /* Contenedores generales */
-        .container {
-            max-width: 1200px;
-            /* Se redujo el margen superior de 3rem a 1rem para pegar más las secciones */
-            margin: 1rem auto 3rem auto; 
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--nexa-cyan);
-            margin-bottom: 2rem;
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 2px solid rgba(0, 229, 255, 0.2);
-            padding-bottom: 10px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
         }
 
-        /* Grid Dinámico para Secciones */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 4rem;
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Grid específico para el Norte Estratégico (4 columnas si hay espacio) */
-        .strategy-grid {
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
         }
 
-        .info-card {
-            background: var(--nexa-gray);
-            padding: 30px;
-            border-radius: 15px;
-            border-top: 4px solid var(--nexa-cyan); /* Borde superior para más dinamismo */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s;
-            display: flex;
-            flex-direction: column;
+        /* ==========================================
+           ENCABEZADO DE LA PÁGINA
+           ========================================== */
+        .page-header {
+            padding-top: 150px;
+            padding-bottom: 30px;
+            text-align: center;
         }
 
-        .info-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.2);
-            border-top-color: var(--nexa-white);
-        }
-
-        .info-card h3 {
-            color: var(--nexa-cyan);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .info-card p, .info-card ul {
-            color: #d1d5db; /* Gris más claro para mejorar contraste */
-            font-size: 1.05rem;
-            font-weight: 600; /* Letras más gruesas en los textos */
-            line-height: 1.7;
-        }
-
-        .info-card ul {
-            padding-left: 15px;
-            list-style-type: square;
-        }
-
-        .info-card ul li {
+        .section-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            display: block;
             margin-bottom: 8px;
         }
 
-        /* Acróstico Especial */
-        .acrostic-list {
-            list-style: none !important;
-            padding: 0 !important;
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .acrostic-list li {
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-            background: rgba(0,0,0,0.2);
-            padding: 10px;
-            border-radius: 8px;
+        /* ==========================================
+           CONTENEDOR GENERAL DE SECCIÓN
+           ========================================== */
+        .about-container {
+            padding: 40px 5% 80px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .acrostic-list strong {
-            color: var(--nexa-cyan);
-            font-size: 1.3rem;
-            display: inline-block;
-            width: 30px;
-            font-weight: 800;
+        /* BLOQUES DE ESENCIA Y CONCEPTO */
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 45px 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: border-color 0.3s ease;
         }
 
-        /* Paleta de Colores */
-        .color-grid {
+        .about-card:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .slogan-highlight {
+            font-family: var(--font-heading);
+            color: var(--accent-cyan);
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            display: block;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* GRID PARA SIGLAS NEXA */
+        .siglas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
         }
 
-        .color-box {
+        .sigla-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sigla-letter {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .sigla-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* MISIÓN, VISIÓN Y PROPÓSITO (3 COLUMNAS) */
+        .mvp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .mvp-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .mvp-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+
+        .mvp-box i {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .mvp-box h4 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .mvp-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* VALORES */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .value-card {
+            background: rgba(17, 17, 22, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 12px;
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
         }
 
-        .color-box:hover {
-            transform: scale(1.05);
+        .value-card h5 {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .bg-navy { 
-            background-color: var(--nexa-navy); 
-            border: 2px solid var(--nexa-cyan); 
-            color: white; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-        
-        .bg-cyan { 
-            background-color: var(--nexa-cyan); 
-            color: var(--nexa-navy); 
-            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.3);
+        .value-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
         }
 
-        /* Footer */
-        footer {
-            background: var(--nexa-gray);
+        /* IDENTIDAD VISUAL Y COLORES */
+        .color-palette {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-chip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+
+        .color-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ==========================================
+           SECCIÓN EQUIPO
+           ========================================== */
+        .team-section {
+            padding: 25px 5% 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px 20px;
             text-align: center;
-            padding: 2rem;
-            border-top: 2px solid var(--nexa-cyan);
-            margin-top: 4rem;
-            color: #a0aec0;
-            font-weight: 600;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .team-img-box {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 18px var(--accent-glow);
+            margin-bottom: 20px;
+            background: #1a1a24;
+        }
+
+        .team-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover .team-img-box img {
+            transform: scale(1.08);
+        }
+
+        .team-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .nexa-footer {
+            text-align: center;
+            padding: 60px 20px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #050507;
+        }
+
+        /* ==========================================
+           RESPONSIVO
+           ========================================== */
         @media screen and (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero { padding: 3rem 1rem 1rem 1rem; }
-            .container { padding: 0 1rem; }
+            .mobile-menu-btn { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: left 0.4s ease;
+            }
+            .nav-menu.active { left: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="nexa-header">
-        <div class="logo-text">Nexa</div>
-        <a href="index.html" class="btn-volver">
-            <i class="fas fa-arrow-left"></i> Inicio
-        </a>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nexa-navbar">
+        <a href="index.html#inicio" class="nexa-logo">NEXA <span>PUBLICIDAD</span></a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="nosotros.html" class="nav-link active">Nosotros</a></li>
+            <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="index.html#portafolio" class="nav-link">Portafolio</a></li>
+            <li><a href="clientes.html" class="nav-link">Clientes</a></li>
+            <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- ENCABEZADO DE LA PÁGINA -->
+    <header class="page-header">
+        <span class="section-subtitle">Conoce nuestra esencia</span>
+        <h1 class="section-title">ACERCA DE NOSOTROS</h1>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero animate-up">
-        <h1>Estrategia Pura, <span>Resultados Claros</span></h1>
-        <p>"¿Por qué la publicidad no puede conmover tanto como una película? Somos un equipo de creativos cineastas que creemos que cada marca tiene una historia épica por contar".</p>
+                <!-- SECCIÓN DE EQUIPO -->
+    <section class="team-section">
+        <div style="text-align: center; margin-bottom: 10px;">
+            <span class="section-subtitle">Las Mentes Detrás de la Agencia</span>
+            <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--accent-cyan);">NUESTRO EQUIPO</h2>
+        </div>
+
+        <div class="team-grid">
+            <!-- Miembro 1: Machado -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="ashley.png" alt="Machado">
+                </div>
+                <h3 class="team-name">Machado</h3>
+                <span class="team-role">Director & Estratega de Marca</span>
+            </div>
+
+            <!-- Miembro 2: Verónica -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="veronica.jpg" alt="Verónica">
+                </div>
+                <h3 class="team-name">Verónica</h3>
+                <span class="team-role">Directora Creativa</span>
+            </div>
+
+            <!-- Miembro 3: Dilmar -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="dilmar.png" alt="Dilmar">
+                </div>
+                <h3 class="team-name">Dilmar</h3>
+                <span class="team-role">Especialista Audiovisual</span>
+            </div>
+        </div>
     </section>
-
-    <div class="container">
+    
+    <!-- CONTENIDO PRINCIPAL: HISTORIA, ESLOGAN Y CONCEPTO -->
+    <div class="about-container">
         
-        <!-- Identidad y Concepto -->
-        <h2 class="section-title animate-up delay-1">El Concepto NEXA</h2>
-        <div class="info-grid animate-up delay-1">
-            <div class="info-card">
-                <h3><i class="fas fa-brain"></i> Nuestra Esencia</h3>
-                <p>Nexa es el puente entre el rigor del análisis estratégico y la espectacularidad del lenguaje cinematográfico. Abandonamos los anuncios planos por producciones con alma de cine.</p>
-                <p style="margin-top: 15px;"><strong style="color: var(--nexa-white);">Especialidad:</strong> Narrativa inmersiva y comerciales de alto impacto visual con estética de cine.</p>
-            </div>
-            
-            <div class="info-card">
-                <h3><i class="fas fa-font"></i> El Acróstico</h3>
-                <ul class="acrostic-list">
-                    <li><strong>N</strong> Narrativa: Historias que conectan.</li>
-                    <li><strong>E</strong> Ejecución: Precisión en cada plano.</li>
-                    <li><strong>X</strong> Xilema: El tejido vital de la marca.</li>
-                    <li><strong>A</strong> Audiovisual: Publicidad con alma de cine.</li>
-                </ul>
+        <!-- Nuestra Esencia & Eslogan -->
+        <div class="about-card">
+            <h3>Nuestra Esencia & El Concepto Nexa</h3>
+            <p>
+                En <strong>Nexa Publicidad</strong> nos especializamos en la dirección de arte, línea editorial, diseño gráfico estratégico y posicionamiento visual de alto impacto. Creemos firmemente que una marca no es solo un logotipo, sino una experiencia integral que conecta emocionalmente con su audiencia.
+            </p>
+            <span class="slogan-highlight">"Creamos marcas que marcan la diferencia"</span>
+        </div>
+
+        <!-- El Significado de las Siglas NEXA -->
+        <div class="about-card">
+            <h3>¿Qué significa NEXA?</h3>
+            <p>Cada letra de nuestro nombre define el ADN de nuestro trabajo creativo y publicitario:</p>
+            <div class="siglas-grid">
+                <div class="sigla-item">
+                    <div class="sigla-letter">N</div>
+                    <div class="sigla-desc"><strong>Net / Network:</strong> Conectividad y redes visuales eficientes.</div>
+                </div>
+                <div class="sigla-item">
+                    <div class="sigla-letter">E</div>
+                    <div class="sigla-desc"><strong>Estrategia:</strong> Dirección precisa y posicionamiento de marca.</div>
+                </div>
+                <div class="sigla-item">
+                    <div class="sigla-letter">X</div>
+                    <div class="sigla-desc"><strong>Xperience:</strong> Innovación y disrupción visual absoluta.</div>
+                </div>
+                <div class="sigla-item">
+                    <div class="sigla-letter">A</div>
+                    <div class="sigla-desc"><strong>Arte:</strong> Dirección audiovisual y estética de vanguardia.</div>
+                </div>
             </div>
         </div>
 
-        <!-- Declaraciones Estratégicas (Separadas en 4 tarjetas) -->
-        <h2 class="section-title animate-up delay-2">Norte Estratégico</h2>
-        <div class="info-grid strategy-grid animate-up delay-2">
-            
-            <!-- Propósito separado -->
-            <div class="info-card">
-                <h3><i class="fas fa-bullseye"></i> Propósito</h3>
-                <p>Elevar las marcas a la categoría de cine, dotando cada proyecto de un significado visual épico.</p>
+        
+        <!-- MISIÓN, VISIÓN Y PROPÓSITO -->
+        <div class="mvp-grid">
+            <div class="mvp-box">
+                <i class="fas fa-bullseye"></i>
+                <h4>Misión</h4>
+                <p>Potenciar la identidad visual y el posicionamiento comercial de marcas audaces mediante soluciones de dirección de arte y publicidad estratégica de alto rendimiento.</p>
             </div>
 
-            <!-- Misión separada -->
-            <div class="info-card">
-                <h3><i class="fas fa-rocket"></i> Misión</h3>
-                <p>Fusionar análisis de datos con dirección de arte cinematográfica para crear campañas precisas.</p>
+            <div class="mvp-box">
+                <i class="fas fa-eye"></i>
+                <h4>Visión</h4>
+                <p>Consolidarnos como la agencia creativa de referencia en la producción audiovisual y diseño disruptivo, marcando tendencia en el mercado digital y corporativo.</p>
             </div>
 
-            <!-- Visión separada -->
-            <div class="info-card">
-                <h3><i class="fas fa-eye"></i> Visión</h3>
-                <p>Revolucionar la publicidad convirtiéndonos en el estándar internacional de calidad visual.</p>
-            </div>
-
-            <!-- Valores separados -->
-            <div class="info-card">
-                <h3><i class="fas fa-gem"></i> Valores</h3>
-                <ul>
-                    <li><strong style="color: var(--nexa-cyan);">Cinematografía:</strong> Estética impecable.</li>
-                    <li><strong style="color: var(--nexa-cyan);">Estrategia Quirúrgica:</strong> Datos antes que intuición.</li>
-                    <li><strong style="color: var(--nexa-cyan);">Audacia:</strong> Romper esquemas.</li>
-                    <li><strong style="color: var(--nexa-cyan);">Resultados Claros:</strong> Honestidad.</li>
-                </ul>
+            <div class="mvp-box">
+                <i class="fas fa-heart"></i>
+                <h4>Propósito</h4>
+                <p>Transformar ideas en experiencias memorables, generando conexiones reales y duraderas entre las marcas y las comunidades a las que sirven.</p>
             </div>
         </div>
 
-        <!-- Identidad Visual -->
-        <h2 class="section-title animate-up delay-3">Identidad Visual</h2>
-        <div class="color-grid animate-up delay-3">
-            <div class="color-box bg-navy">
-                Azul Oscuro (Navy)<br>
-                <span style="font-weight: 500; font-size: 0.95rem; display: block; margin-top: 10px;">Autoridad, profundidad y rigor estratégico.</span>
+        <!-- VALORES -->
+        <div class="about-card">
+            <h3>Nuestros Valores</h3>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h5>Disrupción</h5>
+                    <p>Rompemos esquemas tradicionales con ideas creativas únicas.</p>
+                </div>
+                <div class="value-card">
+                    <h5>Precisión</h5>
+                    <p>Cuidado milimétrico en cada detalle visual y editorial.</p>
+                </div>
+                <div class="value-card">
+                    <h5>Compromiso</h5>
+                    <p>Involucración total en el éxito y crecimiento de cada cliente.</p>
+                </div>
+                <div class="value-card">
+                    <h5>Innovación</h5>
+                    <p>Evolución constante adaptada a las nuevas tendencias globales.</p>
+                </div>
             </div>
-            <div class="color-box bg-cyan">
-                Azul Cian<br>
-                <span style="font-weight: 600; font-size: 0.95rem; display: block; margin-top: 10px;">Energía, tecnología e innovación visual.</span>
+        </div>
+
+        <!-- IDENTIDAD VISUAL Y COLORES REPRESENTATIVOS -->
+        <div class="about-card" style="margin-bottom: 0;">
+            <h3>Identidad Visual y Colores Representativos</h3>
+            <p>
+                Nuestra línea gráfica se basa en un contraste sofisticado que transmite modernidad, energía y tecnología visual:
+            </p>
+            <div class="color-palette">
+                <div class="color-chip">
+                    <div class="color-dot" style="background-color: #00e5ff; box-shadow: 0 0 10px #00e5ff;"></div>
+                    <span><strong>Cyan Neón:</strong> Energía, vanguardia e impacto digital.</span>
+                </div>
+                <div class="color-chip">
+                    <div class="color-dot" style="background-color: #08080a;"></div>
+                    <span><strong>Negro Profundo:</strong> Elegancia, sobriedad y profesionalismo.</span>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Nexa - Publicidad con alma de cine.</p>
+
+
+    <!-- FOOTER -->
+    <footer class="nexa-footer">
+        <p style="color: var(--text-muted); font-size: 0.85rem;">
+            &copy; 2026 Nexa Publicidad. Todos los derechos reservados.
+        </p>
     </footer>
 
+    <!-- SCRIPT MENÚ MÓVIL -->
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

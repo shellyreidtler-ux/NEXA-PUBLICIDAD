@@ -702,3 +702,374 @@ img, video, iframe {
         padding: 4px 10px;
     }
 }
+
+/* ==========================================
+   ESTILOS BASE & HEADER CENTRADO
+   ========================================== */
+.nexa-section-header {
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 45px;
+}
+
+.nexa-subtitle {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.nexa-title {
+    font-family: 'Permanent Marker', cursive, sans-serif;
+    font-size: 2.8rem;
+    color: #00e5ff;
+    margin: 0 auto;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+}
+
+/* ==========================================
+   1. SECCIÓN AFICHES Y FLYERS (CENTRADO Y TARJETAS)
+   ========================================== */
+.nexa-flyers-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .nexa-flyers-grid {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 60px !important;
+    }
+
+    .flyer-card {
+        width: 440px !important;
+        flex-shrink: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nexa-flyers-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+    }
+
+    .flyer-card {
+        width: 100% !important;
+        max-width: 380px !important;
+    }
+
+    .nexa-title {
+        font-size: 2rem;
+    }
+}
+
+.flyer-card {
+    background: #0d0d0d;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.flyer-card img {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+.flyer-card:hover {
+    transform: translateY(-8px);
+    border-color: #00e5ff;
+    box-shadow: 0 20px 45px rgba(0, 229, 255, 0.35);
+}
+
+.flyer-info {
+    padding: 16px 22px;
+    background: #111111;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex !important;
+    justify-content: space-between !important; /* AFICHE a la izq, Categoria a la der */
+    align-items: center !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.afiche-tag {
+    color: #00e5ff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
+.afiche-categoria {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   2. PORTAFOLIO DE TRABAJOS Y FILTROS
+   ========================================== */
+.nexa-portfolio-section,
+.nexa-packages-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ccc;
+    padding: 10px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #00e5ff;
+    color: #000;
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+}
+
+.portfolio-item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-6px);
+    border-color: #00e5ff;
+}
+
+.portfolio-thumb {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+}
+
+.portfolio-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    padding: 20px;
+    color: #fff;
+}
+
+.item-category {
+    font-size: 0.75rem;
+    color: #00e5ff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.item-title {
+    font-size: 1.1rem;
+    margin-top: 4px;
+}
+
+/* ==========================================
+   3. PAQUETES Y PLANES DE NEXA PUBLICIDAD
+   ========================================== */
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 30px;
+}
+
+.package-card {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.package-card.featured {
+    border-color: #00e5ff;
+    background: #121619;
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+    transform: scale(1.03);
+}
+
+.package-card:hover {
+    transform: translateY(-8px);
+    border-color: #00e5ff;
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.2);
+}
+
+.package-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.badge-neon {
+    background: rgba(0, 229, 255, 0.2);
+    color: #00e5ff;
+    font-weight: 700;
+}
+
+.package-name {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.package-desc {
+    font-size: 0.88rem;
+    color: #888;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.package-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #00e5ff;
+    margin-bottom: 25px;
+}
+
+.package-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex-grow: 1;
+}
+
+.package-features li {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.package-features i {
+    color: #00e5ff;
+}
+
+.package-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.package-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.btn-neon {
+    background: #00e5ff;
+    color: #000;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.btn-neon:hover {
+    background: #00b8cc;
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+}
+
+/* ==========================================
+   4. REDES SOCIALES
+   ========================================== */
+.nexa-socials {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socials-title {
+    font-family: 'Permanent Marker', cursive, sans-serif;
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.social-icon {
+    font-size: 2.5rem;
+    color: #555;
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #00e5ff;
+    transform: translateY(-8px) scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
+}
