@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso de Éxito: Zoma | Nexa Publicidad</title>
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================
+           VARIABLES Y ESTILOS BASE - ZOMA (TONOS BEIGE & MARRONES)
+           ========================================================== */
+        :root {
+            --bg-dark: #12100e;            /* Fondo oscuro cálido */
+            --card-bg: #1a1612;            /* Fondo de tarjetas en tono marrón oscuro */
+            --card-bg-alt: #221d18;        /* Tono marrón intermedio para contraste */
+            --accent-color: #d4a373;       /* Tono principal: Beige/Arena elegante */
+            --accent-light: #faedcd;       /* Tono crema claro para títulos */
+            --text-main: #fefae0;          /* Texto principal marfil suave */
+            --text-muted: #c9c3b8;         /* Texto secundario cálido */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================
+           BARRA DE NAVEGACIÓN SUPERIOR
+           ========================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(18, 16, 14, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.22);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .badge-nexa {
+            background: rgba(212, 163, 115, 0.15);
+            border: 1px solid rgba(212, 163, 115, 0.4);
+            color: var(--accent-light);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-volver {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: bold;
+            padding: 8px 18px;
+            border: 1px solid rgba(212, 163, 115, 0.45);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-volver:hover {
+            background: var(--accent-color);
+            color: #12100e;
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.45);
+        }
+
+        /* ==========================================================
+           HERO DEL PROYECTO (ZOMA)
+           ========================================================== */
+        .project-hero {
+            padding: 135px 5% 50px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .project-tag {
+            display: inline-block;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(212, 163, 115, 0.12);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 163, 115, 0.35);
+            margin-bottom: 14px;
+        }
+
+        .project-hero h1 {
+            font-size: 3.6rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            text-shadow: 0 4px 20px rgba(212, 163, 115, 0.2);
+        }
+
+        .project-hero p {
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 0 auto 38px auto;
+            font-size: 1.05rem;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 430px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 163, 115, 0.35);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65);
+            background: var(--card-bg);
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-overlay-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(18, 16, 14, 0.95), transparent);
+            padding: 25px 30px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .banner-overlay-info span {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .banner-overlay-info h2 {
+            color: var(--accent-light);
+            font-size: 1.4rem;
+        }
+
+        /* ==========================================================
+           DETALLES, PROPUESTA DE VALOR Y FICHA TÉCNICA
+           ========================================================== */
+        .project-details {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1.45fr 1fr;
+            gap: 32px;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            border-radius: 18px;
+            padding: 32px;
+        }
+
+        .detail-card h2 {
+            color: var(--accent-color);
+            font-size: 1.45rem;
+            margin-bottom: 14px;
+        }
+
+        .detail-card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.97rem;
+        }
+
+        .value-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .value-pill {
+            background: var(--card-bg-alt);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            color: var(--accent-light);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.83rem;
+            font-weight: 600;
+        }
+
+        /* Lista de metadatos */
+        .meta-list {
+            list-style: none;
+        }
+
+        .meta-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .meta-list li:last-child {
+            border-bottom: none;
+        }
+
+        .meta-label {
+            color: #a39e93;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            color: var(--accent-light);
+            font-weight: bold;
+            font-size: 0.93rem;
+            text-align: right;
+        }
+
+        /* ==========================================================
+           PROCESO DE PRODUCCIÓN TEXTIL (3 PASOS)
+           ========================================================== */
+        .process-section {
+            max-width: 1200px;
+            margin: 55px auto;
+            padding: 0 5%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-heading span {
+            color: var(--accent-color);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--accent-light);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .process-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 163, 115, 0.22);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            font-weight: 900;
+            font-size: 0.82rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .process-card h3 {
+            color: var(--accent-light);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .process-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* ==========================================================
+           SELECTOR INTERACTIVO DE CATÁLOGO (PURO HTML + CSS)
+           ========================================================== */
+        .catalog-interactive {
+            max-width: 1200px;
+            margin: 55px auto;
+            padding: 0 5%;
+        }
+
+        .catalog-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 163, 115, 0.28);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .catalog-box input[type="radio"] {
+            display: none;
+        }
+
+        .catalog-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .catalog-tab-btn {
+            padding: 11px 22px;
+            border-radius: 25px;
+            background: var(--card-bg-alt);
+            border: 1px solid rgba(212, 163, 115, 0.3);
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .catalog-tab-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .catalog-panel {
+            display: none;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .catalog-panel img {
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 163, 115, 0.25);
+        }
+
+        .catalog-panel-text h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .catalog-panel-text p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .catalog-panel-text ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .catalog-panel-text li {
+            color: var(--accent-light);
+            font-size: 0.9rem;
+        }
+
+        .catalog-panel-text li i {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        /* Lógica CSS pura del catálogo */
+        #cat-1:checked ~ .catalog-tabs label[for="cat-1"],
+        #cat-2:checked ~ .catalog-tabs label[for="cat-2"],
+        #cat-3:checked ~ .catalog-tabs label[for="cat-3"] {
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.4);
+        }
+
+        #cat-1:checked ~ .panel-cat-1,
+        #cat-2:checked ~ .panel-cat-2,
+        #cat-3:checked ~ .panel-cat-3 {
+            display: grid;
+        }
+
+        /* ==========================================================
+           GALERÍA DE PRENDAS TEXTILES
+           ========================================================== */
+        .project-gallery-section {
+            max-width: 1200px;
+            margin: 55px auto;
+            padding: 0 5%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 163, 115, 0.22);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 16px 20px;
+        }
+
+        .gallery-caption h4 {
+            color: var(--accent-light);
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .gallery-caption span {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================
+           BLOQUE DE REDES SOCIALES (INSTAGRAM Y WHATSAPP)
+           ========================================================== */
+        .social-cta-box {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 48px 5%;
+            background: linear-gradient(145deg, #1a1612, #261f18);
+            border: 1px solid rgba(212, 163, 115, 0.35);
+            border-radius: 22px;
+            text-align: center;
+        }
+
+        .social-cta-box h3 {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+            color: var(--accent-light);
+        }
+
+        .social-cta-box p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 28px auto;
+            font-size: 0.98rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .btn-instagram {
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            box-shadow: 0 0 16px rgba(212, 163, 115, 0.35);
+        }
+
+        .btn-instagram:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 0 24px rgba(212, 163, 115, 0.6);
+        }
+
+        .btn-whatsapp {
+            background: transparent;
+            color: var(--accent-light);
+            border: 1.5px solid var(--accent-color);
+        }
+
+        .btn-whatsapp:hover {
+            background: rgba(212, 163, 115, 0.16);
+            border-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================
+           FOOTER
+           ========================================================== */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            border-top: 1px solid rgba(212, 163, 115, 0.18);
+            color: #a39e93;
+            font-size: 0.86rem;
+            margin-top: 50px;
+        }
+
+        footer span {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* ==========================================================
+           RESPONSIVO
+           ========================================================== */
+        @media (max-width: 900px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-banner {
+                height: 290px;
+            }
+            .project-details,
+            .process-grid,
+            .catalog-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Publicidad | Agencia Creativa</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icon.jpg">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <div class="brand-wrap">
+            <a href="#inicio" class="logo">ZOMA</a>
+            <span class="badge-nexa">Caso Nexa Publicidad</span>
+        </div>
+         
+         <a href="clientes.html" class="btn-volver">
+            <i class="fas fa-arrow-left"></i>Clientes</a>
+    </header>
+
+    <!-- CABECERA DEL PROYECTO -->
+    <section class="project-hero" id="inicio">
+        <span class="project-tag">Estrategia, Diseño & Sublimación Textil</span>
+        <h1>Zoma</h1>
+        <p>Especialistas en sublimación textil personalizada: franelas, camisetas, hoodies y piezas urbanas con diseños únicos, colores vibrantes y acabados pensados para destacar la identidad de cada cliente o marca.</p>
+        
+        <div class="hero-banner">
+            <img src="zomab.jpg" alt="Zoma Textil Banner">
+            <div class="banner-overlay-info">
+                <div>
+                    <span>Identidad & Confección</span>
+                    <h2>Estampados que comunican estilo propio</h2>
+                </div>
+                <span>Pedidos personales y al mayor</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCRIPCIÓN Y FICHA TÉCNICA -->
+    <section class="project-details">
+        <div class="detail-card">
+            <h2>El Concepto & Estrategia Visual</h2>
+            <p><strong>Zoma</strong> nace con la misión de convertir prendas cotidianas en piezas de expresión visual. A diferencia de los estampados convencionales que se cuartean o pierden intensidad con las lavadas, su propuesta apuesta por la sublimación textil de alta fidelidad.</p>
+            <p>Junto a <strong>Nexa Publicidad</strong>, estructuramos la presentación digital de la marca con una estética cálida en tonos tierra, arena y marrón oscuro que resalta la textura de las telas y transmite cercanía, autenticidad y estilo urbano contemporáneo.</p>
+
+            <div class="value-pills">
+                <span class="value-pill">Sublimación Full Color</span>
+                <span class="value-pill">Diseños Personalizados</span>
+                <span class="value-pill">Telas Suaves y Duraderas</span>
+                <span class="value-pill">Dotación para Marcas y Eventos</span>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <h2>Ficha del Proyecto</h2>
+            <ul class="meta-list">
+                <li>
+                    <span class="meta-label">Marca</span>
+                    <span class="meta-value">Zoma</span>
+                </li>
+                <li>
+                    <span class="meta-label">Rubro</span>
+                    <span class="meta-value">Sublimación & Moda Urbana</span>
+                </li>
+                <li>
+                    <span class="meta-label">Productos</span>
+                    <span class="meta-value">Franelas, Camisetas y Hoodies</span>
+                </li>
+                <li>
+                    <span class="meta-label">Paleta Visual</span>
+                    <span class="meta-value">Beige Arena, Crema y Marrón</span>
+                </li>
+                <li>
+                    <span class="meta-label">Agencia Aliada</span>
+                    <span class="meta-value">Nexa Publicidad • 2026</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO EN 3 PASOS -->
+    <section class="process-section">
+        <div class="section-heading">
+            <span>Cómo Trabajamos Cada Pieza</span>
+            <h2>Del Boceto Digital a la Prenda Final</h2>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-card">
+                <span class="step-number">PASO 01</span>
+                <h3>Diseño & Conceptualización</h3>
+                <p>Adaptamos la idea del cliente o creamos ilustraciones exclusivas cuidando proporciones, tipografía y equilibrio visual sobre la prenda.</p>
+            </div>
+
+            <div class="process-card">
+                <span class="step-number">PASO 02</span>
+                <h3>Sublimación de Alta Precisión</h3>
+                <p>Transferimos el diseño mediante calor controlado para que la tinta se integre directamente en las fibras de la tela sin dejar relieve incómodo.</p>
+            </div>
+
+            <div class="process-card">
+                <span class="step-number">PASO 03</span>
+                <h3>Acabado & Revisión de Color</h3>
+                <p>Verificamos la nitidez, el contraste y la resistencia de cada franela o hoodie antes de su entrega final al cliente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECTOR INTERACTIVO DE LÍNEAS (PURO HTML + CSS) -->
+    <section class="catalog-interactive">
+        <div class="section-heading">
+            <span>Catálogo Interactivo</span>
+            <h2>Explora Nuestras Líneas Textiles</h2>
+        </div>
+
+        <div class="catalog-box">
+            <input type="radio" name="linea-zoma" id="cat-1" checked>
+            <input type="radio" name="linea-zoma" id="cat-2">
+            <input type="radio" name="linea-zoma" id="cat-3">
+
+            <div class="catalog-tabs">
+                <label for="cat-1" class="catalog-tab-btn">Franelas & Camisetas</label>
+                <label for="cat-2" class="catalog-tab-btn">Hoodies & Sudaderas</label>
+                <label for="cat-3" class="catalog-tab-btn">Ediciones & Marcas</label>
+            </div>
+
+            <!-- Panel 1 -->
+            <div class="catalog-panel panel-cat-1">
+                <img src="zomac.jpg" alt="Franelas y Camisetas Zoma">
+                <div class="catalog-panel-text">
+                    <h3>Franelas & Camisetas Personalizadas</h3>
+                    <p>Ideales para uso diario, lanzamientos gráficos o regalos con identidad propia. Estampados ligeros que mantienen la frescura de la prenda.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Cortes clásicos y estilo oversize</li>
+                        <li><i class="fas fa-check"></i> Colores nítidos que no se desgastan</li>
+                        <li><i class="fas fa-check"></i> Estampado frontal, dorsal o completo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Panel 2 -->
+            <div class="catalog-panel panel-cat-2">
+                <img src="zomah.jpg" alt="Hoodies Zoma">
+                <div class="catalog-panel-text">
+                    <h3>Hoodies & Sudaderas Urbanas</h3>
+                    <p>Prendas con presencia visual fuerte, perfectas para colecciones streetwear y diseños ilustrados de gran formato.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Sublimación de alta definición en pecho, mangas y espalda</li>
+                        <li><i class="fas fa-check"></i> Interior suave y cómodo para uso continuo</li>
+                        <li><i class="fas fa-check"></i> Personalización individual o por lotes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Panel 3 -->
+            <div class="catalog-panel panel-cat-3">
+                <img src="zomat (1).jpg" alt="Ediciones para Marcas Zoma">
+                <div class="catalog-panel-text">
+                    <h3>Piezas para Marcas, Equipos y Eventos</h3>
+                    <p>Material POP y equipos de trabajo.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Asesoría gráfica previa antes de imprimir</li>
+                        <li><i class="fas fa-check"></i> Coherencia con la paleta de colores de tu marca</li>
+                        <li><i class="fas fa-check"></i> Producción ágil para pedidos especiales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE PRENDAS -->
+    <section class="project-gallery-section">
+        <div class="section-heading">
+            <span>Muestra Visual</span>
+            <h2>Colección & Producción Textil</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="zomah3.jpg" alt="Hoodies Zoma">
+                <div class="gallery-caption">
+                    <h4>Línea de Hoodies</h4>
+                    <span>Sublimación Full Print</span>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="zomac2.jpg" alt="Franelas Personalizadas Zoma">
+                <div class="gallery-caption">
+                    <h4>Franelas & Camisetas</h4>
+                    <span>Diseños Urbanos y Exclusivos</span>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="zomatelas (1).jpg" alt="Detalle de Sublimación Zoma">
+                <div class="gallery-caption">
+                    <h4>Acabados y Texturas</h4>
+                    <span>Alta Definición Textil</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REDES SOCIALES (INSTAGRAM Y WHATSAPP) -->
+    <section class="social-cta-box">
+        <h3>Conecta directamente con Zoma</h3>
+        <p>Mira nuestros últimos diseños, solicita tu franela o hoodie personalizado y consulta disponibilidad a través de nuestras redes oficiales.</p>
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-social btn-instagram">
+                <i class="fab fa-instagram"></i> Seguir en Instagram
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn-social btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 <span>Zoma</span> • Proyecto desarrollado junto a <span>Nexa Publicidad</span></p>
+    </footer>
+
+</body>
+</html>

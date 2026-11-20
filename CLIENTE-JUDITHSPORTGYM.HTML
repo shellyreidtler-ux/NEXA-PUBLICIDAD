@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judith Sport Gym | Nexa Publicidad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================
+           PALETA DE COLORES OFICIAL — JUDITH SPORT GYM
+           Verde fosforescente: #96FD0A | Negro | Blanco
+           ========================================================== */
+        :root {
+            --lime: #96FD0A;
+            --lime-glow: rgba(150, 253, 10, 0.35);
+            --lime-soft: rgba(150, 253, 10, 0.12);
+            --black: #070807;
+            --surface: #111410;
+            --surface-2: #181c17;
+            --white: #ffffff;
+            --muted: #d2d7cf;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================
+           BARRA SUPERIOR
+           ========================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(7, 8, 7, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(150, 253, 10, 0.25);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gym-mark {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--lime);
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .agency-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--black);
+            background: var(--lime);
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-outline-lime {
+            color: var(--lime);
+            border: 1px solid var(--lime);
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline-lime:hover {
+            background: var(--lime);
+            color: var(--black);
+            box-shadow: 0 0 15px var(--lime-glow);
+        }
+
+        .btn-back {
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .btn-back:hover {
+            border-color: var(--lime);
+            color: var(--lime);
+        }
+
+        /* ==========================================================
+           HERO PRINCIPAL
+           ========================================================== */
+        .hero {
+            padding: 135px 5% 65px 5%;
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            color: var(--lime);
+            border: 1px solid rgba(150, 253, 10, 0.45);
+            background: var(--lime-soft);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 3.1rem;
+            line-height: 1.1;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--lime);
+            display: block;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.02rem;
+            margin-bottom: 26px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-lime {
+            background: var(--lime);
+            color: var(--black);
+            padding: 13px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 0.92rem;
+            box-shadow: 0 0 18px var(--lime-glow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-lime:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px var(--lime-glow);
+        }
+
+        .btn-white-border {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            padding: 13px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+
+        .btn-white-border:hover {
+            border-color: var(--lime);
+            color: var(--lime);
+        }
+
+        .hero-box {
+            background: var(--surface);
+            border: 1px solid rgba(150, 253, 10, 0.3);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+        }
+
+        .hero-box h2 {
+            color: var(--lime);
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-box p {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .highlight-quote {
+            border-left: 3px solid var(--lime);
+            padding-left: 14px;
+            color: var(--white);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================
+           SECCIONES GENERALES
+           ========================================================== */
+        section.bloque {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 55px 5%;
+        }
+
+        .section-head {
+            margin-bottom: 30px;
+        }
+
+        .section-tag {
+            color: var(--lime);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .section-head h2 {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .section-head p {
+            color: var(--muted);
+            max-width: 760px;
+            margin-top: 8px;
+        }
+
+        /* ==========================================================
+           HISTORIA Y ATENCIÓN INTEGRAL
+           ========================================================== */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 28px;
+        }
+
+        .card-dark {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .card-dark h3 {
+            color: var(--lime);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .card-dark p {
+            color: var(--muted);
+            font-size: 0.96rem;
+            margin-bottom: 14px;
+        }
+
+        .card-dark p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pillars-list {
+            list-style: none;
+            display: grid;
+            gap: 14px;
+        }
+
+        .pillars-list li {
+            background: var(--surface-2);
+            border: 1px solid rgba(150, 253, 10, 0.22);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .pillars-list strong {
+            color: var(--lime);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.98rem;
+        }
+
+        .pillars-list span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================
+           INTERACTIVO 1: ESPACIO DEL GYM (PURO CSS)
+           ========================================================== */
+        .interactive-panel {
+            background: var(--surface);
+            border: 1px solid rgba(150, 253, 10, 0.35);
+            border-radius: 22px;
+            padding: 32px;
+        }
+
+        .interactive-panel input[type="radio"] {
+            display: none;
+        }
+
+        .space-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 28px;
+            align-items: center;
+            margin-top: 22px;
+        }
+
+        .space-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 18px;
+            border-radius: 12px;
+            background: var(--surface-2);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--lime);
+        }
+
+        .viewer-box {
+            position: relative;
+            height: 310px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(150, 253, 10, 0.35);
+            background: var(--black);
+        }
+
+        .viewer-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .viewer-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .viewer-caption {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(to top, rgba(7, 8, 7, 0.95), rgba(7, 8, 7, 0.45));
+            padding: 20px;
+        }
+
+        .viewer-caption h4 {
+            color: var(--lime);
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .viewer-caption p {
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* Lógica CSS para las 3 vistas del espacio */
+        #esp-1:checked ~ .space-layout .space-tabs label[for="esp-1"],
+        #esp-2:checked ~ .space-layout .space-tabs label[for="esp-2"],
+        #esp-3:checked ~ .space-layout .space-tabs label[for="esp-3"] {
+            background: var(--lime);
+            color: var(--black);
+            border-color: var(--lime);
+            box-shadow: 0 0 16px var(--lime-glow);
+        }
+
+        #esp-1:checked ~ .space-layout .viewer-box .slide-1,
+        #esp-2:checked ~ .space-layout .viewer-box .slide-2,
+        #esp-3:checked ~ .space-layout .viewer-box .slide-3 {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ==========================================================
+           INTERACTIVO 2: SUBIR VS BAJAR DE PESO (PURO CSS)
+           ========================================================== */
+        .goal-selector-wrap input[type="radio"] {
+            display: none;
+        }
+
+        .goal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .goal-pill {
+            padding: 13px 22px;
+            border-radius: 30px;
+            background: var(--surface-2);
+            border: 1px solid rgba(150, 253, 10, 0.35);
+            color: var(--white);
+            font-weight: 800;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .goal-pill:hover {
+            border-color: var(--lime);
+            color: var(--lime);
+        }
+
+        .goal-panels {
+            position: relative;
+            min-height: 230px;
+        }
+
+        .goal-card {
+            display: none;
+            background: var(--surface-2);
+            border: 1px solid rgba(150, 253, 10, 0.35);
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .goal-card h3 {
+            color: var(--lime);
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
+
+        .goal-card p {
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-size: 0.96rem;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .exercise-item {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .exercise-item strong {
+            color: var(--lime);
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .exercise-item span {
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        /* Lógica CSS para Subir de Peso / Bajar de Peso */
+        #meta-subir:checked ~ .goal-buttons label[for="meta-subir"],
+        #meta-bajar:checked ~ .goal-buttons label[for="meta-bajar"] {
+            background: var(--lime);
+            color: var(--black);
+            border-color: var(--lime);
+            box-shadow: 0 0 16px var(--lime-glow);
+        }
+
+        #meta-subir:checked ~ .goal-panels .panel-subir,
+        #meta-bajar:checked ~ .goal-panels .panel-bajar {
+            display: block;
+        }
+
+        /* ==========================================================
+           UBICACIÓN Y CONTACTO DIRECTO
+           ========================================================== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .info-box {
+            background: var(--surface);
+            border: 1px solid rgba(150, 253, 10, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .info-box i {
+            color: var(--lime);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .info-box h3 {
+            color: var(--white);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .info-box p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        /* ==========================================================
+           FOOTER
+           ========================================================== */
+        footer {
+            text-align: center;
+            padding: 32px 5%;
+            border-top: 1px solid rgba(150, 253, 10, 0.2);
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-top: 30px;
+        }
+
+        footer span {
+            color: var(--lime);
+            font-weight: 700;
+        }
+
+        /* ==========================================================
+           RESPONSIVO
+           ========================================================== */
+        @media (max-width: 900px) {
+            .hero,
+            .story-grid,
+            .space-layout,
+            .info-grid,
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 155px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Judith Sport Gym | Nexa Publicidad</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icongym.jpg">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="brand-group">
+            <a href="#inicio" class="gym-mark">Judith Sport Gym</a>
+            <span class="agency-badge">Caso Nexa Publicidad</span>
+        </div>
+        <div class="header-actions">
+            <a href="#objetivos" class="btn-outline-lime">Rutinas y Metas</a>
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Inicio</a>
+            <a href="clientes.html" class="btn-back"><i class="fas fa-arrow-left"></i> Clientes</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div>
+            <span class="hero-kicker">Entrenamiento • Cuidado Integral • Comunidad</span>
+            <h1>Judith Sport Gym <span>Fuerza y Cercanía</span></h1>
+            <p>Un espacio deportivo pensado para acompañar a cada persona según su meta —subir o bajar de peso— combinando entrenamiento guiado con una atención cercana y humana que marca la diferencia.</p>
+            <div class="hero-buttons">
+                <a href="#objetivos" class="btn-lime">Explorar Metas</a>
+                <a href="#ubicacion" class="btn-white-border">Dirección y Teléfono</a>
+            </div>
+        </div>
+
+        <div class="hero-box">
+            <h2>Por qué vuelven las clientas</h2>
+            <p>El gimnasio tuvo etapas de gran asistencia, pero tras una operación la dueña debió pausar su presencia directa y contar con un entrenador. Muchas chicas y señoras expresaron el mismo sentir: no por rechazo al profesor, sino por el trato tan especial que ella brindaba.</p>
+            <blockquote class="highlight-quote">
+                "Cuando tú vuelvas al gym, yo voy." — El vínculo y la atención personalizada son parte esencial de la experiencia.
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- HISTORIA Y CONOCIMIENTOS DE LA DUEÑA -->
+    <section class="bloque" id="historia">
+        <div class="section-head">
+            <span class="section-tag">Identidad del Proyecto</span>
+            <h2>Más que Rutinas: Acompañamiento Real</h2>
+            <p>Esta página busca dar mayor visibilidad al gimnasio y mostrar el valor humano y técnico detrás de la marca.</p>
+        </div>
+
+        <div class="story-grid">
+            <div class="card-dark">
+                <h3>La Historia detrás del Gimnasio</h3>
+                <p><strong>Judith Sport Gym</strong> creció gracias al movimiento constante de chicas, señoras y deportistas que encontraron allí motivación y confianza. Tras una cirugía que limitó su asistencia presencial temporal, se incorporó un profesor para sostener el ritmo de trabajo.</p>
+                <p>Sin embargo, quedó claro que el verdadero diferencial del lugar no es solo el equipamiento, sino la cercanía, el seguimiento y la confianza que su dueña construyó con cada alumna.</p>
+            </div>
+
+            <div class="card-dark">
+                <h3>Enfoque Integral de la Dueña</h3>
+                <ul class="pillars-list">
+                    <li>
+                        <strong>Masajes y Fisioterapia</strong>
+                        <span>Apoyo orientado al alivio muscular, recuperación y cuidado físico responsable.</span>
+                    </li>
+                    <li>
+                        <strong>Orientación Alimentaria</strong>
+                        <span>Guía práctica sobre qué deben comer las chicas y señoras según su etapa y objetivo.</span>
+                    </li>
+                    <li>
+                        <strong>Entrenamiento por Objetivo</strong>
+                        <span>Enfoque claro tanto para quienes buscan subir de peso con masa muscular como para quienes desean bajar de peso.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVO 1: ESPACIO DEL GYM (PURO HTML + CSS) -->
+    <section class="bloque" id="espacio">
+        <div class="section-head">
+            <span class="section-tag">Recorrido Visual</span>
+            <h2>Explora el Espacio del Gimnasio</h2>
+            <p>Haz clic en cada opción para cambiar la vista del espacio sin recargar la página.</p>
+        </div>
+
+        <div class="interactive-panel">
+            <input type="radio" name="vista-espacio" id="esp-1" checked>
+            <input type="radio" name="vista-espacio" id="esp-2">
+            <input type="radio" name="vista-espacio" id="esp-3">
+
+            <div class="space-layout">
+                <div class="space-tabs">
+                    <label for="esp-1" class="tab-btn">
+                        <span>1. Espacio y Espejos</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </label>
+                    <label for="esp-2" class="tab-btn">
+                        <span>2. Zona de Máquinas</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </label>
+                    <label for="esp-3" class="tab-btn">
+                        <span>3. Ambiente Completo</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </label>
+                </div>
+
+                <div class="viewer-box">
+                    <div class="viewer-slide slide-1">
+                        <img src="gymespejos.jpeg" alt="Espacio y Espejos Judith Sport Gym">
+                        <div class="viewer-caption">
+                            <h4>Espacio y Espejos</h4>
+                            <p>Ideal para cuidar la postura, la técnica y la ejecución segura de cada movimiento.</p>
+                        </div>
+                    </div>
+
+                    <div class="viewer-slide slide-2">
+                        <img src="gymmaquinas.jpeg" alt="Zona de Máquinas Judith Sport Gym">
+                        <div class="viewer-caption">
+                            <h4>Zona de Máquinas</h4>
+                            <p>Equipamiento dispuesto para entrenar fuerza, resistencia y progresión constante.</p>
+                        </div>
+                    </div>
+
+                    <div class="viewer-slide slide-3">
+                        <img src="gymcompleto.jpeg" alt="Ambiente Completo Judith Sport Gym">
+                        <div class="viewer-caption">
+                            <h4>Ambiente Completo</h4>
+                            <p>Un entorno cercano y motivador pensado para entrenar con constancia y bienestar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVO 2: SUBIR O BAJAR DE PESO (PURO HTML + CSS) -->
+    <section class="bloque" id="objetivos">
+        <div class="section-head">
+            <span class="section-tag">Guía Interactiva Deportiva</span>
+            <h2>¿Quieres Subir o Bajar de Peso?</h2>
+            <p>Selecciona un objetivo para ver el enfoque de entrenamiento y los ejercicios recomendados.</p>
+        </div>
+
+        <div class="interactive-panel goal-selector-wrap">
+            <input type="radio" name="meta-gym" id="meta-subir" checked>
+            <input type="radio" name="meta-gym" id="meta-bajar">
+
+            <div class="goal-buttons">
+                <label for="meta-subir" class="goal-pill">Subir de Peso (Ganancia Muscular)</label>
+                <label for="meta-bajar" class="goal-pill">Bajar de Peso (Definición y Resistencia)</label>
+            </div>
+
+            <div class="goal-panels">
+                <div class="goal-card panel-subir">
+                    <h3>Estrategia para Subir de Peso</h3>
+                    <p>Para subir de peso de forma saludable se prioriza el entrenamiento de fuerza progresiva, el descanso adecuado y una alimentación acorde a lo que el cuerpo necesita para construir tejido y ganar volumen.</p>
+                    <div class="exercise-grid">
+                        <div class="exercise-item">
+                            <strong>Ejercicio X: Sentadillas</strong>
+                            <span>Trabaja piernas y glúteos con carga controlada y técnica firme.</span>
+                        </div>
+                        <div class="exercise-item">
+                            <strong>Ejercicio Y: Press / Empujes</strong>
+                            <span>Desarrolla tren superior, hombros y pectorales con progresión.</span>
+                        </div>
+                        <div class="exercise-item">
+                            <strong>Ejercicio Z: Remos y Jalones</strong>
+                            <span>Fortalece la espalda y mejora el soporte postural en cada sesión.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="goal-card panel-bajar">
+                    <h3>Estrategia para Bajar de Peso</h3>
+                    <p>Para bajar de peso se combina ritmo constante, circuitos dinámicos y trabajo muscular que mantenga el gasto energético activo, acompañado de buenos hábitos alimenticios y recuperación.</p>
+                    <div class="exercise-grid">
+                        <div class="exercise-item">
+                            <strong>Circuitos de Fuerza</strong>
+                            <span>Movimientos compuestos con pausas breves para sostener el ritmo.</span>
+                        </div>
+                        <div class="exercise-item">
+                            <strong>Trabajo Cardiovascular</strong>
+                            <span>Sesiones continuas o por intervalos para elevar la resistencia.</span>
+                        </div>
+                        <div class="exercise-item">
+                            <strong>Core y Movilidad</strong>
+                            <span>Ejercicios de zona media y control corporal para mayor estabilidad.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y CONTACTO -->
+    <section class="bloque" id="ubicacion">
+        <div class="section-head">
+            <span class="section-tag">Información Directa</span>
+            <h2>Dónde Estamos y Cómo Contactar</h2>
+            <p>Datos listos para quienes deseen conocer el gimnasio o retomar su rutina.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <i class="fas fa-location-dot"></i>
+                <h3>Dirección</h3>
+                <p>Barrio Federación 2, Calle San Juan, número 102-A90.</p>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-phone"></i>
+                <h3>Teléfono</h3>
+                <p>0414-584-5270</p>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-heart-pulse"></i>
+                <h3>Enfoque</h3>
+                <p>Entrenamiento, masajes, fisioterapia y orientación alimentaria para chicas y señoras.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><span>Judith Sport Gym</span></p>
+    </footer>
+
+</body>
+</html>

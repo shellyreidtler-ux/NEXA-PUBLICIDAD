@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexa Publicidad | Agencia Creativa & Dirección de Arte</title>
+   
+
     <!-- FontAwesome para Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -47,7 +46,7 @@
            ESTILO REUTILIZABLE PARA EMBEDS DE YOUTUBE
            ========================================== */
         .youtube-embed {
-            width: 100%;
+            width: 50%;
             aspect-ratio: 16 / 9;
             border: 0;
             border-radius: 12px 12px 0 0;
@@ -70,6 +69,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
         }
 
         .nexa-logo {
@@ -85,6 +85,7 @@
             display: flex;
             gap: 30px;
             list-style: none;
+            padding-top: 5px;
         }
 
         .nav-link {
@@ -108,21 +109,25 @@
             color: var(--text-main);
             font-size: 1.8rem;
             cursor: pointer;
+            
         }
 
         /* ==========================================
            HERO SECTION (INICIO)
            ========================================== */
         .hero-section {
-            min-height: 90vh;
-            padding-top: 130px;
+            min-height: auto;
+            height: auto;
+            padding-top: 250px;
+            padding-bottom: 50px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             padding-left: 20px;
             padding-right: 20px;
+            
             background: radial-gradient(circle at center, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
         }
 
@@ -230,70 +235,147 @@
         }
 
         /* ==========================================
-           SECCIÓN NUESTRO EQUIPO
+           SECCIÓN DE BANNER
            ========================================== */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        
+            /* Contenedor general */
+            .card-gym-interactiva {
+                background: #0b0f17;
+                border: 1px solid rgba(0, 229, 255, 0.25);
+                border-radius: 20px;
+                padding: 30px;
+                max-width: 600px;
+                margin: 0 auto;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
 
-        .team-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 35px 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            .card-header-tag {
+                color: #00e5ff;
+                font-size: 0.75rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+                margin-bottom: 10px;
+            }
 
-        .team-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 10px 30px var(--accent-glow);
-        }
+            .card-gym-interactiva h3 {
+                color: #ffffff;
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
 
-        .team-img-box {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--accent-cyan);
-            box-shadow: 0 0 18px var(--accent-glow);
-            margin-bottom: 20px;
-            background: #1a1a24;
-        }
+            .card-gym-interactiva p {
+                color: #a0aec0;
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
 
-        .team-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
+            /* Ocultar los botones de radio reales pero mantenerlos accesibles */
+            .selector-imagenes input[type="radio"] {
+                display: none;
+            }
 
-        .team-card:hover .team-img-box img {
-            transform: scale(1.08);
-        }
+            /* Visor donde se alternan las imágenes */
+            .visor-imagenes {
+                width: 100%;
+                height: 280px;
+                border-radius: 12px;
+                overflow: hidden;
+                margin-bottom: 20px;
+                border: 1px solid rgba(0, 229, 255, 0.2);
+                position: relative;
+                background: #000;
+            }
 
-        .team-name {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
+            /* Por defecto todas las imágenes están ocultas */
+            .img-vista {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
 
-        .team-role {
-            font-size: 0.82rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-        }
+            /* Estilo de los botones (labels que simulan ser botones) */
+            .btn-opcion {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 10px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                color: #ffffff;
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-align: center;
+            }
+
+            .btn-opcion:hover {
+                border-color: #00e5ff;
+                background: rgba(0, 229, 255, 0.05);
+            }
+
+            /* LÓGICA CSS PURA: CUANDO UN RADIO ESTÁ CHECKED, MUESTRA SU FOTO Y CAMBIA EL ESTILO DEL BOTÓN */
+
+            /* 1. Si se marca vista-1, muestra la img-1 y resalta el botón 1 */
+            #vista-1:checked ~ .visor-imagenes .img-1 {
+                opacity: 1;
+            }
+            #vista-1:checked ~ label[for="vista-1"] {
+                background: rgba(0, 229, 255, 0.15);
+                border-color: #00e5ff;
+                color: #00e5ff;
+                box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+            }
+
+            /* 2. Si se marca vista-2, muestra la img-2 y resalta el botón 2 */
+            #vista-2:checked ~ .visor-imagenes .img-2 {
+                opacity: 1;
+            }
+            #vista-2:checked ~ label[for="vista-2"] {
+                background: rgba(0, 229, 255, 0.15);
+                border-color: #00e5ff;
+                color: #00e5ff;
+                box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+            }
+
+            /* 3. Si se marca vista-3, muestra la img-3 y resalta el botón 3 */
+            #vista-3:checked ~ .visor-imagenes .img-3 {
+                opacity: 1;
+            }
+            #vista-3:checked ~ label[for="vista-3"] {
+                background: rgba(0, 229, 255, 0.15);
+                border-color: #00e5ff;
+                color: #00e5ff;
+                box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+            }
+
+            /* Botón final para ir a la página de estrategia */
+            .btn-estrategia {
+                display: block;
+                width: 100%;
+                padding: 14px;
+                background: #00e5ff;
+                color: #000000;
+                border-radius: 8px;
+                font-weight: bold;
+                text-decoration: none;
+                text-align: center;
+                box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+                transition: all 0.3s ease;
+            }
+
+            .btn-estrategia:hover {
+                background: #fff;
+                box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+            }
+
 
         /* ==========================================
            CLIENTE DESTACADO DRAFT (PODCAST YOUTUBE)
@@ -418,7 +500,7 @@
 
         .portfolio-thumb img {
             width: 100%;
-            aspect-ratio: 4/5;
+            aspect-ratio: 4/4;
             object-fit: cover;
             transition: transform 0.5s ease;
             display: block;
@@ -617,8 +699,59 @@
                 gap: 8px;
                 text-align: center;
             }
+
+            /* --- ESTILOS UNIFORMES PARA EL PORTAFOLIO (FOTOS Y VIDEOS) --- */
+
+            /* Asegura que la tarjeta mantenga un tamaño compacto y ordenado */
+            .portfolio-item {
+            width: 100%;
+            max-width: 350px; /* Tamaño máximo para que no crezcan de más en PC */
+            margin: 0 auto;
+            }
+
+            /* Controla el contenedor interno para que tenga un alto fijo elegante */
+            .portfolio-thumb {
+            position: relative;
+            width: 100%;
+            height: 380px; /* Altura controlada para que todas las tarjetas sean iguales */
+            overflow: hidden;
+            border-radius: 12px;
+            }
+
+            /* Hace que las imágenes (Vértice) se ajusten perfectamente sin deformarse */
+            .portfolio-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta la imagen para que llene el espacio sin estirarse */
+            display: block;
+            }
+
+            /* Hace que los videos (Verticales u Horizontales) encajen perfecto en la tarjeta */
+            .portfolio-thumb video,
+            .portfolio-thumb iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            display: block;
+            }
+
+            /* Ajustes automáticos para pantallas de teléfonos (Responsivo) */
+            @media (max-width: 768px) {
+            .portfolio-thumb {
+                height: 320px; /* Un poco más compacto en celulares */
+            }
+            }
         }
     </style>
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Publicidad | Agencia Creativa</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icon.jpg">
+</head>
+
 </head>
 <body>
 
@@ -630,13 +763,16 @@
             <i class="fas fa-bars"></i>
         </button>
 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <ul class="nav-menu" id="navMenu">
             <li><a href="#inicio" class="nav-link active">Inicio</a></li>
             <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
             <li><a href="#servicios" class="nav-link">Servicios</a></li>
-            <li><a href="#equipo" class="nav-link">Equipo</a></li>
             <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
-            <li><a href="#clientes" class="nav-link">Clientes</a></li>
+            <li><a href="clientes.html" class="nav-link">Clientes</a></li>
+            <li><a href="#destacados" class="nav-link">DESTACADOS</a></li>
             <li><a href="contacto.html" class="nav-link">Contacto</a></li>
         </ul>
     </nav>
@@ -652,42 +788,40 @@
         </div>
     </section>
 
-        <!-- 3. NUESTRO EQUIPO -->
-    <section class="section-padding" id="equipo">
-        <div class="section-header">
-            <span class="section-subtitle">Conoce a las Mentes Creativas</span>
-            <h2 class="section-title">NUESTROS PROFESIONALES</h2>
+   <div class="card-gym-interactiva">
+    <div class="card-header-tag">CASO DESTACADO • FITNESS PRIVADO</div>
+    <h3>De Sala Residencial a Gym de Alto Rendimiento</h3>
+    <p>Haz clic en las opciones para ver cómo transformamos este espacio en casa:</p>
+
+    <!-- CONTENEDOR DE LOS RADIO BUTTONS (OCULTOS PERO FUNCIONALES) -->
+    <div class="selector-imagenes">
+        
+        <!-- Opción 1: Espejos (Marcado por defecto con 'checked') -->
+        <input type="radio" name="vista-gym" id="vista-1" checked>
+        <label for="vista-1" class="btn-opcion">Espacio / Espejos</label>
+
+        <!-- Opción 2: Máquinas -->
+        <input type="radio" name="vista-gym" id="vista-2">
+        <label for="vista-2" class="btn-opcion">Zona de Máquinas</label>
+
+        <!-- Opción 3: Ambiente Completo -->
+        <input type="radio" name="vista-gym" id="vista-3">
+        <label for="vista-3" class="btn-opcion">Ambiente Completo</label>
+
+        <!-- VISOR DE LAS IMÁGENES (CADA UNA SE MUESTRA SEGÚN EL RADIO SELECCIONADO) -->
+        <div class="visor-imagenes">
+            <img src="gymespejos.jpeg" alt="Espacio y Espejos" class="img-vista img-1">
+            <img src="gymmaquinas.jpeg" alt="Zona de Máquinas" class="img-vista img-2">
+            <img src="gymcompleto.jpeg" alt="Ambiente Completo" class="img-vista img-3">
         </div>
 
-        <div class="team-grid">
-            <!-- Miembro 1: Machado -->
-            <div class="team-card">
-                <div class="team-img-box">
-                    <img src="ashley.png" alt="Machado">
-                </div>
-                <h3 class="team-name">Ashley Machado</h3>
-                <span class="team-role">Director & Estratega de Marca</span>
-            </div>
+    </div>
 
-            <!-- Miembro 2: Verónica -->
-            <div class="team-card">
-                <div class="team-img-box">
-                    <img src="draft.png" alt="Verónica">
-                </div>
-                <h3 class="team-name">Verónica Reyes</h3>
-                <span class="team-role">Directora Creativa</span>
-            </div>
-
-            <!-- Miembro 3: Dilmar -->
-            <div class="team-card">
-                <div class="team-img-box">
-                    <img src="dilmar.png" alt="Dilmar">
-                </div>
-                <h3 class="team-name">Dilmar Barbera</h3>
-                <span class="team-role">Especialista Audiovisual</span>
-            </div>
-        </div>
-    </section>
+    <!-- BOTÓN QUE ENVÍA A LA PÁGINA DE LA MARCA -->
+    <a href="CLIENTE-JUDITHSPORTGYM.HTML" class="btn-estrategia">
+        Explorar Estrategia Publicitaria →
+    </a>
+</div>
     
     <!-- 2. SERVICIOS Y PAQUETES -->
     <section class="section-padding" id="servicios">
@@ -748,24 +882,17 @@
             <button class="filter-btn active" onclick="filterPortfolio('all')">Todos</button>
             <button class="filter-btn" onclick="filterPortfolio('editorial')">Línea Editorial</button>
             <button class="filter-btn" onclick="filterPortfolio('video')">Video Publicitario</button>
+            <button class="filter-btn" onclick="filterPortfolio('audiovisual')">Audiovisual</button>
+            <button class="filter-btn" onclick="filterPortfolio('fotografia')">Fotografía</button>
         </div>
 
         <div class="portfolio-grid">
-            <!-- 1. ESQUINA IZQUIERDA: Flyer #01 -->
-            <div class="portfolio-item editorial">
-                <div class="portfolio-thumb">
-                    <img src="FLYER.png" alt="Flyer Masculino">
-                    <div class="portfolio-overlay">
-                        <span class="item-category">Línea Editorial</span>
-                        <h3 class="item-title">Flyer #01 - Indumentaria Masculina</h3>
-                    </div>
-                </div>
-            </div>
+
 
             <!-- 2. EN EL MEDIO: Video Speedmax -->
-            <div class="portfolio-item video">
+            <div class="portfolio-item audiovisual">
                 <div class="portfolio-thumb">
-                    <iframe width="850" height="400" src="https://www.youtube.com/embed/5Bb_pyplr_I?si=FnS7YXA9XUyaxkAE" 
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5Bb_pyplr_I?si=FnS7YXA9XUyaxkAE" 
                     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
                     gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                     </iframe>
@@ -774,26 +901,82 @@
                     <span class="item-category">Video Publicitario</span>
                     <h3 class="item-title">Spot Comercial - Speedmax</h3>
                 </div>
-                <div class="portfolio-btn-container">
-                    <a href="speedmax.html" class="portfolio-btn-link">
-                        Ver Más sobre Speedmax <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
+               
             </div>
 
-            <!-- 3. ESQUINA DERECHA: Flyer #02 -->
-            <div class="portfolio-item editorial">
-                <div class="portfolio-thumb">
-                    <img src="FLYER-2.png" alt="Flyer Femenino">
-                    <div class="portfolio-overlay">
-                        <span class="item-category">Línea Editorial</span>
-                        <h3 class="item-title">Flyer #02 - Indumentaria Femenina</h3>
-                    </div>
+                    <!-- VIDEO PUBLICITARIO HORIZONTAL -->
+        <div class="portfolio-item video">
+            <div class="portfolio-thumb">
+                <!-- Si está en YouTube, mantén el iframe adaptado a horizontal -->
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/eEc6lRuX1Fo?si=HvJPEmYzHzZZ8pDg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
                 </div>
             </div>
         </div>
-    </section>
 
+                        <!-- 3. EN EL MEDIO: Podcast -->
+            <div class="portfolio-item audiovisual">
+                <div class="portfolio-thumb">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FvugtJaEzgc?si=9ehYKWO8ve6hVezb" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info-box">
+                    <span class="item-category">Audiovisual</span>
+                    <h3 class="item-title">Spot Comercial - Podcast</h3>
+                </div>
+              
+            </div>
+
+
+            <!-- 4. ESQUINA DERECHA: Flyer #02 -->
+            <div class="portfolio-item editorial">
+                <div class="portfolio-thumb">
+                    <img src="FLYER-2.png" alt="Flyer Femenino">
+                     <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
+                </div>
+                </div>
+            </div>
+        
+                        <!-- 1. ESQUINA IZQUIERDA: Flyer #01 -->
+            <div class="portfolio-item editorial">
+                <div class="portfolio-thumb">
+                    <img src="FLYER.png" alt="Flyer Masculino">
+                     <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
+                </div>
+                </div>
+            </div>
+
+
+        <!-- FOTO DE VÉRTICE -->
+        <div class="portfolio-item fotografia">
+            <div class="portfolio-thumb">
+                <img src="vertice1.png" alt="Fotográfica Vértice">
+                 <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOTO DE VÉRTICE -->
+        <div class="portfolio-item fotografia">
+            <div class="portfolio-thumb">
+                <img src="vertice2.png" alt="Sesión Fotográfica Vértice">
+                 <div class="video-info-box">
+                    <span class="item-category">Video Publicitario</span>
+                    <h3 class="item-title">Spot Comercial - Speedmax</h3>
+                </div>
+            </div>
+        </div>
+        </div>
 <!-- CLIENTE DESTACADO / SECCIÓN CLIENTES -->
 <section class="section-padding" id="clientes">
     <div class="section-header">

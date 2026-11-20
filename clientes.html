@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Clientes | Nexa Publicidad</title>
-    <!-- FontAwesome para Íconos -->
+    <title>Nexa Publicidad - Clientes</title>
+    <!-- FontAwesome para los iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+    
     <style>
-        /* ==========================================
-           VARIABLES Y RESET GENERAL
-           ========================================== */
+        /* ==========================================================
+           ESTILOS GENERALES Y DE LA PÁGINA DE CLIENTES
+           ========================================================== */
         :root {
-            --bg-dark: #08080a;
-            --card-bg: #111116;
-            --accent-cyan: #00e5ff;
-            --accent-glow: rgba(0, 229, 255, 0.35);
+            --bg-dark: #05080e;
+            --card-bg: #0b0f17;
+            --neon-cyan: #00e5ff;
             --text-main: #ffffff;
-            --text-muted: #8a8a9e;
+            --text-muted: #a0aec0;
             --font-heading: 'Permanent Marker', cursive, sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
         }
@@ -30,20 +29,194 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: var(--font-body);
-            overflow-x: hidden;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; }
+         a { text-decoration: none; color: inherit; }
 
-        /* ==========================================
+        /* --- NAVEGACIÓN --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 8, 14, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nexa-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
+
+      /*  .nexa-logo span { 
+            color: var(--accent-cyan); 
+            font-family: var(--font-heading);
+            
+        }
+*/
+        nav {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+        }
+
+        /* --- SECCIÓN CLIENTES --- */
+        .section-padding {
+            padding: 120px 5% 80px 5%;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 25px;
+        }
+
+        .section-subtitle {
+            color: var(--neon-cyan);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        /* --- CUADRÍCULA DE TARJETAS --- */
+        .clientes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 350px));
+            justify-content: center;
+            gap: 35px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .tarjeta-cliente {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tarjeta-cliente:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+        }
+
+        .cliente-thumb {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .cliente-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cliente-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .item-category {
+            color: var(--neon-cyan);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .cliente-info p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-cliente {
+            display: inline-block;
+            padding: 10px 18px;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cliente:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 60px;
+        }
+
+         /* ==========================================
            BARRA DE NAVEGACIÓN FIJA
            ========================================== */
         .nexa-navbar {
@@ -68,8 +241,9 @@
             letter-spacing: 2px;
         }
 
-        .nexa-logo span { color: var(--accent-cyan); }
-
+        /*.nexa-logo span { color: var(--accent-cyan); 
+        font-family: var(--font-heading);}
+*/
         .nav-menu {
             display: flex;
             gap: 30px;
@@ -99,170 +273,22 @@
             cursor: pointer;
         }
 
-        /* ==========================================
-           ENCABEZADO DE LA PÁGINA
-           ========================================== */
-        .page-header {
-            padding-top: 150px;
-            padding-bottom: 30px;
-            text-align: center;
-        }
 
-        .section-subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        /* ==========================================
-           GRID DE CLIENTES
-           ========================================== */
-        .clients-section {
-            padding: 40px 5% 100px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
-
-        .client-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.4s ease;
-        }
-
-        .client-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 12px 35px var(--accent-glow);
-        }
-
-        .client-thumb {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            position: relative;
-            background: #000;
-        }
-
-        .client-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .client-card:hover .client-thumb img {
-            transform: scale(1.06);
-        }
-
-        .client-content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .client-tag {
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .client-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .client-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .client-btn {
-            display: inline-block;
-            text-align: center;
-            padding: 12px 20px;
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            border-radius: 10px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .client-btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        /* ==========================================
-           FOOTER
-           ========================================== */
-        .nexa-footer {
-            text-align: center;
-            padding: 60px 20px 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            background: #050507;
-        }
-
-        /* ==========================================
-           RESPONSIVO
-           ========================================== */
-        @media screen and (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--bg-dark);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                transition: left 0.4s ease;
-            }
-            .nav-menu.active { left: 0; }
-        }
     </style>
 </head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Publicidad | Agencia Creativa</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icon.jpg">
+
+<body>
+    
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="nexa-navbar">
-        <a href="index.html#inicio" class="nexa-logo">NEXA <span>PUBLICIDAD</span></a>
+        <a href="index.html#inicio" class="nexa-logo">NEXA PUBLICIDAD</a>
         
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
@@ -270,82 +296,95 @@
 
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
-            <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-            <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
-            <li><a href="index.html#equipo" class="nav-link">Equipo</a></li>
-            <li><a href="index.html#portafolio" class="nav-link">Portafolio</a></li>
-            <li><a href="clientes.html" class="nav-link active">Clientes</a></li>
             <li><a href="contacto.html" class="nav-link">Contacto</a></li>
         </ul>
     </nav>
+    </head>
 
-    <!-- ENCABEZADO -->
-    <header class="page-header">
-        <span class="section-subtitle">Nuestras Alianzas Estratégicas</span>
-        <h1 class="section-title">NUESTROS CLIENTES</h1>
-    </header>
+    <!-- SECCIÓN DE CLIENTES -->
+    <section class="section-padding" id="clientes">
+        
+        <div class="section-header">
+            <span class="section-subtitle">NUESTRAS ALIANZAS ESTRATÉGICAS</span>
+            <h2 class="section-title">NUESTROS CLIENTES</h2>
+        </div>
 
-    <!-- SECCIÓN DE TARJETAS DE CLIENTES -->
-    <section class="clients-section">
-        <div class="clients-grid">
-            
-            <!-- TARJETA 1: SPEEDMAX -->
-            <div class="client-card">
-                <div class="client-thumb">
-                    <img src="speedmax-thumb.jpg" alt="Speedmax Publicidad">
+        <!-- CUADRÍCULA DE CLIENTES ORIGINAL (3 TARJETAS) -->
+        <div class="clientes-grid">
+
+            <!-- 1. SPEEDMAX -->
+            <div class="tarjeta-cliente">
+                <div class="cliente-thumb">
+                    <img src="speedmax.jpg" alt="Speedmax">
                 </div>
-                <div class="client-content">
-                    <span class="client-tag">Spot Publicitario & TV</span>
-                    <h2 class="client-name">Speedmax</h2>
-                    <p class="client-desc">Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
-                    <a href="cliente-speedmax.html" class="client-btn">Más información sobre este proyecto <i class="fas fa-arrow-right"></i></a>
+                <div class="cliente-info">
+                    <span class="item-category">SPOT PUBLICITARIO & TV</span>
+                    <h3 class="item-title">Speedmax</h3>
+                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
+                    <a href="cliente-speedmax.html" class="btn-cliente">Más información sobre este proyecto →</a>
                 </div>
             </div>
 
-            <!-- TARJETA 2: VÉRTICE -->
-            <div class="client-card">
-                <div class="client-thumb">
-                    <img src="vertice1.png" alt="Vértice Marca">
+            <!-- 2. VÉRTICE -->
+            <div class="tarjeta-cliente">
+                <div class="cliente-thumb">
+                    <img src="vertice3.png" alt="Vértice">
                 </div>
-                <div class="client-content">
-                    <span class="client-tag">Branding & Dirección de Arte</span>
-                    <h2 class="client-name">Vértice</h2>
-                    <p class="client-desc">Construcción de identidad visual corporativa, sistemas gráficos estables y línea editorial moderna.</p>
-                    <a href="cliente-vertice.html" class="client-btn">Más información sobre este proyecto <i class="fas fa-arrow-right"></i></a>
+                <div class="cliente-info">
+                    <span class="item-category">BRANDING & DIRECCIÓN DE ARTE</span>
+                    <h3 class="item-title">Vértice</h3>
+                    <p>Construcción de identidad visual corporativa, sistemas gráficos estables y línea editorial moderna.</p>
+                    <a href="cliente-vertice.html" class="btn-cliente">Más información sobre este proyecto →</a>
                 </div>
             </div>
 
-            <!-- TARJETA 3: DRAFT -->
-            <div class="client-card">
-                <div class="client-thumb">
-                    <img src="draft.png" alt="Draft Indumentaria & Podcast">
+            <!-- 3. DRAFT -->
+            <div class="tarjeta-cliente">
+                <div class="cliente-thumb">
+                    <img src="draft.png" alt="Draft">
                 </div>
-                <div class="client-content">
-                    <span class="client-tag">Podcast & Indumentaria Urbana</span>
-                    <h2 class="client-name">Draft</h2>
-                    <p class="client-desc">Grabación, producción de contenido audiovisual, diseño de afiches y manejo del podcast oficial de la marca.</p>
-                    <a href="cliente-draft.html" class="client-btn">Más información sobre este proyecto <i class="fas fa-arrow-right"></i></a>
+                <div class="cliente-info">
+                    <span class="item-category">PODCAST & INDUMENTARIA URBANA</span>
+                    <h3 class="item-title">Draft</h3>
+                    <p>Grabación, producción de contenido audiovisual, diseño de afiches y manejo del podcast oficial de la marca.</p>
+                    <a href="cliente-draft.html" class="btn-cliente">Más información sobre este proyecto →</a>
+                </div>
+            </div>
+
+            <!-- 4. ZOMA -->
+            <div class="tarjeta-cliente">
+                <div class="cliente-thumb">
+                    <img src="Zomap.jpg" alt="Speedmax">
+                </div>
+                <div class="cliente-info">
+                    <span class="item-category">Sublimación</span>
+                    <h3 class="item-title">Zoma</h3>
+                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
+                    <a href="CLIENTE-ZOMA.HTML" class="btn-cliente">Más información sobre este proyecto →</a>
+                </div>
+            </div>
+
+            <!-- 5. Judith Sport Gym -->
+            <div class="tarjeta-cliente">
+                <div class="cliente-thumb">
+                    <img src="icongym.jpg" alt="Speedmax">
+                </div>
+                <div class="cliente-info">
+                    <span class="item-category">Fuerza y Cercanía</span>
+                    <h3 class="item-title">Judith Sport Gym</h3>
+                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
+                    <a href="CLIENTE-JUDITHSPORTGYM.HTML" class="btn-cliente">Más información sobre este proyecto →</a>
                 </div>
             </div>
 
         </div>
+
     </section>
 
     <!-- FOOTER -->
-    <footer class="nexa-footer">
-        <p style="color: var(--text-muted); font-size: 0.85rem;">
-            &copy; 2026 Nexa Publicidad. Todos los derechos reservados.
-        </p>
+    <footer>
+        <p>© 2026 Nexa Publicidad. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT MENÚ MÓVIL -->
-    <script>
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-
-        mobileBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

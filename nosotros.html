@@ -125,6 +125,155 @@
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
+        /* ==========================================================
+        LÍNEA DIVISORA ENTRE SECCIONES
+        ========================================================== */
+        .divisor-nexa {
+            border: 0;
+            height: 1px;
+            max-width: 960px;
+            margin: 50px auto;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 229, 255, 0.55),
+                transparent
+            );
+        }
+
+        /* ==========================================================
+        BLOQUE INTERACTIVO PILARES NEXA (SIN JAVASCRIPT)
+        ========================================================== */
+        .nexa-pilares-interactivos {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 5%;
+        }
+
+        .pilares-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .pilares-header span {
+            color: #00e5ff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .pilares-header h3 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .pilares-header p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        .pilares-box {
+            background: #0b0f17;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .pilares-box input[type="radio"] {
+            display: none;
+        }
+
+        .pilares-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .pilar-btn {
+            padding: 10px 18px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pilar-btn:hover {
+            border-color: #00e5ff;
+            color: #00e5ff;
+        }
+
+        .pilar-panel {
+            display: none;
+            background: rgba(5, 8, 14, 0.75);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .pilar-panel h4 {
+            color: #00e5ff;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .pilar-panel p {
+            color: #d2dae6;
+            font-size: 0.96rem;
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .pilar-tag {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #05080e;
+            background: #00e5ff;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* Lógica CSS pura para activar pestaña y mostrar su panel */
+        #pilar-1:checked ~ .pilares-tabs label[for="pilar-1"],
+        #pilar-2:checked ~ .pilares-tabs label[for="pilar-2"],
+        #pilar-3:checked ~ .pilares-tabs label[for="pilar-3"],
+        #pilar-4:checked ~ .pilares-tabs label[for="pilar-4"] {
+            background: #00e5ff;
+            color: #05080e;
+            border-color: #00e5ff;
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+        }
+
+        #pilar-1:checked ~ .pilares-contenido .panel-p1,
+        #pilar-2:checked ~ .pilares-contenido .panel-p2,
+        #pilar-3:checked ~ .pilares-contenido .panel-p3,
+        #pilar-4:checked ~ .pilares-contenido .panel-p4 {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .pilares-header h3 {
+                font-size: 1.45rem;
+            }
+
+            .pilares-box {
+                padding: 20px;
+            }
+        }
+
         /* ==========================================
            CONTENEDOR GENERAL DE SECCIÓN
            ========================================== */
@@ -402,6 +551,14 @@
         }
     </style>
 </head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Publicidad | Agencia Creativa</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icon.jpg">
+</head>
 <body>
 
     <!-- BARRA DE NAVEGACIÓN -->
@@ -427,6 +584,58 @@
         <span class="section-subtitle">Conoce nuestra esencia</span>
         <h1 class="section-title">ACERCA DE NOSOTROS</h1>
     </header>
+    
+    <!-- LÍNEA DIVISORA -->
+        <hr class="divisor-nexa">
+   
+        <!-- BLOQUE INTERACTIVO: PILARES DE NEXA (PURO HTML + CSS) -->
+<section class="nexa-pilares-interactivos">
+    <div class="pilares-header">
+        <span>EXPLORA CÓMO TRABAJAMOS</span>
+        <h3>EL MOTOR DETRÁS DE NEXA</h3>
+        <p>Haz clic en cada pestaña para ver cómo se conectan nuestras áreas en cada campaña:</p>
+    </div>
+
+    <div class="pilares-box">
+        <input type="radio" name="pilar-nexa" id="pilar-1" checked>
+        <input type="radio" name="pilar-nexa" id="pilar-2">
+        <input type="radio" name="pilar-nexa" id="pilar-3">
+        <input type="radio" name="pilar-nexa" id="pilar-4">
+
+        <div class="pilares-tabs">
+            <label for="pilar-1" class="pilar-btn">Estrategia y Planning</label>
+            <label for="pilar-2" class="pilar-btn">Dirección Creativa</label>
+            <label for="pilar-3" class="pilar-btn">Producción Audiovisual</label>
+            <label for="pilar-4" class="pilar-btn">Gestión y Cuentas</label>
+        </div>
+
+        <div class="pilares-contenido">
+            <div class="pilar-panel panel-p1">
+                <h4>Estrategia y Planning</h4>
+                <p>Definimos el rumbo de cada marca antes de lanzar una sola pieza: analizamos el público, el mensaje central y el orden de las ideas (como la estructura base de un proyecto).</p>
+                <span class="pilar-tag">Enfoque: Claridad, rumbo y propósito de marca</span>
+            </div>
+
+            <div class="pilar-panel panel-p2">
+                <h4>Dirección Creativa</h4>
+                <p>Construimos la identidad visual, las paletas de color y el lenguaje gráfico que hacen que cada cliente destaque y sea reconocible al primer vistazo.</p>
+                <span class="pilar-tag">Enfoque: Identidad visual, estética y carácter</span>
+            </div>
+
+            <div class="pilar-panel panel-p3">
+                <h4>Producción Audiovisual</h4>
+                <p>Damos movimiento y ritmo a las historias mediante piezas visuales, edición dinámica y narrativa pensada para captar atención real.</p>
+                <span class="pilar-tag">Enfoque: Narrativa visual, ritmo y formato</span>
+            </div>
+
+            <div class="pilar-panel panel-p4">
+                <h4>Gestión y Cuentas</h4>
+                <p>Acompañamos el proceso de principio a fin para que cada entrega mantenga coherencia, tiempos claros y una comunicación cercana con el cliente.</p>
+                <span class="pilar-tag">Enfoque: Seguimiento, orden y cercanía</span>
+            </div>
+        </div>
+    </div>
+</section>
 
                 <!-- SECCIÓN DE EQUIPO -->
     <section class="team-section">
@@ -436,25 +645,34 @@
         </div>
 
         <div class="team-grid">
-            <!-- Miembro 1: Machado -->
+            
+            <!-- Miembro 1: Dilmar -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="Erika.png" alt="Dilmar">
+                </div>
+                <h3 class="team-name">Dilmar</h3>
+                <span class="team-role">Directora de Cuentas</span>
+            </div>
+            <!-- Miembro 2: Machado -->
             <div class="team-card">
                 <div class="team-img-box">
                     <img src="ashley.png" alt="Machado">
                 </div>
                 <h3 class="team-name">Machado</h3>
-                <span class="team-role">Director & Estratega de Marca</span>
+                <span class="team-role">Directora de Planning</span>
             </div>
 
-            <!-- Miembro 2: Verónica -->
+            <!-- Miembro 3: Verónica -->
             <div class="team-card">
                 <div class="team-img-box">
-                    <img src="veronica.jpg" alt="Verónica">
+                    <img src="vero.jpeg" alt="Verónica">
                 </div>
                 <h3 class="team-name">Verónica</h3>
                 <span class="team-role">Directora Creativa</span>
             </div>
 
-            <!-- Miembro 3: Dilmar -->
+            <!-- Miembro 4: Dilmar -->
             <div class="team-card">
                 <div class="team-img-box">
                     <img src="dilmar.png" alt="Dilmar">

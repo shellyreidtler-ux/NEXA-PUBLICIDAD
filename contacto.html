@@ -125,199 +125,266 @@
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* ==========================================
-           SECCIÓN DE CONTACTO (GRID)
-           ========================================== */
-        .contact-section {
-            padding: 40px 5% 100px;
-            max-width: 1200px;
-            margin: 0 auto;
+       /* ==========================================================
+   ESTILOS DE LA SECCIÓN DE CONTACTO (2 COLUMNAS)
+   ========================================================== */
+
+.contact-section {
+    padding: 120px 5% 80px 5%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+/* Cuadrícula principal de dos columnas */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Columna izquierda más ancha para el formulario, derecha para info */
+    gap: 35px;
+    align-items: start;
+}
+
+/* --- CAJA DEL FORMULARIO (IZQUIERDA) --- */
+.contact-form-box {
+    background: #0b0f17;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 20px;
+    padding: 35px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form-box h3 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.contact-form-box p {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.nexa-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.nexa-form label {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.nexa-form input,
+.nexa-form select,
+.nexa-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.nexa-form input:focus,
+.nexa-form select:focus,
+.nexa-form textarea:focus {
+    outline: none;
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+}
+
+.nexa-form select option {
+    background: #0b0f17;
+    color: #ffffff;
+}
+
+/* Botón de Enviar Mensaje con Estética Neón */
+.btn-enviar-nexa {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 20px;
+    background: rgba(0, 229, 255, 0.1);
+    color: #ffffff;
+    border: 1.5px solid #00e5ff;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-enviar-nexa:hover {
+    background: #00e5ff;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+}
+
+/* --- COLUMNA DERECHA (TARJETAS DE INFORMACIÓN) --- */
+.contact-info-columna {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: #0b0f17;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 16px;
+    padding: 22px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.info-card:hover {
+    border-color: #00e5ff;
+    transform: translateY(-3px);
+}
+
+.info-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid #00e5ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00e5ff;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-text h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.info-text p {
+    color: #a0aec0;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Tarjeta de redes sociales abajo */
+.redes-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.redes-card h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.redes-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-icons a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00e5ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.redes-icons a:hover {
+    background: #00e5ff;
+    color: #000;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+/* --- RESPONSIVO PARA MÓVILES (Vuelve a 1 sola columna en teléfonos) --- */
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        /* Estilo oscuro para los campos de texto y el selector */
+        .nexa-form input,
+        .nexa-form select,
+        .nexa-form textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        padding: 12px 15px;
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-family: inherit;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: start;
+        /* Efecto neón turquesa al hacer clic para escribir */
+        .nexa-form input:focus,
+        .nexa-form select:focus,
+        .nexa-form textarea:focus {
+        outline: none;
+        border-color: #00e5ff;
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
         }
 
-        /* FORMULARIO */
-        .contact-form-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        /* Color de las opciones desplegables */
+        .nexa-form select option {
+        background: #0b0f17;
+        color: #ffffff;
         }
 
-        .contact-form-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
+        /* Botón ancho con brillo neón turquesa */
+        .btn-enviar-nexa {
+        width: 100%;
+        margin-top: 10px;
+        padding: 14px 20px;
+        background: rgba(0, 229, 255, 0.1);
+        color: #ffffff;
+        border: 1.5px solid #00e5ff;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
+        transition: all 0.3s ease;
         }
 
-        .contact-form-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .form-control {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 14px 18px;
-            color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px var(--accent-glow);
-            background: rgba(0, 229, 255, 0.02);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 140px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 15px;
-            border-radius: 10px;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        /* INFORMACIÓN DE CONTACTO Y TARJETAS LATERALES */
-        .contact-info-col {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .info-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px var(--accent-glow);
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 229, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-cyan);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .info-details h4 {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-
-        .info-details p, .info-details a {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .info-details a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* REDES SOCIALES */
-        .social-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .social-box h4 {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 15px;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-btn {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-btn:hover {
-            background: var(--accent-cyan);
-            border-color: var(--accent-cyan);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-glow);
+        .btn-enviar-nexa:hover {
+        background: #00e5ff;
+        color: #000000;
+        box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
         }
 
         /* ==========================================
@@ -359,6 +426,14 @@
         }
     </style>
 </head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Nexa Publicidad | Agencia Creativa</title>
+  
+  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+  <link rel="icon" type="image/png" href="icon.jpg">
+</head>
 <body>
 
     <!-- BARRA DE NAVEGACIÓN -->
@@ -379,102 +454,107 @@
         </ul>
     </nav>
 
-    <!-- ENCABEZADO DE LA PÁGINA -->
-    <header class="page-header">
-        <span class="section-subtitle">Iniciemos Algo Único</span>
-        <h1 class="section-title">CONTÁCTANOS</h1>
-    </header>
 
-    <!-- SECCIÓN DE CONTACTO PRINCIPAL -->
-    <section class="contact-section">
+   <!-- SECCIÓN DE CONTACTO -->
+    <section class="contact-section" id="contacto">
+        
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <span class="section-subtitle">INICIEMOS ALGO ÚNICO</span>
+            <h2 class="section-title">CONTÁCTANOS</h2>
+        </div>
+
+        <!-- CONTENEDOR DE DOS COLUMNAS -->
         <div class="contact-grid">
-            
-            <!-- FORMULARIO -->
+
+            <!-- COLUMNA IZQUIERDA: EL FORMULARIO (Formspree) -->
             <div class="contact-form-box">
                 <h3>Envíanos un Mensaje</h3>
                 <p>Completa el formulario y nuestro equipo de estrategia y dirección creativa se pondrá en contacto contigo a la brevedad.</p>
                 
-                <form action="#" method="POST">
+                <!-- REEMPLAZA "TU_CODIGO_DE_FORMSPREE" CON EL ENLACE QUE TE DIO FORMSPREE -->
+                <form action="https://formspree.io/f/moedwpnp" method="POST" class="nexa-form">
+                    
                     <div class="form-group">
-                        <label for="nombre">Nombre o Marca</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez / Marca X" required>
+                        <label for="nombre">NOMBRE O MARCA</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Arista" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required>
+                        <label for="email">CORREO ELECTRÓNICO</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="telefono">Teléfono / WhatsApp</label>
-                        <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+58 412 0000000">
+                        <label for="telefono">TELÉFONO / WHATSAPP</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="0412 000 0000">
                     </div>
 
                     <div class="form-group">
-                        <label for="servicio">Servicio de Interés</label>
-                        <select id="servicio" name="servicio" class="form-control">
-                            <option value="branding" style="background: #111116;">Branding & Dirección de Arte</option>
-                            <option value="audiovisual" style="background: #111116;">Producción Audiovisual & Podcast</option>
-                            <option value="linea-editorial" style="background: #111116;">Línea Editorial & Diseño Gráfico</option>
-                            <option value="otro" style="background: #111116;">Otro Proyecto Publicitario</option>
+                        <label for="servicio">SERVICIO DE INTERÉS</label>
+                        <select id="servicio" name="servicio">
+                            <option value="Produccion Audiovisual & Podcast">Producción Audiovisual & Podcast</option>
+                            <option value="Branding & Direccion de Arte">Branding & Dirección de Arte</option>
+                            <option value="Linea Editorial">Línea Editorial</option>
+                            <option value="Diseno Web">Diseño y Desarrollo Web</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="mensaje">Cuéntanos sobre tu proyecto</label>
-                        <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Describe brevemente tus objetivos o necesidades..." required></textarea>
+                        <label for="mensaje">CUÉNTANOS SOBRE TU PROYECTO</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe los detalles de tu marca o idea..." required></textarea>
                     </div>
 
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Enviar Mensaje
+                    <button type="submit" class="btn-enviar-nexa">
+                        <i class="fas fa-paper-plane"></i> ENVIAR MENSAJE
                     </button>
+
                 </form>
             </div>
 
-            <!-- INFORMACIÓN Y REDES -->
-            <div class="contact-info-col">
+            <!-- COLUMNA DERECHA: INFORMACIÓN Y REDES -->
+            <div class="contact-info-columna">
                 
-                <!-- Tarjeta Ubicación -->
+                <!-- 1. Tarjeta Ubicación -->
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="info-details">
+                    <div class="info-text">
                         <h4>Ubicación</h4>
                         <p>Valencia, Carabobo, Venezuela.<br>Disponibles para proyectos globales y remotos.</p>
                     </div>
                 </div>
 
-                <!-- Tarjeta Correo -->
+                <!-- 2. Tarjeta Correo -->
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <div class="info-details">
+                    <div class="info-text">
                         <h4>Correo Electrónico</h4>
-                        <a href="mailto:contacto.nexa.publicidad@gmail.com">contacto.nexa.publicidad@gmail.com</a>
+                        <p>contacto.nexa.publicidad@gmail.com</p>
                     </div>
                 </div>
 
-                <!-- Tarjeta Teléfono -->
+                <!-- 3. Tarjeta WhatsApp -->
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
+                        <i class="fab fa-whatsapp"></i>
                     </div>
-                    <div class="info-details">
+                    <div class="info-text">
                         <h4>Línea Directa / WhatsApp</h4>
-                        <a href="tel:+584120000000">+58 (412) 746-4966</a>
+                        <p>+58 (412) 746-4966</p>
                     </div>
                 </div>
 
-                <!-- Redes Sociales -->
-                <div class="social-box">
+                <!-- 4. Tarjeta Redes Sociales -->
+                <div class="info-card redes-card">
                     <h4>Síguenos en Redes</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/contacto.nexa.publicidad/" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@Nexa-publicidad" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-btn" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <div class="redes-icons">
+                        <a href="https://www.instagram.com/contacto.nexa.publicidad/" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@Nexa-publicidad" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
