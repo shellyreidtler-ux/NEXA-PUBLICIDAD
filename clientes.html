@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexa Publicidad - Clientes</title>
-    <!-- FontAwesome para los iconos -->
+    <title>Clientes y Casos de Éxito | Nexa Publicidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ==========================================================
-           ESTILOS GENERALES Y DE LA PÁGINA DE CLIENTES
+           VARIABLES Y ESTILOS BASE — IDENTIDAD NEXA PUBLICIDAD
            ========================================================== */
         :root {
-            --bg-dark: #05080e;
-            --card-bg: #0b0f17;
-            --neon-cyan: #00e5ff;
+            --bg-main: #06090f;
+            --bg-surface: #0b0f17;
+            --bg-surface-2: #111722;
+            --cyan: #00e5ff;
+            --cyan-glow: rgba(0, 229, 255, 0.35);
+            --cyan-soft: rgba(0, 229, 255, 0.12);
             --text-main: #ffffff;
             --text-muted: #a0aec0;
-            --font-heading: 'Permanent Marker', cursive, sans-serif;
-            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --border-subtle: rgba(0, 229, 255, 0.22);
         }
 
         * {
@@ -32,358 +29,474 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-main);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.65;
             overflow-x: hidden;
         }
 
-         a { text-decoration: none; color: inherit; }
-
-        /* --- NAVEGACIÓN --- */
+        /* ==========================================================
+           BARRA DE NAVEGACIÓN + MENÚ DESPLEGABLE (PURO HTML + CSS)
+           ========================================================== */
         header {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(5, 8, 14, 0.9);
+            background: rgba(6, 9, 15, 0.92);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
-            padding: 20px 5%;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 18px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
         }
 
-        .nexa-logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--text-main);
-            letter-spacing: 2px;
-        }
-
-      /*  .nexa-logo span { 
-            color: var(--accent-cyan); 
-            font-family: var(--font-heading);
-            
-        }
-*/
-        nav {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-main);
+        .logo {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: var(--cyan);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
-        }
-
-        /* --- SECCIÓN CLIENTES --- */
-        .section-padding {
-            padding: 120px 5% 80px 5%;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 25px;
-        }
-
-        .section-subtitle {
-            color: var(--neon-cyan);
-            font-size: 0.8rem;
-            font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
+            text-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            margin-top: 5px;
-            letter-spacing: 2px;
+        #menu-toggle {
+            display: none;
         }
 
-        /* --- CUADRÍCULA DE TARJETAS --- */
-        .clientes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 350px));
+        .menu-icon {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 35px;
-            width: 100%;
-            margin: 0 auto;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--cyan);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
-        .tarjeta-cliente {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            border-radius: 16px;
+        .menu-icon:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan-glow);
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 5%;
+            margin-top: 10px;
+            width: 245px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 10px;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75);
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 11px 14px;
+            border-radius: 9px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active-link {
+            background: var(--cyan-soft);
+            color: var(--cyan);
+        }
+
+        #menu-toggle:checked ~ .nav-menu {
+            display: flex;
+        }
+
+        /* ==========================================================
+           CABECERA DE SECCIÓN
+           ========================================================== */
+        .page-hero {
+            padding: 135px 5% 45px 5%;
+            max-width: 1180px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .kicker {
+            display: inline-block;
+            color: var(--cyan);
+            background: var(--cyan-soft);
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 14px;
+        }
+
+        .page-hero h1 span {
+            color: var(--cyan);
+        }
+
+        .page-hero p {
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .divisor-nexa {
+            border: 0;
+            height: 1px;
+            max-width: 980px;
+            margin: 25px auto;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 229, 255, 0.5),
+                transparent
+            );
+        }
+
+        /* ==========================================================
+           GRID DE CLIENTES
+           ========================================================== */
+        .clients-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 35px 5% 55px 5%;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .client-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .tarjeta-cliente:hover {
+        .client-card:hover {
             transform: translateY(-5px);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+            border-color: var(--cyan);
+            box-shadow: 0 12px 30px rgba(0, 229, 255, 0.14);
         }
 
-        .cliente-thumb {
+        .client-media {
             width: 100%;
             height: 220px;
             overflow: hidden;
+            background: var(--bg-surface-2);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .cliente-thumb img {
+        .client-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .cliente-info {
-            padding: 24px;
+        .client-body {
+            padding: 26px;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
         }
 
-        .item-category {
-            color: var(--neon-cyan);
+        .client-tag {
+            color: var(--cyan);
             font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             margin-bottom: 8px;
         }
 
-        .item-title {
+        .client-body h2 {
+            font-size: 1.55rem;
+            font-weight: 800;
             color: var(--text-main);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .cliente-info p {
+        .client-body p {
             color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            font-size: 0.95rem;
+            margin-bottom: 22px;
+            flex: 1;
         }
 
-        .btn-cliente {
-            display: inline-block;
-            padding: 10px 18px;
-            background: transparent;
-            color: var(--neon-cyan);
-            border: 1px solid var(--neon-cyan);
+        .client-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-case {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
             border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: bold;
+            background: var(--cyan);
+            color: #05080e;
+            font-weight: 800;
+            font-size: 0.88rem;
             text-decoration: none;
+            box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+            transition: all 0.25s ease;
+        }
+
+        .btn-case:hover {
+            background: #ffffff;
+            box-shadow: 0 0 22px rgba(0, 229, 255, 0.55);
+        }
+
+        .client-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================
+           CTA FINAL Y FOOTER
+           ========================================================== */
+        .cta-section {
+            max-width: 1080px;
+            margin: 20px auto 55px auto;
+            padding: 42px 5%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
             text-align: center;
-            transition: all 0.3s ease;
         }
 
-        .btn-cliente:hover {
-            background: var(--neon-cyan);
-            color: #000;
-            box-shadow: 0 0 10px var(--neon-cyan);
+        .cta-section h3 {
+            font-size: 1.75rem;
+            font-weight: 900;
+            margin-bottom: 10px;
         }
 
-        /* --- FOOTER --- */
+        .cta-section p {
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto 22px auto;
+            font-size: 0.96rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 12px 26px;
+            border-radius: 25px;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--cyan);
+            color: #05080e;
+        }
+
         footer {
             text-align: center;
-            padding: 30px 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 28px 5%;
+            border-top: 1px solid rgba(0, 229, 255, 0.16);
             color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 60px;
+            font-size: 0.86rem;
         }
 
-         /* ==========================================
-           BARRA DE NAVEGACIÓN FIJA
-           ========================================== */
-        .nexa-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(8, 8, 10, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            z-index: 1000;
-            padding: 18px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        footer span {
+            color: var(--cyan);
+            font-weight: 700;
         }
 
-        .nexa-logo {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--text-main);
-            letter-spacing: 2px;
+        /* ==========================================================
+           RESPONSIVO
+           ========================================================== */
+        @media (max-width: 850px) {
+            .page-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
-        /*.nexa-logo span { color: var(--accent-cyan); 
-        font-family: var(--font-heading);}
-*/
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-
     </style>
 </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Nexa Publicidad | Agencia Creativa</title>
-  
-  <!-- Esta es la línea que agrega el ícono a la pestaña -->
+<!-- Esta es la línea que agrega el ícono a la pestaña -->
   <link rel="icon" type="image/png" href="icon.jpg">
-
+</head>
 <body>
-    
-    <!-- BARRA DE NAVEGACIÓN -->
-    <nav class="nexa-navbar">
-        <a href="index.html#inicio" class="nexa-logo">NEXA PUBLICIDAD</a>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
+
+    <!-- ENCABEZADO CON MENÚ DESPLEGABLE -->
+    <header>
+        <a href="index.html" class="logo">NEXA PUBLICIDAD</a>
+
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
             <i class="fas fa-bars"></i>
-        </button>
+        </label>
 
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
-            <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-        </ul>
-    </nav>
-    </head>
+        <nav class="nav-menu">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Acerca de Nosotros</a>
+            <a href="clientes.html" class="active-link">Clientes</a>
+            <a href="CLIENTE-JUDITHSPORTGYM.HTML">Judith Sport Gym</a>
+            <a href="CLIENTE-ZOMA.HTML">Zoma</a>
+            <a href="cliente-draft.html">Draft</a>
+            <a href="cliente-speedmax.html">Speedmax</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
 
-    <!-- SECCIÓN DE CLIENTES -->
-    <section class="section-padding" id="clientes">
-        
-        <div class="section-header">
-            <span class="section-subtitle">NUESTRAS ALIANZAS ESTRATÉGICAS</span>
-            <h2 class="section-title">NUESTROS CLIENTES</h2>
+    <!-- CABECERA -->
+    <section class="page-hero">
+        <span class="kicker">Portafolio • Casos de Éxito</span>
+        <h1>Nuestros <span>Clientes</span></h1>
+        <p>Marcas y espacios con los que trabajamos para construir identidad visual, presencia digital y propuestas claras alineadas con su esencia.</p>
+    </section>
+
+    <hr class="divisor-nexa">
+
+    <!-- TARJETAS DE CLIENTES -->
+    <section class="clients-section">
+        <div class="clients-grid">
+            <!-- Cliente 1: Judith Sport Gym -->
+            <article class="client-card">
+                <div>
+                    <div class="client-media">
+                        <img src="gymcompleto.jpeg" alt="Judith Sport Gym">
+                    </div>
+                    <div class="client-body">
+                        <span class="client-tag">Fitness & Cuidado Integral</span>
+                        <h2>Judith Sport Gym</h2>
+                        <p>Entrenamiento guiado para subir o bajar de peso, acompañamiento cercano y atención integral en un espacio diseñado para volver a conectar con la comunidad.</p>
+                        <div class="client-actions">
+                            <a href="CLIENTE-JUDITHSPORTGYM.HTML" class="btn-case">
+                                Ver Caso <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="client-meta">Barrio Federación 2</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Cliente 2: Zoma -->
+            <article class="client-card">
+                <div>
+                    <div class="client-media">
+                        <img src="zomab.jpg" alt="Zoma Sublimación Textil">
+                    </div>
+                    <div class="client-body">
+                        <span class="client-tag">Sublimación & Moda Urbana</span>
+                        <h2>Zoma</h2>
+                        <p>Prendas personalizadas en sublimación textil —franelas, camisetas y hoodies— con acabados nítidos y una identidad cálida pensada para destacar.</p>
+                        <div class="client-actions">
+                            <a href="CLIENTE-ZOMA.HTML" class="btn-case">
+                                Ver Caso <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="client-meta">Identidad & Textil</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Cliente 3: Draft -->
+            <article class="client-card">
+                <div>
+                    <div class="client-media">
+                        <img src="draft.png" alt="Draft">
+                    </div>
+                    <div class="client-body">
+                        <span class="client-tag">Concepto & Estrategia</span>
+                        <h2>Draft</h2>
+                        <p>Propuesta de marca enfocada en estructurar ideas, diseño y comunicación visual con carácter propio dentro del portafolio de Nexa.</p>
+                        <div class="client-actions">
+                            <a href="cliente-draft.html" class="btn-case">
+                                Ver Caso <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="client-meta">Caso Nexa</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Cliente 4: Speedmax -->
+            <article class="client-card">
+                <div>
+                    <div class="client-media">
+                        <img src="speedmax.jpg" alt="Speedmax">
+                    </div>
+                    <div class="client-body">
+                        <span class="client-tag">Dinamismo & Rendimiento</span>
+                        <h2>Speedmax</h2>
+                        <p>Identidad y enfoque comunicacional orientados a velocidad, respuesta y posicionamiento visual claro para conectar con su público.</p>
+                        <div class="client-actions">
+                            <a href="cliente-speedmax.html" class="btn-case">
+                                Ver Caso <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <span class="client-meta">Caso Nexa</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
+    </section>
 
-        <!-- CUADRÍCULA DE CLIENTES ORIGINAL (3 TARJETAS) -->
-        <div class="clientes-grid">
-
-            <!-- 1. SPEEDMAX -->
-            <div class="tarjeta-cliente">
-                <div class="cliente-thumb">
-                    <img src="speedmax.jpg" alt="Speedmax">
-                </div>
-                <div class="cliente-info">
-                    <span class="item-category">SPOT PUBLICITARIO & TV</span>
-                    <h3 class="item-title">Speedmax</h3>
-                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
-                    <a href="cliente-speedmax.html" class="btn-cliente">Más información sobre este proyecto →</a>
-                </div>
-            </div>
-
-            <!-- 2. VÉRTICE -->
-            <div class="tarjeta-cliente">
-                <div class="cliente-thumb">
-                    <img src="vertice3.png" alt="Vértice">
-                </div>
-                <div class="cliente-info">
-                    <span class="item-category">BRANDING & DIRECCIÓN DE ARTE</span>
-                    <h3 class="item-title">Vértice</h3>
-                    <p>Construcción de identidad visual corporativa, sistemas gráficos estables y línea editorial moderna.</p>
-                    <a href="cliente-vertice.html" class="btn-cliente">Más información sobre este proyecto →</a>
-                </div>
-            </div>
-
-            <!-- 3. DRAFT -->
-            <div class="tarjeta-cliente">
-                <div class="cliente-thumb">
-                    <img src="draft.png" alt="Draft">
-                </div>
-                <div class="cliente-info">
-                    <span class="item-category">PODCAST & INDUMENTARIA URBANA</span>
-                    <h3 class="item-title">Draft</h3>
-                    <p>Grabación, producción de contenido audiovisual, diseño de afiches y manejo del podcast oficial de la marca.</p>
-                    <a href="cliente-draft.html" class="btn-cliente">Más información sobre este proyecto →</a>
-                </div>
-            </div>
-
-            <!-- 4. ZOMA -->
-            <div class="tarjeta-cliente">
-                <div class="cliente-thumb">
-                    <img src="Zomap.jpg" alt="Speedmax">
-                </div>
-                <div class="cliente-info">
-                    <span class="item-category">Sublimación</span>
-                    <h3 class="item-title">Zoma</h3>
-                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
-                    <a href="CLIENTE-ZOMA.HTML" class="btn-cliente">Más información sobre este proyecto →</a>
-                </div>
-            </div>
-
-            <!-- 5. Judith Sport Gym -->
-            <div class="tarjeta-cliente">
-                <div class="cliente-thumb">
-                    <img src="icongym.jpg" alt="Speedmax">
-                </div>
-                <div class="cliente-info">
-                    <span class="item-category">Fuerza y Cercanía</span>
-                    <h3 class="item-title">Judith Sport Gym</h3>
-                    <p>Producción de comercial de alto rendimiento, dirección de arte y edición de video publicitario dinámico.</p>
-                    <a href="CLIENTE-JUDITHSPORTGYM.HTML" class="btn-cliente">Más información sobre este proyecto →</a>
-                </div>
-            </div>
-
-        </div>
-
+    <!-- LLAMADO A CONTACTO -->
+    <section class="cta-section">
+        <h3>¿Listo para darle forma a tu marca?</h3>
+        <p>Escríbenos y conversemos sobre cómo estructurar y proyectar tu proyecto con Nexa Publicidad.</p>
+        <a href="contacto.html" class="btn-outline">Ir a Contacto</a>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 Nexa Publicidad. Todos los derechos reservados.</p>
+        <p>© 2026 <span>Nexa Publicidad</span>. Todos los derechos reservados.</p>
     </footer>
 
 </body>
